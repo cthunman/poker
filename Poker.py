@@ -1,8 +1,21 @@
 class Hand():
 	cards = []
+	hierarchy = {
+		'straight_flush' : 9,
+		'quads' : 8,
+		'full_house' : 7,
+		'flush' : 6,
+		'straight' : 5,
+		'three_of_a_kind' : 4,
+		'two_pair' : 3,
+		'pair' : 2,
+		'high_card' : 1,
+	}
+	value = None
 
 	def __init__(self, card_list):
 		self.cards = card_list
+		self.find_hand_type()
 
 	def is_straight_flush(self):
 		if len(self.cards) == 5:
@@ -24,8 +37,6 @@ class Hand():
 		if len(self.cards) == 5:
 			
 			test_for_aces = next((card for card in self.cards if card['value'] == 'A'), None)
-			# print len(test_for_aces)
-			# print test_for_aces
 			if test_for_aces is None:
 			# if True:
 				sorted_cards = sorted(self.cards, key=lambda card: card['value'])
@@ -64,7 +75,7 @@ class Hand():
 		else:
 			return False
 
-	def has_four_of_a_kind(self):
+	def has_quads(self):
 		if len(self.cards) == 5:
 			value_map = self.get_value_map()
 			if 4 in value_map.values():
@@ -101,7 +112,6 @@ class Hand():
 			for value in value_map:
 				if value_map[value] == 2:
 					count += 1
-			print count
 			if count == 2:
 				return True
 			else:
@@ -142,35 +152,329 @@ class Hand():
 				values[card['value']] += 1
 		return values
 
+	def find_hand_type(self):
+		if self.is_straight_flush():
+			self.value = 'straight_flush'
+		elif self.has_quads():
+			self.value = 'quads'
+		elif self.has_full_house():
+			self.value = 'full_house'
+		elif self.is_flush():
+			self.value = 'flush'
+		elif self.is_straight():
+			self.value = 'straight'
+		elif self.has_set():
+			self.value = 'three_of_a_kind'
+		elif self.has_two_pair():
+			self.value = 'two_pair'
+		elif self.has_pair():
+			self.value = 'pair'
+		else:
+			self.value = 'high_card'
+
+	def compare_to_hand(self, hand):
+		if self.hierarchy[self.value] > hand.hierarchy[hand.value]:
+			return 1
+		elif self.hierarchy[self.value] < hand.hierarchy[hand.value]:
+			return -1
+		elif self.hierarchy[self.value] == 9 and hand.hierarchy[hand.value] == 9:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+
+			self_value_list = []
+			other_value_list = []
+
+			for key in self_value_map:
+				if self_value_map[key] == 1:
+					self_value_list.append(key)
+			for key in other_value_map:
+				if other_value_map[key] == 1:
+					other_value_list.append(key)
+			self_value_list.sort()
+			other_value_list.sort()
+			self_value_list.reverse()
+			other_value_list.reverse()
+
+			if self_value_list[0] > other_value_list[0]:
+				return 1
+			elif other_value_list[0] > self_value_list[0]:
+				return -1
+			else:
+				return 0
+
+		# has_quads
+		# compare which 4 of a kind is a higher card
+		elif self.hierarchy[self.value] == 8 and hand.hierarchy[hand.value] == 8:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+			for value_key in self_value_map:
+				if self_value_map[value_key] == 4:
+					self_value = value_key
+			for value_key in other_value_map:
+				if other_value_map[value_key] == 4:
+					other_value = value_key
+			if self_value > other_value:
+				return 1
+			elif other_value > self_value:
+				return -1
+			else:
+				for value_key in self_value_map:
+					if self_value_map[value_key] == 1:
+						self_value = value_key
+				for value_key in other_value_map:
+					if other_value_map[value_key] == 1:
+						other_value = value_key
+				if self_value > other_value:
+					return 1
+				elif other_value > self_value:
+					return -1
+				else:
+					return 0
+
+		# full_house
+		# compare which three cards are higher... if they tie, compare the bottom two
+		elif self.hierarchy[self.value] == 7 and hand.hierarchy[hand.value] == 7:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+			for value_key in self_value_map:
+				if self_value_map[value_key] == 3:
+					self_value = value_key
+			for value_key in other_value_map:
+				if other_value_map[value_key] == 3:
+					other_value = value_key
+			if self_value > other_value:
+				return 1
+			elif other_value > self_value:
+				return -1
+			else:
+				for value_key in self_value_map:
+					if self_value_map[value_key] == 2:
+						self_value = value_key
+				for value_key in other_value_map:
+					if other_value_map[value_key] == 2:
+						other_value = value_key
+				if self_value > other_value:
+					return 1
+				elif other_value > self_value:
+					return -1
+				else:
+					return 0
+		
+		# flush
+		# compare which hand has highest card and keep comparing until one has a higher card
+		elif self.hierarchy[self.value] == 6 and hand.hierarchy[hand.value] == 6:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+
+			self_value_list = []
+			other_value_list = []
+
+			for key in self_value_map:
+				if self_value_map[key] == 1:
+					self_value_list.append(key)
+			for key in other_value_map:
+				if other_value_map[key] == 1:
+					other_value_list.append(key)
+
+			self_value_list.sort()
+			other_value_list.sort()
+			return_val = 0
+			for i in range(0,5):
+				if self_value_list[i] > other_value_list[i]:
+					return_val = 1
+				elif other_value_list[i] > self_value_list[i]:
+					return_val = -1
+			return return_val
+
+		# straight
+		# compare which has the highest card
+		elif self.hierarchy[self.value] == 5 and hand.hierarchy[hand.value] == 5:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+
+			self_value_list = []
+			other_value_list = []
+
+			for key in self_value_map:
+				if self_value_map[key] == 1:
+					self_value_list.append(key)
+			for key in other_value_map:
+				if other_value_map[key] == 1:
+					other_value_list.append(key)
+			self_value_list.sort()
+			other_value_list.sort()
+			self_value_list.reverse()
+			other_value_list.reverse()
+
+			if self_value_list[0] > other_value_list[0]:
+				return 1
+			elif other_value_list[0] > self_value_list[0]:
+				return -1
+			else:
+				return 0
+
+		# three_of_a_kind
+		# compare which has higher 3 of a kind then compare kicker and last card
+		elif self.hierarchy[self.value] == 4 and hand.hierarchy[hand.value] == 4:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+			for value_key in self_value_map:
+				if self_value_map[value_key] == 3:
+					self_value = value_key
+			for value_key in other_value_map:
+				if other_value_map[value_key] == 3:
+					other_value = value_key
+			if self_value > other_value:
+				return 1
+			elif other_value > self_value:
+				return -1
+			else:
+				self_value_list = []
+				other_value_list = []
+
+				for key in self_value_map:
+					if self_value_map[key] == 1:
+						self_value_list.append(key)
+				for key in other_value_map:
+					if other_value_map[key] == 1:
+						other_value_list.append(key)
+
+				self_value_list.sort()
+				other_value_list.sort()
+				return_val = 0
+				for i in range(0,2):
+					if self_value_list[i] > other_value_list[i]:
+						return_val = 1
+					elif other_value_list[i] > self_value_list[i]:
+						return_val = -1
+				return return_val
+		
+		# two_pair
+		# compare which has higher top pair then which has higher bottom pair then kicker		
+		elif self.hierarchy[self.value] == 3 and hand.hierarchy[hand.value] == 3:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+			self_value_list = []
+			other_value_list = []
+
+			for key in self_value_map:
+				if self_value_map[key] == 2:
+					self_value_list.append(key)
+			for key in other_value_map:
+				if other_value_map[key] == 2:
+					other_value_list.append(key)
+
+			self_value_list.sort()
+			other_value_list.sort()
+			return_val = 0
+			for i in range(0,2):
+				if self_value_list[i] > other_value_list[i]:
+					return_val = 1
+				elif other_value_list[i] > self_value_list[i]:
+					return_val = -1
+			
+			if return_val == 0:
+				for key in self_value_map:
+					if self_value_map[key] == 1:
+						self_kicker = key
+				for key in other_value_map:
+					if other_value_map[key] == 1:
+						other_kicker = key
+				if self_kicker > other_kicker:
+					return 1
+				elif other_kicker > self_kicker:
+					return -1
+				else:
+					return 0
+			else:
+				return return_val
+
+		# pair
+		# compare which has higher pair then compare kicker and other two cards
+		elif self.hierarchy[self.value] == 2 and hand.hierarchy[hand.value] == 2:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+			for value_key in self_value_map:
+				if self_value_map[value_key] == 2:
+					self_value = value_key
+			for value_key in other_value_map:
+				if other_value_map[value_key] == 2:
+					other_value = value_key
+			if self_value > other_value:
+				return 1
+			elif other_value > self_value:
+				return -1
+			else:
+				self_value_list = []
+				other_value_list = []
+
+				for key in self_value_map:
+					if self_value_map[key] == 1:
+						self_value_list.append(key)
+				for key in other_value_map:
+					if other_value_map[key] == 1:
+						other_value_list.append(key)
+
+				self_value_list.sort()
+				other_value_list.sort()
+				return_val = 0
+				for i in range(0,3):
+					if self_value_list[i] > other_value_list[i]:
+						return_val = 1
+					elif other_value_list[i] > self_value_list[i]:
+						return_val = -1
+				return return_val
+		
+		# high_card
+		# compare in order from top to bottom which has highest card
+		elif self.hierarchy[self.value] == 1 and hand.hierarchy[hand.value] == 1:
+			self_value_map = self.get_value_map()
+			other_value_map = hand.get_value_map()
+
+			self_value_list = []
+			other_value_list = []
+
+			for key in self_value_map:
+				if self_value_map[key] == 1:
+					self_value_list.append(key)
+			for key in other_value_map:
+				if other_value_map[key] == 1:
+					other_value_list.append(key)
+
+			self_value_list.sort()
+			other_value_list.sort()
+			return_val = 0
+			for i in range(0,3):
+				if self_value_list[i] > other_value_list[i]:
+					return_val = 1
+				elif other_value_list[i] > self_value_list[i]:
+					return_val = -1
+			return return_val
+		else:
+			print 'WARNING: hands not valid'
+			return False
+
 def main():
 
-	card1 = { 'suit' : 'clubs', 'value' : 12 }
-	card2 = { 'suit' : 'hearts', 'value' : 11 }
-	card3 = { 'suit' : 'clubs', 'value' : 11 }
-	card4 = { 'suit' : 'clubs', 'value' : 10 }
-	card5 = { 'suit' : 'clubs', 'value' : 12 }
+	card1 = { 'suit' : 'clubs', 'value' : 2 }
+	card2 = { 'suit' : 'clubs', 'value' : 3 }
+	card3 = { 'suit' : 'clubs', 'value' : 4 }
+	card4 = { 'suit' : 'diamonds', 'value' : 6 }
+	card5 = { 'suit' : 'clubs', 'value' : 9 }
+
+	card21 = { 'suit' : 'clubs', 'value' : 10 }
+	card22 = { 'suit' : 'hearts', 'value' : 4 }
+	card23 = { 'suit' : 'clubs', 'value' : 2 }
+	card24 = { 'suit' : 'clubs', 'value' : 6 }
+	card25 = { 'suit' : 'clubs', 'value' : 5 }
 
 	card_list = [ card1, card2, card3, card4, card5, ]
+	card_list2 = [ card21, card22, card23, card24, card25, ]
 	hand = Hand(card_list)
+	hand2 = Hand(card_list2)
 
-	if hand.is_straight_flush():
-		print 'straight flush'
-	elif hand.has_four_of_a_kind():
-		print 'quads'
-	elif hand.has_full_house():
-		print 'full house'
-	elif hand.is_flush():
-		print 'flush'
-	elif hand.is_straight():
-		print 'straight'
-	elif hand.has_set():
-		print 'three of a kind'
-	elif hand.has_two_pair():
-		print 'two pair'
-	elif hand.has_pair():
-		print 'pair'
-
-	print hand.get_value_map()
+	print hand.value + ' ' + unicode(hand.compare_to_hand(hand2))
+	print hand2.value + ' ' + unicode(hand2.compare_to_hand(hand))
 
 if __name__ == '__main__':
 	main()
