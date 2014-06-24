@@ -25,9 +25,9 @@ class Hand():
 
 	def is_flush(self):
 		if len(self.cards) == 5:
-			flush_suit = self.cards[0]['suit']
+			flush_suit = self.cards[0].suit
 			for card in self.cards:
-				if card['suit'] is not flush_suit:
+				if card.suit is not flush_suit:
 					return False
 			return True
 		else:
@@ -36,14 +36,14 @@ class Hand():
 	def is_straight(self):
 		if len(self.cards) == 5:
 			
-			test_for_aces = next((card for card in self.cards if card['value'] == 'A'), None)
+			test_for_aces = next((card for card in self.cards if card.value == 'A'), None)
 			if test_for_aces is None:
 			# if True:
-				sorted_cards = sorted(self.cards, key=lambda card: card['value'])
-				if (sorted_cards[0]['value'] == sorted_cards[1]['value'] - 1 and
-						sorted_cards[1]['value'] == sorted_cards[2]['value'] - 1 and
-						sorted_cards[2]['value'] == sorted_cards[3]['value'] - 1 and
-						sorted_cards[3]['value'] == sorted_cards[4]['value'] - 1):
+				sorted_cards = sorted(self.cards, key=lambda card: card.value)
+				if (sorted_cards[0].value == sorted_cards[1].value - 1 and
+						sorted_cards[1].value == sorted_cards[2].value - 1 and
+						sorted_cards[2].value == sorted_cards[3].value - 1 and
+						sorted_cards[3].value == sorted_cards[4].value - 1):
 					return True
 				else:
 					return False
@@ -53,22 +53,22 @@ class Hand():
 				card_list_1 = []
 				card_list_2 = []
 				for card in self.cards:
-					if card['value'] == 'A':
-						card_list_1.append({ 'suit' : card['suit'], 'value' : 1 })
-						card_list_2.append({ 'suit' : card['suit'], 'value' : 14 })
+					if card.value == 'A':
+						card_list_1.append({ 'suit' : card.suit, 'value' : 1 })
+						card_list_2.append({ 'suit' : card.suit, 'value' : 14 })
 					else:
-						card_list_1.append({ 'suit' : card['suit'], 'value' : card['value'] })
-						card_list_2.append({ 'suit' : card['suit'], 'value' : card['value'] })
-				sorted_cards_1 = sorted(card_list_1, key=lambda card: card['value'])
-				sorted_cards_2 = sorted(card_list_2, key=lambda card: card['value'])
-				if (sorted_cards_1[0]['value'] == sorted_cards_1[1]['value'] - 1 and
-						sorted_cards_1[1]['value'] == sorted_cards_1[2]['value'] - 1 and
-						sorted_cards_1[2]['value'] == sorted_cards_1[3]['value'] - 1 and
-						sorted_cards_1[3]['value'] == sorted_cards_1[4]['value'] - 1) or (
-						sorted_cards_2[0]['value'] == sorted_cards_2[1]['value'] - 1 and
-						sorted_cards_2[1]['value'] == sorted_cards_2[2]['value'] - 1 and
-						sorted_cards_2[2]['value'] == sorted_cards_2[3]['value'] - 1 and
-						sorted_cards_2[3]['value'] == sorted_cards_2[4]['value'] - 1):
+						card_list_1.append({ 'suit' : card.suit, 'value' : card.value })
+						card_list_2.append({ 'suit' : card.suit, 'value' : card.value })
+				sorted_cards_1 = sorted(card_list_1, key=lambda card: card.value)
+				sorted_cards_2 = sorted(card_list_2, key=lambda card: card.value)
+				if (sorted_cards_1[0].value == sorted_cards_1[1].value - 1 and
+						sorted_cards_1[1].value == sorted_cards_1[2].value - 1 and
+						sorted_cards_1[2].value == sorted_cards_1[3].value - 1 and
+						sorted_cards_1[3].value == sorted_cards_1[4].value - 1) or (
+						sorted_cards_2[0].value == sorted_cards_2[1].value - 1 and
+						sorted_cards_2[1].value == sorted_cards_2[2].value - 1 and
+						sorted_cards_2[2].value == sorted_cards_2[3].value - 1 and
+						sorted_cards_2[3].value == sorted_cards_2[4].value - 1):
 					return True
 				else:
 					return False
@@ -146,10 +146,12 @@ class Hand():
 			14 : 0,
 		}
 		for card in self.cards:
-			if card['value'] == 'A':
+			if card.value == 'A':
 				values[14] += 1
+			elif card.value =='T':
+				values[10] += 1
 			else:
-				values[card['value']] += 1
+				values[int(card.value)] += 1
 		return values
 
 	def find_hand_type(self):
@@ -454,24 +456,38 @@ class Hand():
 			print 'WARNING: hands not valid'
 			return False
 
+class Card():
+	def __init__(self, card_string):
+		self.value = card_string[0]
+		self.suit = card_string[1]
+
+	def __unicode__(self):
+		return unicode(self.value) + unicode(self.suit)
+	def __str__(self):
+		return unicode(self)
+
 def main():
 
-	card1 = { 'suit' : 'clubs', 'value' : 2 }
-	card2 = { 'suit' : 'clubs', 'value' : 3 }
-	card3 = { 'suit' : 'clubs', 'value' : 4 }
-	card4 = { 'suit' : 'diamonds', 'value' : 6 }
-	card5 = { 'suit' : 'clubs', 'value' : 9 }
+	card1 = Card('AS')
+	card2 = Card('TS')
+	card3 = Card('AC')
+	card4 = Card('AH')
+	card5 = Card('AD')
 
-	card21 = { 'suit' : 'clubs', 'value' : 10 }
-	card22 = { 'suit' : 'hearts', 'value' : 4 }
-	card23 = { 'suit' : 'clubs', 'value' : 2 }
-	card24 = { 'suit' : 'clubs', 'value' : 6 }
-	card25 = { 'suit' : 'clubs', 'value' : 5 }
+	card21 = Card('9S')
+	card22 = Card('TC')
+	card23 = Card('9C')
+	card24 = Card('9H')
+	card25 = Card('9D')
 
 	card_list = [ card1, card2, card3, card4, card5, ]
 	card_list2 = [ card21, card22, card23, card24, card25, ]
 	hand = Hand(card_list)
 	hand2 = Hand(card_list2)
+
+	# card = Card('AS')
+	# print card.value
+	# print card.suit
 
 	print hand.value + ' ' + unicode(hand.compare_to_hand(hand2))
 	print hand2.value + ' ' + unicode(hand2.compare_to_hand(hand))
