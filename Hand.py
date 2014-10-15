@@ -1,3 +1,5 @@
+import itertools
+
 class Hand():
 	cards = []
 	hierarchy = {
