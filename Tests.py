@@ -10,14 +10,20 @@ cards = [
 
 def find_best_hand(cardlist):
 	combos = itertools.combinations(cardlist, 5)
+	# for c in combos:
+	# 	print combos
 	for x in itertools.combinations(combos, 2):
-		pair_string = ''
-		for c in x:
-			card_string = ''
-			for card in c:
-				card_string += unicode(card) + ' '
-			pair_string += card_string + ' '
-		print pair_string
+		hand1 = Hand(x[0])
+		hand2 = Hand(x[0])
+		print hand1
+		print hand2
+		# pair_string = ''
+		# for c in x:
+		# 	card_string = ''
+		# 	for card in c:
+		# 		card_string += unicode(card) + ' '
+		# 	pair_string += card_string + ' '
+		# print pair_string
 
 def main():
 	# cards = open('cards').readlines()
@@ -59,11 +65,12 @@ def main():
 		card_set = []
 		card_set.extend(player['cards'])
 		card_set.extend(shared_cards)
+		
+		card_string = ''
+		for card in card_set:
+			card_string += unicode(card) + ' '
+		print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
 		find_best_hand(card_set)
-		# card_string = ''
-		# for card in card_set:
-			# card_string += unicode(card) + ' '
-		# print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
 
 		combos = itertools.combinations(card_set, 5)
 		for combo in combos:
