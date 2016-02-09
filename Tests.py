@@ -10,13 +10,32 @@ cards = [
 
 def find_best_hand(cardlist):
 	combos = itertools.combinations(cardlist, 5)
-	# for c in combos:
-	# 	print combos
-	for x in itertools.combinations(combos, 2):
-		hand1 = Hand(x[0])
-		hand2 = Hand(x[0])
-		print hand1
-		print hand2
+	# print combos
+	best_hand = None
+	for c in combos:
+		# print combos
+		if best_hand is None:
+			best_hand = Hand(c)
+		else:
+			print 'best_hand'
+			print best_hand
+			# print 'best_hand'
+			# print best_hand
+			# print unicode(best_hand)
+			compare = best_hand.compare_to_hand(Hand(c))
+			if compare == 1:
+				continue
+			elif compare == -1:
+				best_hand = Hand(c)
+			elif compare == 0:
+				continue
+
+	return best_hand
+	# for x in itertools.combinations(combos, 2):
+	# 	hand1 = Hand(x[0])
+	# 	hand2 = Hand(x[0])
+	# 	print hand1
+	# 	print hand2
 		# pair_string = ''
 		# for c in x:
 		# 	card_string = ''
@@ -70,7 +89,7 @@ def main():
 		for card in card_set:
 			card_string += unicode(card) + ' '
 		print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
-		find_best_hand(card_set)
+		print unicode(find_best_hand(card_set))
 
 		combos = itertools.combinations(card_set, 5)
 		for combo in combos:

@@ -1,7 +1,7 @@
 import itertools
 
 class Hand():
-	cards = []
+	# cards = []
 	hierarchy = {
 		'straight_flush' : 9,
 		'quads' : 8,
@@ -13,11 +13,21 @@ class Hand():
 		'pair' : 2,
 		'high_card' : 1,
 	}
-	value = None
+	# value = None
 
 	def __init__(self, card_list):
 		self.cards = card_list
 		self.find_hand_type()
+
+	def __unicode__(self):
+
+		card_string = ''
+		print 'self.cards'
+		print self.cards
+		for c in self.cards:
+			print c
+		for card in self.cards:
+			card_string = card_string + ' ' + unicode(card)
 
 	def is_straight_flush(self):
 		if len(self.cards) == 5:
@@ -42,10 +52,10 @@ class Hand():
 			if test_for_aces is None:
 			# if True:
 				sorted_cards = sorted(self.cards, key=lambda card: card.value)
-				if (sorted_cards[0].value == sorted_cards[1].value - 1 and
-						sorted_cards[1].value == sorted_cards[2].value - 1 and
-						sorted_cards[2].value == sorted_cards[3].value - 1 and
-						sorted_cards[3].value == sorted_cards[4].value - 1):
+				if (sorted_cards[0].numeric_value == sorted_cards[1].numeric_value - 1 and
+						sorted_cards[1].numeric_value == sorted_cards[2].numeric_value - 1 and
+						sorted_cards[2].numeric_value == sorted_cards[3].numeric_value - 1 and
+						sorted_cards[3].numeric_value == sorted_cards[4].numeric_value - 1):
 					return True
 				else:
 					return False
@@ -58,19 +68,31 @@ class Hand():
 					if card.value == 'A':
 						card_list_1.append({ 'suit' : card.suit, 'value' : 1 })
 						card_list_2.append({ 'suit' : card.suit, 'value' : 14 })
+					elif card.value == 'K':
+						card_list_1.append({ 'suit' : card.suit, 'value' : 13 })
+						card_list_2.append({ 'suit' : card.suit, 'value' : 13 })
+					elif card.value == 'Q':
+						card_list_1.append({ 'suit' : card.suit, 'value' : 12 })
+						card_list_2.append({ 'suit' : card.suit, 'value' : 12 })
+					elif card.value == 'J':
+						card_list_1.append({ 'suit' : card.suit, 'value' : 11 })
+						card_list_2.append({ 'suit' : card.suit, 'value' : 11 })
+					elif card.value == 'T':
+						card_list_1.append({ 'suit' : card.suit, 'value' : 10 })
+						card_list_2.append({ 'suit' : card.suit, 'value' : 10 })
 					else:
-						card_list_1.append({ 'suit' : card.suit, 'value' : card.value })
-						card_list_2.append({ 'suit' : card.suit, 'value' : card.value })
-				sorted_cards_1 = sorted(card_list_1, key=lambda card: card.value)
-				sorted_cards_2 = sorted(card_list_2, key=lambda card: card.value)
-				if (sorted_cards_1[0].value == sorted_cards_1[1].value - 1 and
-						sorted_cards_1[1].value == sorted_cards_1[2].value - 1 and
-						sorted_cards_1[2].value == sorted_cards_1[3].value - 1 and
-						sorted_cards_1[3].value == sorted_cards_1[4].value - 1) or (
-						sorted_cards_2[0].value == sorted_cards_2[1].value - 1 and
-						sorted_cards_2[1].value == sorted_cards_2[2].value - 1 and
-						sorted_cards_2[2].value == sorted_cards_2[3].value - 1 and
-						sorted_cards_2[3].value == sorted_cards_2[4].value - 1):
+						card_list_1.append({ 'suit' : card.suit, 'value' : int(card.value) })
+						card_list_2.append({ 'suit' : card.suit, 'value' : int(card.value) })
+				sorted_cards_1 = sorted(card_list_1, key=lambda card: card['value'])
+				sorted_cards_2 = sorted(card_list_2, key=lambda card: card['value'])
+				if (sorted_cards_1[0]['value'] == sorted_cards_1[1]['value'] - 1 and
+						sorted_cards_1[1]['value'] == sorted_cards_1[2]['value'] - 1 and
+						sorted_cards_1[2]['value'] == sorted_cards_1[3]['value'] - 1 and
+						sorted_cards_1[3]['value'] == sorted_cards_1[4]['value'] - 1) or (
+						sorted_cards_2[0]['value'] == sorted_cards_2[1]['value'] - 1 and
+						sorted_cards_2[1]['value'] == sorted_cards_2[2]['value'] - 1 and
+						sorted_cards_2[2]['value'] == sorted_cards_2[3]['value'] - 1 and
+						sorted_cards_2[3]['value'] == sorted_cards_2[4]['value'] - 1):
 					return True
 				else:
 					return False
@@ -152,6 +174,12 @@ class Hand():
 				values[14] += 1
 			elif card.value =='T':
 				values[10] += 1
+			elif card.value =='K':
+				values[13] += 1
+			elif card.value =='Q':
+				values[12] += 1
+			elif card.value =='J':
+				values[11] += 1
 			else:
 				values[int(card.value)] += 1
 		return values
@@ -459,9 +487,26 @@ class Hand():
 			return False
 
 class Card():
+
 	def __init__(self, card_string):
+		self.numeric_value_dict = {
+			'2' : 2,
+			'3' : 3,
+			'4' : 4,
+			'5' : 5,
+			'6' : 6,
+			'7' : 7,
+			'8' : 8,
+			'9' : 9,
+			'T' : 10,
+			'J' : 11,
+			'Q' : 12,
+			'K' : 13,
+			'A' : 14,
+		}
 		self.value = card_string[0]
 		self.suit = card_string[1]
+		self.numeric_value = self.numeric_value_dict[self.value]
 
 	def __unicode__(self):
 		return unicode(self.value) + unicode(self.suit)
