@@ -1,7 +1,7 @@
 import itertools
 
 class Hand():
-	# cards = []
+
 	hierarchy = {
 		'straight_flush' : 9,
 		'quads' : 8,
@@ -13,7 +13,6 @@ class Hand():
 		'pair' : 2,
 		'high_card' : 1,
 	}
-	# value = None
 
 	def __init__(self, card_list):
 		self.cards = card_list
@@ -22,12 +21,9 @@ class Hand():
 	def __unicode__(self):
 
 		card_string = ''
-		print 'self.cards'
-		print self.cards
-		for c in self.cards:
-			print c
 		for card in self.cards:
 			card_string = card_string + ' ' + unicode(card)
+		return card_string
 
 	def is_straight_flush(self):
 		if len(self.cards) == 5:
