@@ -331,8 +331,6 @@ class Hand():
 					other_value_list.append(key)
 			self_value_list.sort()
 			other_value_list.sort()
-			self_value_list.reverse()
-			other_value_list.reverse()
 
 			if self_value_list[0] > other_value_list[0]:
 				return 1
@@ -512,16 +510,16 @@ class Card():
 def main():
 
 	card1 = Card('AS')
-	card2 = Card('TS')
-	card3 = Card('AC')
-	card4 = Card('AH')
-	card5 = Card('AD')
+	card2 = Card('2S')
+	card3 = Card('3C')
+	card4 = Card('4H')
+	card5 = Card('5D')
 
-	card21 = Card('9S')
-	card22 = Card('TC')
-	card23 = Card('9C')
-	card24 = Card('9H')
-	card25 = Card('9D')
+	card21 = Card('KS')
+	card22 = Card('QC')
+	card23 = Card('JC')
+	card24 = Card('TH')
+	card25 = Card('AD')
 
 	card_list = [ card1, card2, card3, card4, card5, ]
 	card_list2 = [ card21, card22, card23, card24, card25, ]
