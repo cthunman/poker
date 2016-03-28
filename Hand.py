@@ -20,7 +20,7 @@ class Hand():
 
 	def __unicode__(self):
 
-		card_string = ''
+		card_string = self.value
 		for card in self.cards:
 			card_string = card_string + ' ' + unicode(card)
 		return card_string
