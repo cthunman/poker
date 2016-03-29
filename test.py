@@ -324,30 +324,57 @@ def main():
 	sim_dictionary = {}
 	player_dictionary = {}
 	for i in range(9,10):
-		sim_dictionary[i], player_dictionary[i] = run_simulation(1000, i)
+		sim_dictionary[i], player_dictionary[i] = run_simulation(100, i)
 	column_width = 17
 
 	print '--------------'
 	for sim in sim_dictionary:
 		print sim
 		print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['ties'])
-		print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['straight_flush']['tally'])/float(player_dictionary[sim]['straight_flush']['tally']))
+		if float(player_dictionary[sim]['straight_flush']['tally']) != 0:
+			print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally'])/float(player_dictionary[sim]['straight_flush']['tally']), 2)) + '%'
+		else:
+			print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : 0.0%'
 		print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(sim_dictionary[sim]['quads']['tally']) + ' : ' + unicode(sim_dictionary[sim]['quads']['ties'])
-		print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['quads']['tally'])/float(player_dictionary[sim]['quads']['tally']))
+		if float(player_dictionary[sim]['quads']['tally']) != 0:
+			print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally'])/float(player_dictionary[sim]['quads']['tally']), 2)) + '%'
+		else:
+			print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : 0.0%'
 		print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(sim_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(sim_dictionary[sim]['full_house']['ties'])
-		print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['full_house']['tally'])/float(player_dictionary[sim]['full_house']['tally']))
+		if float(player_dictionary[sim]['full_house']['tally']) != 0:
+			print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally'])/float(player_dictionary[sim]['full_house']['tally']), 2)) + '%'
+		else:
+			print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : 0.0%'
 		print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(sim_dictionary[sim]['flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['flush']['ties'])
-		print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['flush']['tally'])/float(player_dictionary[sim]['flush']['tally']))
+		if float(player_dictionary[sim]['flush']['tally']) != 0:
+			print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally'])/float(player_dictionary[sim]['flush']['tally']), 2)) + '%'
+		else:
+			print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : 0.0%'
 		print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(sim_dictionary[sim]['straight']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight']['ties'])
-		print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['straight']['tally'])/float(player_dictionary[sim]['straight']['tally']))
+		if float(player_dictionary[sim]['straight']['tally']) != 0:
+			print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally'])/float(player_dictionary[sim]['straight']['tally']), 2)) + '%'
+		else:
+			print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : 0.0%'
 		print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['ties'])
-		print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['three_of_a_kind']['tally'])/float(player_dictionary[sim]['three_of_a_kind']['tally']))
+		if float(player_dictionary[sim]['three_of_a_kind']['tally']) != 0:
+			print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally'])/float(player_dictionary[sim]['three_of_a_kind']['tally']), 2)) + '%'
+		else:
+			print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : 0.0%'
 		print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['ties'])
-		print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['two_pair']['tally'])/float(player_dictionary[sim]['two_pair']['tally']))
+		if float(player_dictionary[sim]['two_pair']['tally']) != 0:
+			print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally'])/float(player_dictionary[sim]['two_pair']['tally']), 2)) + '%'
+		else:
+			print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : 0.0%'
 		print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(sim_dictionary[sim]['pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['pair']['ties'])
-		print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['pair']['tally'])/float(player_dictionary[sim]['pair']['tally']))
+		if float(player_dictionary[sim]['pair']['tally']) != 0:
+			print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally'])/float(player_dictionary[sim]['pair']['tally']), 2)) + '%'
+		else:
+			print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : 0.0%'
 		print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(sim_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(sim_dictionary[sim]['high_card']['ties'])
-		print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally'])# + ' : ' +unicode(float(sim_dictionary[sim]['high_card']['tally'])/float(player_dictionary[sim]['high_card']['tally']))
+		if float(player_dictionary[sim]['high_card']['tally']) != 0:
+			print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally'])/float(player_dictionary[sim]['high_card']['tally']), 2)) + '%'
+		else:
+			print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : 0.0%'
 
 if __name__ == '__main__':
 	main()
