@@ -323,8 +323,8 @@ def main():
 	# test_plo(num_players=9, debug=True)
 	sim_dictionary = {}
 	player_dictionary = {}
-	for i in range(9,10):
-		sim_dictionary[i], player_dictionary[i] = run_simulation(100, i)
+	for i in range(2,5):
+		sim_dictionary[i], player_dictionary[i] = run_simulation(500, i)
 	column_width = 17
 
 	print '--------------'
