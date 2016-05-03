@@ -61,7 +61,8 @@ def find_best_plo_hand(player_cards, shared_cards):
 				continue
 	return best_hand
 
-def test_nlh(num_players=4, debug=False):
+def test_nlh(num_players=4, debug=False, file=None):
+	# f = open('db.txt', 'wb+')
 	cardlist = []
 	for card in cards:
 		cardlist.append(Card(card))
@@ -71,9 +72,14 @@ def test_nlh(num_players=4, debug=False):
 	for p in range(num_players):
 		playerlist.append({'cards':[]})
 
-	for player in playerlist:
+	for index, player in enumerate(playerlist):
 		player['cards'].append(cardlist.pop())
 		player['cards'].append(cardlist.pop())
+		if file != None:
+			file.write('player' + unicode(index + 1) + ': ')
+			for c in player['cards']:
+				file.write(unicode(c) + ' ')
+			file.write('\n')
 
 	shared_cards = []
 	shared_cards.append(cardlist.pop())
@@ -81,6 +87,11 @@ def test_nlh(num_players=4, debug=False):
 	shared_cards.append(cardlist.pop())
 	shared_cards.append(cardlist.pop())
 	shared_cards.append(cardlist.pop())
+	if file != None:
+		file.write('shared cards: ')
+		for c in shared_cards:
+			file.write(unicode(c) + ' ')
+		file.write('\n')
 
 	for index, player in enumerate(playerlist):
 		card_string = ''
@@ -95,25 +106,6 @@ def test_nlh(num_players=4, debug=False):
 	if debug:
 		print 'Shared cards: ' + card_string
 
-	# for index, player in enumerate(playerlist):
-	# 	card_set = []
-	# 	card_set.extend(player['cards'])
-	# 	card_set.extend(shared_cards)
-		
-	# 	card_string = ''
-	# 	for card in card_set:
-	# 		card_string += unicode(card) + ' '
-	# 	if debug:
-	# 		print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
-	# 	best_hand = find_best_hand(card_set)
-	# 	if debug:
-	# 		print unicode(best_hand)
-
-	# 	combos = itertools.combinations(card_set, 5)
-	# 	for combo in combos:
-	# 		card_string = ''
-	# 		for c in combo:
-	# 			card_string += unicode(c) + ' '
 	player_hands = []
 	for index, player in enumerate(playerlist):
 		card_set = []
@@ -135,6 +127,19 @@ def test_nlh(num_players=4, debug=False):
 			card_string = ''
 			for c in combo:
 				card_string += unicode(c) + ' '
+	for index, h in enumerate(player_hands):
+		file.write('player ' + unicode(index + 1) + ': ' + unicode(h) + ' \n')
+
+	winner = find_winner(player_hands)
+	if len(winner) > 1:
+		file.write('SPLIT POT: ')
+		for w in winner:
+			file.write(unicode(w) + ' ')
+	else:
+		file.write('WINNER: ')
+		file.write(unicode(winner[0]))
+	file.write('\n\n')
+
 	return find_winner(player_hands), player_hands
 
 def test_plo(num_players=4, debug=False):
@@ -271,7 +276,7 @@ def test_big_o(num_players=4, debug=False):
 	return find_winner(player_hands), player_hands
 
 
-def run_simulation(runs=1000, num_players=4, debug=False):
+def run_simulation(runs=1000, num_players=6, debug=False):
 	winning_tally = {}
 	winning_tally['straight_flush'] = {'tally': 0, 'ties': 0}
 	winning_tally['quads'] = {'tally': 0, 'ties': 0}
@@ -294,10 +299,12 @@ def run_simulation(runs=1000, num_players=4, debug=False):
 	player_hand_tally['pair'] = {'tally': 0}
 	player_hand_tally['high_card'] = {'tally': 0}
 
+	f = open('data/db' + unicode(num_players) + '.txt', 'wb+')
 	for i in range(runs):
 		if runs > 500 and i % 500 == 0: print i 
 		# winning_hands, player_hands = test_plo(num_players=num_players)
-		winning_hands, player_hands = test_nlh(num_players=num_players)
+		
+		winning_hands, player_hands = test_nlh(num_players=num_players, file=f)
 		winning_tally[winning_hands[0].value]['tally'] = winning_tally[winning_hands[0].value]['tally'] + 1
 		if len(winning_hands) > 1:
 			winning_tally[winning_hands[0].value]['ties'] = winning_tally[winning_hands[0].value]['ties'] + 1
@@ -305,6 +312,8 @@ def run_simulation(runs=1000, num_players=4, debug=False):
 
 		for h in player_hands:
 			player_hand_tally[h.value]['tally'] = player_hand_tally[h.value]['tally'] + 1
+
+	f.close()
 
 	if debug:
 		print 'straight_flush : ' + unicode(winning_tally['straight_flush'])
@@ -319,12 +328,19 @@ def run_simulation(runs=1000, num_players=4, debug=False):
 
 	return winning_tally, player_hand_tally
 
+def find_winners(runs=1000, num_players=6, debug=False):
+	starting_hands = {}
+	for i in range(runs):
+		if runs > 500 and i % 500 == 0: print i
+
+
+
 def main():
 	# test_plo(num_players=9, debug=True)
 	sim_dictionary = {}
 	player_dictionary = {}
-	for i in range(2,5):
-		sim_dictionary[i], player_dictionary[i] = run_simulation(500, i)
+	for i in range(6, 11):
+		sim_dictionary[i], player_dictionary[i] = run_simulation(100, i)
 	column_width = 17
 
 	print '--------------'

@@ -502,6 +502,12 @@ class Card():
 		self.suit = card_string[1]
 		self.numeric_value = self.numeric_value_dict[self.value]
 
+	def equals_card(self, card):
+		if self.numeric_value == card.numeric_value and self.suit == card.suit:
+			return True
+		else:
+			return False
+
 	def __unicode__(self):
 		return unicode(self.value) + unicode(self.suit)
 	def __str__(self):
@@ -525,10 +531,6 @@ def main():
 	card_list2 = [ card21, card22, card23, card24, card25, ]
 	hand = Hand(card_list)
 	hand2 = Hand(card_list2)
-
-	# card = Card('AS')
-	# print card.value
-	# print card.suit
 
 	print hand.value + ' ' + unicode(hand.compare_to_hand(hand2))
 	print hand2.value + ' ' + unicode(hand2.compare_to_hand(hand))
