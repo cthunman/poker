@@ -63,6 +63,7 @@ def find_best_plo_hand(player_cards, shared_cards):
 
 def test_nlh(num_players=4, debug=False, file=None):
 	# f = open('db.txt', 'wb+')
+	hand_record = {}
 	cardlist = []
 	for card in cards:
 		cardlist.append(Card(card))
@@ -72,9 +73,13 @@ def test_nlh(num_players=4, debug=False, file=None):
 	for p in range(num_players):
 		playerlist.append({'cards':[]})
 
+	hand_record['starting_hands'] = {}
 	for index, player in enumerate(playerlist):
 		player['cards'].append(cardlist.pop())
 		player['cards'].append(cardlist.pop())
+		hand_record['starting_hands'][index + 1] = []
+		for c in player['cards']:
+			hand_record['starting_hands'][index + 1].append(unicode(c))
 		if file != None:
 			file.write('player' + unicode(index + 1) + ': ')
 			for c in player['cards']:
@@ -87,6 +92,15 @@ def test_nlh(num_players=4, debug=False, file=None):
 	shared_cards.append(cardlist.pop())
 	shared_cards.append(cardlist.pop())
 	shared_cards.append(cardlist.pop())
+	hand_record['shared_cards'] = []
+	for c in shared_cards:
+		hand_record['shared_cards'].append(unicode(c))
+	hand_record['flop'] = []
+	for c in shared_cards[0:3]:
+		hand_record['flop'].append(unicode(c))
+	hand_record['turn'] = unicode(shared_cards[3])
+	hand_record['river'] = unicode(shared_cards[4])
+
 	if file != None:
 		file.write('shared cards: ')
 		for c in shared_cards:
@@ -127,17 +141,27 @@ def test_nlh(num_players=4, debug=False, file=None):
 			card_string = ''
 			for c in combo:
 				card_string += unicode(c) + ' '
+	hand_record['player_hands'] = {}
 	for index, h in enumerate(player_hands):
+		hand_record['player_hands'][index + 1] = unicode(h)
 		file.write('player ' + unicode(index + 1) + ': ' + unicode(h) + ' \n')
 
 	winner = find_winner(player_hands)
+	hand_record['winner'] = {}
+	hand_record['winner']['hand'] = []
 	if len(winner) > 1:
 		file.write('SPLIT POT: ')
+		hand_record['winner']['status'] = 'SPLIT POT'
 		for w in winner:
 			file.write(unicode(w) + ' ')
+			hand_record['winner']['hand'].append(unicode(w))
 	else:
 		file.write('WINNER: ')
+		hand_record['winner']['status'] = 'WINNER'
+		hand_record['winner']['hand'].append(unicode(winner[0]))
 		file.write(unicode(winner[0]))
+	file.write('\n\n')
+	file.write(unicode(hand_record))
 	file.write('\n\n')
 
 	return find_winner(player_hands), player_hands
@@ -339,54 +363,55 @@ def main():
 	# test_plo(num_players=9, debug=True)
 	sim_dictionary = {}
 	player_dictionary = {}
-	for i in range(6, 11):
-		sim_dictionary[i], player_dictionary[i] = run_simulation(100, i)
+	runs = 3000
+	for i in range(2, 3):
+		sim_dictionary[i], player_dictionary[i] = run_simulation(runs, i)
 	column_width = 17
 
 	print '--------------'
 	for sim in sim_dictionary:
 		print sim
-		print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['ties'])
+		print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['straight_flush']['tally']) != 0:
 			print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally'])/float(player_dictionary[sim]['straight_flush']['tally']), 2)) + '%'
 		else:
 			print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : 0.0%'
-		print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(sim_dictionary[sim]['quads']['tally']) + ' : ' + unicode(sim_dictionary[sim]['quads']['ties'])
+		print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(sim_dictionary[sim]['quads']['tally']) + ' : ' + unicode(sim_dictionary[sim]['quads']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['quads']['tally']) != 0:
 			print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally'])/float(player_dictionary[sim]['quads']['tally']), 2)) + '%'
 		else:
 			print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : 0.0%'
-		print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(sim_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(sim_dictionary[sim]['full_house']['ties'])
+		print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(sim_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(sim_dictionary[sim]['full_house']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['full_house']['tally']) != 0:
 			print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally'])/float(player_dictionary[sim]['full_house']['tally']), 2)) + '%'
 		else:
 			print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : 0.0%'
-		print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(sim_dictionary[sim]['flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['flush']['ties'])
+		print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(sim_dictionary[sim]['flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['flush']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['flush']['tally']) != 0:
 			print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally'])/float(player_dictionary[sim]['flush']['tally']), 2)) + '%'
 		else:
 			print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : 0.0%'
-		print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(sim_dictionary[sim]['straight']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight']['ties'])
+		print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(sim_dictionary[sim]['straight']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['straight']['tally']) != 0:
 			print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally'])/float(player_dictionary[sim]['straight']['tally']), 2)) + '%'
 		else:
 			print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : 0.0%'
-		print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['ties'])
+		print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['three_of_a_kind']['tally']) != 0:
 			print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally'])/float(player_dictionary[sim]['three_of_a_kind']['tally']), 2)) + '%'
 		else:
 			print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : 0.0%'
-		print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['ties'])
+		print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['two_pair']['tally']) != 0:
 			print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally'])/float(player_dictionary[sim]['two_pair']['tally']), 2)) + '%'
 		else:
 			print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : 0.0%'
-		print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(sim_dictionary[sim]['pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['pair']['ties'])
+		print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(sim_dictionary[sim]['pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['pair']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['pair']['tally']) != 0:
 			print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally'])/float(player_dictionary[sim]['pair']['tally']), 2)) + '%'
 		else:
 			print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : 0.0%'
-		print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(sim_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(sim_dictionary[sim]['high_card']['ties'])
+		print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(sim_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(sim_dictionary[sim]['high_card']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally']/float(runs)), 2)) + '%'
 		if float(player_dictionary[sim]['high_card']['tally']) != 0:
 			print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally'])/float(player_dictionary[sim]['high_card']['tally']), 2)) + '%'
 		else:
