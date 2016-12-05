@@ -1,0 +1,2100 @@
+player1: 6C 4S 
+player2: 9C 4C 
+player3: 8H 8D 
+player4: AH 7D 
+player5: AS 6S 
+player6: 4D 2S 
+player7: QC 2C 
+player8: QS QH 
+shared cards: JS 7H 3D TH KD 
+player 1: high_card 6C JS 7H TH KD 
+player 2: high_card 9C JS 7H TH KD 
+player 3: pair 8H 8D JS TH KD 
+player 4: pair AH 7D JS 7H KD 
+player 5: high_card AS JS 7H TH KD 
+player 6: high_card 4D JS 7H TH KD 
+player 7: high_card QC JS 7H TH KD 
+player 8: pair QS QH JS TH KD 
+WINNER: pair QS QH JS TH KD
+
+{'river': u'KD', 'winner': {'status': 'WINNER', 'hand': [u'pair QS QH JS TH KD']}, 'starting_hands': {1: [u'6C', u'4S'], 2: [u'9C', u'4C'], 3: [u'8H', u'8D'], 4: [u'AH', u'7D'], 5: [u'AS', u'6S'], 6: [u'4D', u'2S'], 7: [u'QC', u'2C'], 8: [u'QS', u'QH']}, 'flop': [u'JS', u'7H'], 'turn': u'TH', 'shared_cards': [u'JS', u'7H', u'3D', u'TH', u'KD'], 'player_hands': {1: u'high_card 6C JS 7H TH KD', 2: u'high_card 9C JS 7H TH KD', 3: u'pair 8H 8D JS TH KD', 4: u'pair AH 7D JS 7H KD', 5: u'high_card AS JS 7H TH KD', 6: u'high_card 4D JS 7H TH KD', 7: u'high_card QC JS 7H TH KD', 8: u'pair QS QH JS TH KD'}}
+
+player1: 2S KH 
+player2: 9D 8D 
+player3: 3S 7H 
+player4: 2H 3C 
+player5: 5H 4D 
+player6: 8C JD 
+player7: 4C 5S 
+player8: KC 9C 
+shared cards: 2C 6S TH 5C TC 
+player 1: two_pair 2S KH 2C TH TC 
+player 2: pair 9D 8D 6S TH TC 
+player 3: pair 7H 6S TH 5C TC 
+player 4: two_pair 2H 2C 6S TH TC 
+player 5: two_pair 5H 6S TH 5C TC 
+player 6: pair 8C JD 6S TH TC 
+player 7: two_pair 5S 6S TH 5C TC 
+player 8: flush KC 9C 2C 5C TC 
+WINNER: flush KC 9C 2C 5C TC
+
+{'river': u'TC', 'winner': {'status': 'WINNER', 'hand': [u'flush KC 9C 2C 5C TC']}, 'starting_hands': {1: [u'2S', u'KH'], 2: [u'9D', u'8D'], 3: [u'3S', u'7H'], 4: [u'2H', u'3C'], 5: [u'5H', u'4D'], 6: [u'8C', u'JD'], 7: [u'4C', u'5S'], 8: [u'KC', u'9C']}, 'flop': [u'2C', u'6S'], 'turn': u'5C', 'shared_cards': [u'2C', u'6S', u'TH', u'5C', u'TC'], 'player_hands': {1: u'two_pair 2S KH 2C TH TC', 2: u'pair 9D 8D 6S TH TC', 3: u'pair 7H 6S TH 5C TC', 4: u'two_pair 2H 2C 6S TH TC', 5: u'two_pair 5H 6S TH 5C TC', 6: u'pair 8C JD 6S TH TC', 7: u'two_pair 5S 6S TH 5C TC', 8: u'flush KC 9C 2C 5C TC'}}
+
+player1: 9H 5D 
+player2: 2S 3S 
+player3: KC AS 
+player4: AC JS 
+player5: QC QH 
+player6: 5H JH 
+player7: 2C 4S 
+player8: 4H QS 
+shared cards: 5C QD 6H 3D 4C 
+player 1: pair 9H 5D 5C QD 6H 
+player 2: straight 2S 3S 5C 6H 4C 
+player 3: high_card KC AS 5C QD 6H 
+player 4: high_card AC JS 5C QD 6H 
+player 5: three_of_a_kind QC QH 5C QD 6H 
+player 6: pair 5H JH 5C QD 6H 
+player 7: straight 2C 4S 5C 6H 3D 
+player 8: two_pair 4H QS QD 6H 4C 
+SPLIT POT: straight 2S 3S 5C 6H 4C straight 2C 4S 5C 6H 3D 
+
+{'river': u'4C', 'winner': {'status': 'SPLIT POT', 'hand': [u'straight 2S 3S 5C 6H 4C', u'straight 2C 4S 5C 6H 3D']}, 'starting_hands': {1: [u'9H', u'5D'], 2: [u'2S', u'3S'], 3: [u'KC', u'AS'], 4: [u'AC', u'JS'], 5: [u'QC', u'QH'], 6: [u'5H', u'JH'], 7: [u'2C', u'4S'], 8: [u'4H', u'QS']}, 'flop': [u'5C', u'QD'], 'turn': u'3D', 'shared_cards': [u'5C', u'QD', u'6H', u'3D', u'4C'], 'player_hands': {1: u'pair 9H 5D 5C QD 6H', 2: u'straight 2S 3S 5C 6H 4C', 3: u'high_card KC AS 5C QD 6H', 4: u'high_card AC JS 5C QD 6H', 5: u'three_of_a_kind QC QH 5C QD 6H', 6: u'pair 5H JH 5C QD 6H', 7: u'straight 2C 4S 5C 6H 3D', 8: u'two_pair 4H QS QD 6H 4C'}}
+
+player1: TC 7H 
+player2: 6S 8S 
+player3: AC QD 
+player4: 7C 9H 
+player5: 6D 3H 
+player6: 6C 5H 
+player7: 6H JS 
+player8: 9C JD 
+shared cards: TS 3D 5S 2H QC 
+player 1: pair TC 7H TS 5S QC 
+player 2: high_card 6S 8S TS 5S QC 
+player 3: pair AC QD TS 5S QC 
+player 4: high_card 7C 9H TS 5S QC 
+player 5: pair 6D 3H TS 3D QC 
+player 6: pair 6C 5H TS 5S QC 
+player 7: high_card 6H JS TS 5S QC 
+player 8: high_card 9C JD TS 5S QC 
+WINNER: pair AC QD TS 5S QC
+
+{'river': u'QC', 'winner': {'status': 'WINNER', 'hand': [u'pair AC QD TS 5S QC']}, 'starting_hands': {1: [u'TC', u'7H'], 2: [u'6S', u'8S'], 3: [u'AC', u'QD'], 4: [u'7C', u'9H'], 5: [u'6D', u'3H'], 6: [u'6C', u'5H'], 7: [u'6H', u'JS'], 8: [u'9C', u'JD']}, 'flop': [u'TS', u'3D'], 'turn': u'2H', 'shared_cards': [u'TS', u'3D', u'5S', u'2H', u'QC'], 'player_hands': {1: u'pair TC 7H TS 5S QC', 2: u'high_card 6S 8S TS 5S QC', 3: u'pair AC QD TS 5S QC', 4: u'high_card 7C 9H TS 5S QC', 5: u'pair 6D 3H TS 3D QC', 6: u'pair 6C 5H TS 5S QC', 7: u'high_card 6H JS TS 5S QC', 8: u'high_card 9C JD TS 5S QC'}}
+
+player1: 6S 8S 
+player2: 2S 7H 
+player3: 9D 4H 
+player4: QC 5H 
+player5: 4D TH 
+player6: 4C 6C 
+player7: 2D KC 
+player8: 9C 3C 
+shared cards: TC JC 5S 5C 3S 
+player 1: pair 8S TC JC 5S 5C 
+player 2: pair 7H TC JC 5S 5C 
+player 3: pair 9D TC JC 5S 5C 
+player 4: three_of_a_kind QC 5H JC 5S 5C 
+player 5: two_pair TH TC JC 5S 5C 
+player 6: flush 4C 6C TC JC 5C 
+player 7: pair KC TC JC 5S 5C 
+player 8: flush 9C 3C TC JC 5C 
+WINNER: flush 9C 3C TC JC 5C
+
+{'river': u'3S', 'winner': {'status': 'WINNER', 'hand': [u'flush 9C 3C TC JC 5C']}, 'starting_hands': {1: [u'6S', u'8S'], 2: [u'2S', u'7H'], 3: [u'9D', u'4H'], 4: [u'QC', u'5H'], 5: [u'4D', u'TH'], 6: [u'4C', u'6C'], 7: [u'2D', u'KC'], 8: [u'9C', u'3C']}, 'flop': [u'TC', u'JC'], 'turn': u'5C', 'shared_cards': [u'TC', u'JC', u'5S', u'5C', u'3S'], 'player_hands': {1: u'pair 8S TC JC 5S 5C', 2: u'pair 7H TC JC 5S 5C', 3: u'pair 9D TC JC 5S 5C', 4: u'three_of_a_kind QC 5H JC 5S 5C', 5: u'two_pair TH TC JC 5S 5C', 6: u'flush 4C 6C TC JC 5C', 7: u'pair KC TC JC 5S 5C', 8: u'flush 9C 3C TC JC 5C'}}
+
+player1: QD AD 
+player2: QC JS 
+player3: JH TS 
+player4: TD TH 
+player5: 4H 6C 
+player6: 7H JC 
+player7: 7S 9C 
+player8: TC AS 
+shared cards: 5H 3H 2D 2C 7D 
+player 1: pair QD AD 2D 2C 7D 
+player 2: pair QC JS 2D 2C 7D 
+player 3: pair JH TS 2D 2C 7D 
+player 4: two_pair TD TH 2D 2C 7D 
+player 5: straight 4H 6C 5H 3H 7D 
+player 6: two_pair 7H JC 2D 2C 7D 
+player 7: two_pair 7S 9C 2D 2C 7D 
+player 8: pair TC AS 2D 2C 7D 
+WINNER: straight 4H 6C 5H 3H 7D
+
+{'river': u'7D', 'winner': {'status': 'WINNER', 'hand': [u'straight 4H 6C 5H 3H 7D']}, 'starting_hands': {1: [u'QD', u'AD'], 2: [u'QC', u'JS'], 3: [u'JH', u'TS'], 4: [u'TD', u'TH'], 5: [u'4H', u'6C'], 6: [u'7H', u'JC'], 7: [u'7S', u'9C'], 8: [u'TC', u'AS']}, 'flop': [u'5H', u'3H'], 'turn': u'2C', 'shared_cards': [u'5H', u'3H', u'2D', u'2C', u'7D'], 'player_hands': {1: u'pair QD AD 2D 2C 7D', 2: u'pair QC JS 2D 2C 7D', 3: u'pair JH TS 2D 2C 7D', 4: u'two_pair TD TH 2D 2C 7D', 5: u'straight 4H 6C 5H 3H 7D', 6: u'two_pair 7H JC 2D 2C 7D', 7: u'two_pair 7S 9C 2D 2C 7D', 8: u'pair TC AS 2D 2C 7D'}}
+
+player1: 4D 5C 
+player2: QH KC 
+player3: QC 3S 
+player4: AC TC 
+player5: 2D 3D 
+player6: 7H 5D 
+player7: 4S 8S 
+player8: KD 6H 
+shared cards: 9H JD 6S 7C KS 
+player 1: high_card 9H JD 6S 7C KS 
+player 2: pair QH KC 9H JD KS 
+player 3: high_card QC 9H JD 7C KS 
+player 4: high_card AC TC 9H JD KS 
+player 5: high_card 9H JD 6S 7C KS 
+player 6: pair 7H 9H JD 7C KS 
+player 7: high_card 8S 9H JD 7C KS 
+player 8: two_pair KD 6H JD 6S KS 
+WINNER: two_pair KD 6H JD 6S KS
+
+{'river': u'KS', 'winner': {'status': 'WINNER', 'hand': [u'two_pair KD 6H JD 6S KS']}, 'starting_hands': {1: [u'4D', u'5C'], 2: [u'QH', u'KC'], 3: [u'QC', u'3S'], 4: [u'AC', u'TC'], 5: [u'2D', u'3D'], 6: [u'7H', u'5D'], 7: [u'4S', u'8S'], 8: [u'KD', u'6H']}, 'flop': [u'9H', u'JD'], 'turn': u'7C', 'shared_cards': [u'9H', u'JD', u'6S', u'7C', u'KS'], 'player_hands': {1: u'high_card 9H JD 6S 7C KS', 2: u'pair QH KC 9H JD KS', 3: u'high_card QC 9H JD 7C KS', 4: u'high_card AC TC 9H JD KS', 5: u'high_card 9H JD 6S 7C KS', 6: u'pair 7H 9H JD 7C KS', 7: u'high_card 8S 9H JD 7C KS', 8: u'two_pair KD 6H JD 6S KS'}}
+
+player1: 4S 6H 
+player2: 8H 4D 
+player3: KS QS 
+player4: 6C TD 
+player5: JS 4C 
+player6: KD QC 
+player7: 2C JH 
+player8: 5C 3H 
+shared cards: 7H 4H 5S 6D 8S 
+player 1: straight 4S 6H 7H 5S 8S 
+player 2: straight 8H 4D 7H 5S 6D 
+player 3: straight 7H 4H 5S 6D 8S 
+player 4: straight 6C 7H 4H 5S 8S 
+player 5: straight 4C 7H 5S 6D 8S 
+player 6: straight 7H 4H 5S 6D 8S 
+player 7: straight 7H 4H 5S 6D 8S 
+player 8: straight 5C 7H 4H 6D 8S 
+SPLIT POT: straight 4S 6H 7H 5S 8S straight 8H 4D 7H 5S 6D straight 7H 4H 5S 6D 8S straight 6C 7H 4H 5S 8S straight 4C 7H 5S 6D 8S straight 7H 4H 5S 6D 8S straight 7H 4H 5S 6D 8S straight 5C 7H 4H 6D 8S 
+
+{'river': u'8S', 'winner': {'status': 'SPLIT POT', 'hand': [u'straight 4S 6H 7H 5S 8S', u'straight 8H 4D 7H 5S 6D', u'straight 7H 4H 5S 6D 8S', u'straight 6C 7H 4H 5S 8S', u'straight 4C 7H 5S 6D 8S', u'straight 7H 4H 5S 6D 8S', u'straight 7H 4H 5S 6D 8S', u'straight 5C 7H 4H 6D 8S']}, 'starting_hands': {1: [u'4S', u'6H'], 2: [u'8H', u'4D'], 3: [u'KS', u'QS'], 4: [u'6C', u'TD'], 5: [u'JS', u'4C'], 6: [u'KD', u'QC'], 7: [u'2C', u'JH'], 8: [u'5C', u'3H']}, 'flop': [u'7H', u'4H'], 'turn': u'6D', 'shared_cards': [u'7H', u'4H', u'5S', u'6D', u'8S'], 'player_hands': {1: u'straight 4S 6H 7H 5S 8S', 2: u'straight 8H 4D 7H 5S 6D', 3: u'straight 7H 4H 5S 6D 8S', 4: u'straight 6C 7H 4H 5S 8S', 5: u'straight 4C 7H 5S 6D 8S', 6: u'straight 7H 4H 5S 6D 8S', 7: u'straight 7H 4H 5S 6D 8S', 8: u'straight 5C 7H 4H 6D 8S'}}
+
+player1: KH 3C 
+player2: 6H JS 
+player3: 3H QD 
+player4: 5S 3D 
+player5: KS 5H 
+player6: JC 5C 
+player7: AS QC 
+player8: QH 7C 
+shared cards: 4C 7H 4H QS 9H 
+player 1: pair KH 4C 4H QS 9H 
+player 2: pair JS 4C 4H QS 9H 
+player 3: two_pair QD 4C 4H QS 9H 
+player 4: pair 4C 7H 4H QS 9H 
+player 5: pair KS 4C 4H QS 9H 
+player 6: pair JC 4C 4H QS 9H 
+player 7: two_pair AS QC 4C 4H QS 
+player 8: two_pair QH 7C 7H QS 9H 
+WINNER: two_pair QH 7C 7H QS 9H
+
+{'river': u'9H', 'winner': {'status': 'WINNER', 'hand': [u'two_pair QH 7C 7H QS 9H']}, 'starting_hands': {1: [u'KH', u'3C'], 2: [u'6H', u'JS'], 3: [u'3H', u'QD'], 4: [u'5S', u'3D'], 5: [u'KS', u'5H'], 6: [u'JC', u'5C'], 7: [u'AS', u'QC'], 8: [u'QH', u'7C']}, 'flop': [u'4C', u'7H'], 'turn': u'QS', 'shared_cards': [u'4C', u'7H', u'4H', u'QS', u'9H'], 'player_hands': {1: u'pair KH 4C 4H QS 9H', 2: u'pair JS 4C 4H QS 9H', 3: u'two_pair QD 4C 4H QS 9H', 4: u'pair 4C 7H 4H QS 9H', 5: u'pair KS 4C 4H QS 9H', 6: u'pair JC 4C 4H QS 9H', 7: u'two_pair AS QC 4C 4H QS', 8: u'two_pair QH 7C 7H QS 9H'}}
+
+player1: AD AH 
+player2: 5C 3H 
+player3: 3C 9S 
+player4: KH 2S 
+player5: 3S 9H 
+player6: 8H JC 
+player7: 2H 6H 
+player8: 7D KC 
+shared cards: 9C 7S JD QS 3D 
+player 1: pair AD AH 9C JD QS 
+player 2: pair 3H 9C JD QS 3D 
+player 3: two_pair 3C 9S 9C QS 3D 
+player 4: high_card KH 9C 7S JD QS 
+player 5: two_pair 3S 9H 9C QS 3D 
+player 6: pair 8H JC 9C JD QS 
+player 7: high_card 6H 9C 7S JD QS 
+player 8: pair 7D KC 7S JD QS 
+SPLIT POT: two_pair 3C 9S 9C QS 3D two_pair 3S 9H 9C QS 3D 
+
+{'river': u'3D', 'winner': {'status': 'SPLIT POT', 'hand': [u'two_pair 3C 9S 9C QS 3D', u'two_pair 3S 9H 9C QS 3D']}, 'starting_hands': {1: [u'AD', u'AH'], 2: [u'5C', u'3H'], 3: [u'3C', u'9S'], 4: [u'KH', u'2S'], 5: [u'3S', u'9H'], 6: [u'8H', u'JC'], 7: [u'2H', u'6H'], 8: [u'7D', u'KC']}, 'flop': [u'9C', u'7S'], 'turn': u'QS', 'shared_cards': [u'9C', u'7S', u'JD', u'QS', u'3D'], 'player_hands': {1: u'pair AD AH 9C JD QS', 2: u'pair 3H 9C JD QS 3D', 3: u'two_pair 3C 9S 9C QS 3D', 4: u'high_card KH 9C 7S JD QS', 5: u'two_pair 3S 9H 9C QS 3D', 6: u'pair 8H JC 9C JD QS', 7: u'high_card 6H 9C 7S JD QS', 8: u'pair 7D KC 7S JD QS'}}
+
+player1: 8H 5C 
+player2: 4H 9C 
+player3: 5D QH 
+player4: TC 2H 
+player5: 7S 3C 
+player6: 6S 8C 
+player7: TH 9D 
+player8: JC 6D 
+shared cards: JD JH AC 3S QC 
+player 1: pair 8H JD JH AC QC 
+player 2: pair 9C JD JH AC QC 
+player 3: two_pair QH JD JH AC QC 
+player 4: pair TC JD JH AC QC 
+player 5: two_pair 3C JD JH AC 3S 
+player 6: pair 8C JD JH AC QC 
+player 7: pair TH JD JH AC QC 
+player 8: three_of_a_kind JC JD JH AC QC 
+WINNER: three_of_a_kind JC JD JH AC QC
+
+{'river': u'QC', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind JC JD JH AC QC']}, 'starting_hands': {1: [u'8H', u'5C'], 2: [u'4H', u'9C'], 3: [u'5D', u'QH'], 4: [u'TC', u'2H'], 5: [u'7S', u'3C'], 6: [u'6S', u'8C'], 7: [u'TH', u'9D'], 8: [u'JC', u'6D']}, 'flop': [u'JD', u'JH'], 'turn': u'3S', 'shared_cards': [u'JD', u'JH', u'AC', u'3S', u'QC'], 'player_hands': {1: u'pair 8H JD JH AC QC', 2: u'pair 9C JD JH AC QC', 3: u'two_pair QH JD JH AC QC', 4: u'pair TC JD JH AC QC', 5: u'two_pair 3C JD JH AC 3S', 6: u'pair 8C JD JH AC QC', 7: u'pair TH JD JH AC QC', 8: u'three_of_a_kind JC JD JH AC QC'}}
+
+player1: 7D 7C 
+player2: 8D 9H 
+player3: 5S QC 
+player4: 5D 3C 
+player5: QS 4C 
+player6: KS 2S 
+player7: 2H 8S 
+player8: 3H 4S 
+shared cards: JS TD 5H KD 5C 
+player 1: two_pair 7D 7C 5H KD 5C 
+player 2: pair JS TD 5H KD 5C 
+player 3: three_of_a_kind 5S QC 5H KD 5C 
+player 4: three_of_a_kind 5D JS 5H KD 5C 
+player 5: pair QS JS 5H KD 5C 
+player 6: two_pair KS JS 5H KD 5C 
+player 7: pair JS TD 5H KD 5C 
+player 8: pair JS TD 5H KD 5C 
+WINNER: three_of_a_kind 5S QC 5H KD 5C
+
+{'river': u'5C', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind 5S QC 5H KD 5C']}, 'starting_hands': {1: [u'7D', u'7C'], 2: [u'8D', u'9H'], 3: [u'5S', u'QC'], 4: [u'5D', u'3C'], 5: [u'QS', u'4C'], 6: [u'KS', u'2S'], 7: [u'2H', u'8S'], 8: [u'3H', u'4S']}, 'flop': [u'JS', u'TD'], 'turn': u'KD', 'shared_cards': [u'JS', u'TD', u'5H', u'KD', u'5C'], 'player_hands': {1: u'two_pair 7D 7C 5H KD 5C', 2: u'pair JS TD 5H KD 5C', 3: u'three_of_a_kind 5S QC 5H KD 5C', 4: u'three_of_a_kind 5D JS 5H KD 5C', 5: u'pair QS JS 5H KD 5C', 6: u'two_pair KS JS 5H KD 5C', 7: u'pair JS TD 5H KD 5C', 8: u'pair JS TD 5H KD 5C'}}
+
+player1: 4D 2H 
+player2: TD QC 
+player3: AD 5C 
+player4: 8D JH 
+player5: 9C 8C 
+player6: 3H AS 
+player7: KD 7S 
+player8: 9H TS 
+shared cards: 6S 4C 9D KS 6H 
+player 1: two_pair 4D 6S 4C KS 6H 
+player 2: pair TD QC 6S KS 6H 
+player 3: pair AD 6S 9D KS 6H 
+player 4: pair JH 6S 9D KS 6H 
+player 5: two_pair 9C 6S 9D KS 6H 
+player 6: pair AS 6S 9D KS 6H 
+player 7: two_pair KD 6S 9D KS 6H 
+player 8: two_pair 9H 6S 9D KS 6H 
+WINNER: two_pair KD 6S 9D KS 6H
+
+{'river': u'6H', 'winner': {'status': 'WINNER', 'hand': [u'two_pair KD 6S 9D KS 6H']}, 'starting_hands': {1: [u'4D', u'2H'], 2: [u'TD', u'QC'], 3: [u'AD', u'5C'], 4: [u'8D', u'JH'], 5: [u'9C', u'8C'], 6: [u'3H', u'AS'], 7: [u'KD', u'7S'], 8: [u'9H', u'TS']}, 'flop': [u'6S', u'4C'], 'turn': u'KS', 'shared_cards': [u'6S', u'4C', u'9D', u'KS', u'6H'], 'player_hands': {1: u'two_pair 4D 6S 4C KS 6H', 2: u'pair TD QC 6S KS 6H', 3: u'pair AD 6S 9D KS 6H', 4: u'pair JH 6S 9D KS 6H', 5: u'two_pair 9C 6S 9D KS 6H', 6: u'pair AS 6S 9D KS 6H', 7: u'two_pair KD 6S 9D KS 6H', 8: u'two_pair 9H 6S 9D KS 6H'}}
+
+player1: TH KH 
+player2: JH JS 
+player3: 8D 3C 
+player4: 3H 2D 
+player5: 5D JD 
+player6: 6D 7C 
+player7: 4C 2C 
+player8: 8C QD 
+shared cards: 5C TS AC QS QH 
+player 1: two_pair TH TS AC QS QH 
+player 2: two_pair JH JS AC QS QH 
+player 3: pair 8D TS AC QS QH 
+player 4: pair 5C TS AC QS QH 
+player 5: two_pair 5D 5C AC QS QH 
+player 6: pair 7C TS AC QS QH 
+player 7: pair 5C TS AC QS QH 
+player 8: three_of_a_kind QD TS AC QS QH 
+WINNER: three_of_a_kind QD TS AC QS QH
+
+{'river': u'QH', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind QD TS AC QS QH']}, 'starting_hands': {1: [u'TH', u'KH'], 2: [u'JH', u'JS'], 3: [u'8D', u'3C'], 4: [u'3H', u'2D'], 5: [u'5D', u'JD'], 6: [u'6D', u'7C'], 7: [u'4C', u'2C'], 8: [u'8C', u'QD']}, 'flop': [u'5C', u'TS'], 'turn': u'QS', 'shared_cards': [u'5C', u'TS', u'AC', u'QS', u'QH'], 'player_hands': {1: u'two_pair TH TS AC QS QH', 2: u'two_pair JH JS AC QS QH', 3: u'pair 8D TS AC QS QH', 4: u'pair 5C TS AC QS QH', 5: u'two_pair 5D 5C AC QS QH', 6: u'pair 7C TS AC QS QH', 7: u'pair 5C TS AC QS QH', 8: u'three_of_a_kind QD TS AC QS QH'}}
+
+player1: 4D 8S 
+player2: 5C 3S 
+player3: 2H QD 
+player4: 8H KH 
+player5: TC KD 
+player6: 7D AC 
+player7: QC 6D 
+player8: JS KC 
+shared cards: JD TH 7H 8D AH 
+player 1: pair 8S JD TH 8D AH 
+player 2: high_card JD TH 7H 8D AH 
+player 3: high_card QD JD TH 8D AH 
+player 4: flush 8H KH TH 7H AH 
+player 5: pair TC KD JD TH AH 
+player 6: two_pair 7D AC JD 7H AH 
+player 7: high_card QC JD TH 8D AH 
+player 8: pair JS KC JD TH AH 
+WINNER: flush 8H KH TH 7H AH
+
+{'river': u'AH', 'winner': {'status': 'WINNER', 'hand': [u'flush 8H KH TH 7H AH']}, 'starting_hands': {1: [u'4D', u'8S'], 2: [u'5C', u'3S'], 3: [u'2H', u'QD'], 4: [u'8H', u'KH'], 5: [u'TC', u'KD'], 6: [u'7D', u'AC'], 7: [u'QC', u'6D'], 8: [u'JS', u'KC']}, 'flop': [u'JD', u'TH'], 'turn': u'8D', 'shared_cards': [u'JD', u'TH', u'7H', u'8D', u'AH'], 'player_hands': {1: u'pair 8S JD TH 8D AH', 2: u'high_card JD TH 7H 8D AH', 3: u'high_card QD JD TH 8D AH', 4: u'flush 8H KH TH 7H AH', 5: u'pair TC KD JD TH AH', 6: u'two_pair 7D AC JD 7H AH', 7: u'high_card QC JD TH 8D AH', 8: u'pair JS KC JD TH AH'}}
+
+player1: JD AS 
+player2: AC 5H 
+player3: KS 3H 
+player4: 7S 2D 
+player5: 3D 4D 
+player6: 6H 5D 
+player7: 9S 7C 
+player8: 4S TC 
+shared cards: 8D JS KD 4C KC 
+player 1: two_pair JD AS JS KD KC 
+player 2: pair AC 8D JS KD KC 
+player 3: three_of_a_kind KS 8D JS KD KC 
+player 4: pair 7S 8D JS KD KC 
+player 5: two_pair 4D JS KD 4C KC 
+player 6: pair 6H 8D JS KD KC 
+player 7: pair 9S 8D JS KD KC 
+player 8: two_pair 4S JS KD 4C KC 
+WINNER: three_of_a_kind KS 8D JS KD KC
+
+{'river': u'KC', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind KS 8D JS KD KC']}, 'starting_hands': {1: [u'JD', u'AS'], 2: [u'AC', u'5H'], 3: [u'KS', u'3H'], 4: [u'7S', u'2D'], 5: [u'3D', u'4D'], 6: [u'6H', u'5D'], 7: [u'9S', u'7C'], 8: [u'4S', u'TC']}, 'flop': [u'8D', u'JS'], 'turn': u'4C', 'shared_cards': [u'8D', u'JS', u'KD', u'4C', u'KC'], 'player_hands': {1: u'two_pair JD AS JS KD KC', 2: u'pair AC 8D JS KD KC', 3: u'three_of_a_kind KS 8D JS KD KC', 4: u'pair 7S 8D JS KD KC', 5: u'two_pair 4D JS KD 4C KC', 6: u'pair 6H 8D JS KD KC', 7: u'pair 9S 8D JS KD KC', 8: u'two_pair 4S JS KD 4C KC'}}
+
+player1: TC 2D 
+player2: KC 9D 
+player3: 7H 8D 
+player4: TD 2H 
+player5: AH TH 
+player6: JS KH 
+player7: 5D QD 
+player8: 5S 6S 
+shared cards: 3D QS 2C JC AS 
+player 1: pair 2D QS 2C JC AS 
+player 2: high_card KC 9D QS JC AS 
+player 3: high_card 7H 8D QS JC AS 
+player 4: pair 2H QS 2C JC AS 
+player 5: pair AH TH QS JC AS 
+player 6: pair JS KH QS JC AS 
+player 7: pair 5D QD QS JC AS 
+player 8: high_card 5S 6S QS JC AS 
+WINNER: pair AH TH QS JC AS
+
+{'river': u'AS', 'winner': {'status': 'WINNER', 'hand': [u'pair AH TH QS JC AS']}, 'starting_hands': {1: [u'TC', u'2D'], 2: [u'KC', u'9D'], 3: [u'7H', u'8D'], 4: [u'TD', u'2H'], 5: [u'AH', u'TH'], 6: [u'JS', u'KH'], 7: [u'5D', u'QD'], 8: [u'5S', u'6S']}, 'flop': [u'3D', u'QS'], 'turn': u'JC', 'shared_cards': [u'3D', u'QS', u'2C', u'JC', u'AS'], 'player_hands': {1: u'pair 2D QS 2C JC AS', 2: u'high_card KC 9D QS JC AS', 3: u'high_card 7H 8D QS JC AS', 4: u'pair 2H QS 2C JC AS', 5: u'pair AH TH QS JC AS', 6: u'pair JS KH QS JC AS', 7: u'pair 5D QD QS JC AS', 8: u'high_card 5S 6S QS JC AS'}}
+
+player1: 6H 3S 
+player2: 4C 5D 
+player3: QH JD 
+player4: 9H 9D 
+player5: 5C AD 
+player6: 3H JC 
+player7: AH AC 
+player8: 2H TH 
+shared cards: 6D AS 3C JS 2D 
+player 1: two_pair 6H 3S 6D AS 3C 
+player 2: straight 4C 5D 6D 3C 2D 
+player 3: pair QH JD 6D AS JS 
+player 4: pair 9H 9D 6D AS JS 
+player 5: pair 5C AD 6D AS JS 
+player 6: two_pair 3H JC AS 3C JS 
+player 7: three_of_a_kind AH AC 6D AS JS 
+player 8: pair 2H TH AS JS 2D 
+WINNER: straight 4C 5D 6D 3C 2D
+
+{'river': u'2D', 'winner': {'status': 'WINNER', 'hand': [u'straight 4C 5D 6D 3C 2D']}, 'starting_hands': {1: [u'6H', u'3S'], 2: [u'4C', u'5D'], 3: [u'QH', u'JD'], 4: [u'9H', u'9D'], 5: [u'5C', u'AD'], 6: [u'3H', u'JC'], 7: [u'AH', u'AC'], 8: [u'2H', u'TH']}, 'flop': [u'6D', u'AS'], 'turn': u'JS', 'shared_cards': [u'6D', u'AS', u'3C', u'JS', u'2D'], 'player_hands': {1: u'two_pair 6H 3S 6D AS 3C', 2: u'straight 4C 5D 6D 3C 2D', 3: u'pair QH JD 6D AS JS', 4: u'pair 9H 9D 6D AS JS', 5: u'pair 5C AD 6D AS JS', 6: u'two_pair 3H JC AS 3C JS', 7: u'three_of_a_kind AH AC 6D AS JS', 8: u'pair 2H TH AS JS 2D'}}
+
+player1: 6S 8D 
+player2: JS 3D 
+player3: 6C JD 
+player4: 4H 9C 
+player5: 7D KS 
+player6: 3H QH 
+player7: QS 4S 
+player8: 5H 2C 
+shared cards: AH 8C 5S 7S 8S 
+player 1: three_of_a_kind 8D AH 8C 7S 8S 
+player 2: pair JS AH 8C 7S 8S 
+player 3: pair JD AH 8C 7S 8S 
+player 4: pair 9C AH 8C 7S 8S 
+player 5: two_pair 7D AH 8C 7S 8S 
+player 6: pair QH AH 8C 7S 8S 
+player 7: flush QS 4S 5S 7S 8S 
+player 8: two_pair 5H AH 8C 5S 8S 
+WINNER: flush QS 4S 5S 7S 8S
+
+{'river': u'8S', 'winner': {'status': 'WINNER', 'hand': [u'flush QS 4S 5S 7S 8S']}, 'starting_hands': {1: [u'6S', u'8D'], 2: [u'JS', u'3D'], 3: [u'6C', u'JD'], 4: [u'4H', u'9C'], 5: [u'7D', u'KS'], 6: [u'3H', u'QH'], 7: [u'QS', u'4S'], 8: [u'5H', u'2C']}, 'flop': [u'AH', u'8C'], 'turn': u'7S', 'shared_cards': [u'AH', u'8C', u'5S', u'7S', u'8S'], 'player_hands': {1: u'three_of_a_kind 8D AH 8C 7S 8S', 2: u'pair JS AH 8C 7S 8S', 3: u'pair JD AH 8C 7S 8S', 4: u'pair 9C AH 8C 7S 8S', 5: u'two_pair 7D AH 8C 7S 8S', 6: u'pair QH AH 8C 7S 8S', 7: u'flush QS 4S 5S 7S 8S', 8: u'two_pair 5H AH 8C 5S 8S'}}
+
+player1: JC 3S 
+player2: KS 5D 
+player3: 2C 8D 
+player4: 6C 7C 
+player5: 9S 4S 
+player6: 3H 4H 
+player7: KC 6S 
+player8: 9C JH 
+shared cards: JS TS QH 7S 4D 
+player 1: pair JC JS TS QH 7S 
+player 2: high_card KS JS TS QH 7S 
+player 3: high_card 8D JS TS QH 7S 
+player 4: pair 7C JS TS QH 7S 
+player 5: flush 9S 4S JS TS 7S 
+player 6: pair 4H JS TS QH 4D 
+player 7: high_card KC JS TS QH 7S 
+player 8: pair 9C JH JS TS QH 
+WINNER: flush 9S 4S JS TS 7S
+
+{'river': u'4D', 'winner': {'status': 'WINNER', 'hand': [u'flush 9S 4S JS TS 7S']}, 'starting_hands': {1: [u'JC', u'3S'], 2: [u'KS', u'5D'], 3: [u'2C', u'8D'], 4: [u'6C', u'7C'], 5: [u'9S', u'4S'], 6: [u'3H', u'4H'], 7: [u'KC', u'6S'], 8: [u'9C', u'JH']}, 'flop': [u'JS', u'TS'], 'turn': u'7S', 'shared_cards': [u'JS', u'TS', u'QH', u'7S', u'4D'], 'player_hands': {1: u'pair JC JS TS QH 7S', 2: u'high_card KS JS TS QH 7S', 3: u'high_card 8D JS TS QH 7S', 4: u'pair 7C JS TS QH 7S', 5: u'flush 9S 4S JS TS 7S', 6: u'pair 4H JS TS QH 4D', 7: u'high_card KC JS TS QH 7S', 8: u'pair 9C JH JS TS QH'}}
+
+player1: 2C 8C 
+player2: AC TD 
+player3: 6S TC 
+player4: 3C KH 
+player5: 4H 8H 
+player6: 7C 3H 
+player7: 8S 6D 
+player8: QH 5S 
+shared cards: 7S JC AS 8D 9S 
+player 1: pair 8C JC AS 8D 9S 
+player 2: pair AC TD JC AS 9S 
+player 3: straight 6S TC 7S 8D 9S 
+player 4: high_card KH JC AS 8D 9S 
+player 5: pair 8H JC AS 8D 9S 
+player 6: pair 7C 7S JC AS 9S 
+player 7: pair 8S JC AS 8D 9S 
+player 8: high_card QH JC AS 8D 9S 
+WINNER: straight 6S TC 7S 8D 9S
+
+{'river': u'9S', 'winner': {'status': 'WINNER', 'hand': [u'straight 6S TC 7S 8D 9S']}, 'starting_hands': {1: [u'2C', u'8C'], 2: [u'AC', u'TD'], 3: [u'6S', u'TC'], 4: [u'3C', u'KH'], 5: [u'4H', u'8H'], 6: [u'7C', u'3H'], 7: [u'8S', u'6D'], 8: [u'QH', u'5S']}, 'flop': [u'7S', u'JC'], 'turn': u'8D', 'shared_cards': [u'7S', u'JC', u'AS', u'8D', u'9S'], 'player_hands': {1: u'pair 8C JC AS 8D 9S', 2: u'pair AC TD JC AS 9S', 3: u'straight 6S TC 7S 8D 9S', 4: u'high_card KH JC AS 8D 9S', 5: u'pair 8H JC AS 8D 9S', 6: u'pair 7C 7S JC AS 9S', 7: u'pair 8S JC AS 8D 9S', 8: u'high_card QH JC AS 8D 9S'}}
+
+player1: QH JC 
+player2: 7S 8C 
+player3: 4H AD 
+player4: AH 2S 
+player5: 9S KS 
+player6: 8H 6H 
+player7: TH 4C 
+player8: 2C 2H 
+shared cards: 5S 6D 3S AC TD 
+player 1: high_card QH JC 6D AC TD 
+player 2: high_card 7S 8C 6D AC TD 
+player 3: pair AD 5S 6D AC TD 
+player 4: pair AH 5S 6D AC TD 
+player 5: high_card 9S KS 6D AC TD 
+player 6: pair 8H 6H 6D AC TD 
+player 7: pair TH 5S 6D AC TD 
+player 8: pair 2C 2H 6D AC TD 
+SPLIT POT: pair AD 5S 6D AC TD pair AH 5S 6D AC TD 
+
+{'river': u'TD', 'winner': {'status': 'SPLIT POT', 'hand': [u'pair AD 5S 6D AC TD', u'pair AH 5S 6D AC TD']}, 'starting_hands': {1: [u'QH', u'JC'], 2: [u'7S', u'8C'], 3: [u'4H', u'AD'], 4: [u'AH', u'2S'], 5: [u'9S', u'KS'], 6: [u'8H', u'6H'], 7: [u'TH', u'4C'], 8: [u'2C', u'2H']}, 'flop': [u'5S', u'6D'], 'turn': u'AC', 'shared_cards': [u'5S', u'6D', u'3S', u'AC', u'TD'], 'player_hands': {1: u'high_card QH JC 6D AC TD', 2: u'high_card 7S 8C 6D AC TD', 3: u'pair AD 5S 6D AC TD', 4: u'pair AH 5S 6D AC TD', 5: u'high_card 9S KS 6D AC TD', 6: u'pair 8H 6H 6D AC TD', 7: u'pair TH 5S 6D AC TD', 8: u'pair 2C 2H 6D AC TD'}}
+
+player1: 8C 5H 
+player2: TS 3S 
+player3: 4H KC 
+player4: 8D 7S 
+player5: KH 7C 
+player6: 3D QS 
+player7: 9C AC 
+player8: 2C 5C 
+shared cards: 2D TH JH QD QH 
+player 1: pair 8C TH JH QD QH 
+player 2: two_pair TS TH JH QD QH 
+player 3: pair KC TH JH QD QH 
+player 4: pair 8D TH JH QD QH 
+player 5: pair KH TH JH QD QH 
+player 6: three_of_a_kind QS TH JH QD QH 
+player 7: pair AC TH JH QD QH 
+player 8: two_pair 2C 2D JH QD QH 
+WINNER: three_of_a_kind QS TH JH QD QH
+
+{'river': u'QH', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind QS TH JH QD QH']}, 'starting_hands': {1: [u'8C', u'5H'], 2: [u'TS', u'3S'], 3: [u'4H', u'KC'], 4: [u'8D', u'7S'], 5: [u'KH', u'7C'], 6: [u'3D', u'QS'], 7: [u'9C', u'AC'], 8: [u'2C', u'5C']}, 'flop': [u'2D', u'TH'], 'turn': u'QD', 'shared_cards': [u'2D', u'TH', u'JH', u'QD', u'QH'], 'player_hands': {1: u'pair 8C TH JH QD QH', 2: u'two_pair TS TH JH QD QH', 3: u'pair KC TH JH QD QH', 4: u'pair 8D TH JH QD QH', 5: u'pair KH TH JH QD QH', 6: u'three_of_a_kind QS TH JH QD QH', 7: u'pair AC TH JH QD QH', 8: u'two_pair 2C 2D JH QD QH'}}
+
+player1: 7H 2C 
+player2: KS 2S 
+player3: 9D 8S 
+player4: AH 6H 
+player5: 3H QH 
+player6: AS JS 
+player7: JC 4S 
+player8: KD 7D 
+shared cards: 5D 8D KC QC TC 
+player 1: high_card 7H 8D KC QC TC 
+player 2: pair KS 8D KC QC TC 
+player 3: pair 8S 8D KC QC TC 
+player 4: high_card AH 8D KC QC TC 
+player 5: pair QH 8D KC QC TC 
+player 6: straight AS JS KC QC TC 
+player 7: high_card JC 8D KC QC TC 
+player 8: pair KD 8D KC QC TC 
+WINNER: straight AS JS KC QC TC
+
+{'river': u'TC', 'winner': {'status': 'WINNER', 'hand': [u'straight AS JS KC QC TC']}, 'starting_hands': {1: [u'7H', u'2C'], 2: [u'KS', u'2S'], 3: [u'9D', u'8S'], 4: [u'AH', u'6H'], 5: [u'3H', u'QH'], 6: [u'AS', u'JS'], 7: [u'JC', u'4S'], 8: [u'KD', u'7D']}, 'flop': [u'5D', u'8D'], 'turn': u'QC', 'shared_cards': [u'5D', u'8D', u'KC', u'QC', u'TC'], 'player_hands': {1: u'high_card 7H 8D KC QC TC', 2: u'pair KS 8D KC QC TC', 3: u'pair 8S 8D KC QC TC', 4: u'high_card AH 8D KC QC TC', 5: u'pair QH 8D KC QC TC', 6: u'straight AS JS KC QC TC', 7: u'high_card JC 8D KC QC TC', 8: u'pair KD 8D KC QC TC'}}
+
+player1: 3H 5H 
+player2: AC 2C 
+player3: JH 6D 
+player4: AD KC 
+player5: TH TS 
+player6: KS 9S 
+player7: QS 6C 
+player8: KD AH 
+shared cards: 8C 2D 3D QC 8D 
+player 1: two_pair 3H 8C 3D QC 8D 
+player 2: two_pair AC 2C 8C 2D 8D 
+player 3: pair JH 6D 8C QC 8D 
+player 4: pair AD KC 8C QC 8D 
+player 5: two_pair TH TS 8C QC 8D 
+player 6: pair KS 9S 8C QC 8D 
+player 7: two_pair QS 6C 8C QC 8D 
+player 8: pair KD AH 8C QC 8D 
+WINNER: two_pair QS 6C 8C QC 8D
+
+{'river': u'8D', 'winner': {'status': 'WINNER', 'hand': [u'two_pair QS 6C 8C QC 8D']}, 'starting_hands': {1: [u'3H', u'5H'], 2: [u'AC', u'2C'], 3: [u'JH', u'6D'], 4: [u'AD', u'KC'], 5: [u'TH', u'TS'], 6: [u'KS', u'9S'], 7: [u'QS', u'6C'], 8: [u'KD', u'AH']}, 'flop': [u'8C', u'2D'], 'turn': u'QC', 'shared_cards': [u'8C', u'2D', u'3D', u'QC', u'8D'], 'player_hands': {1: u'two_pair 3H 8C 3D QC 8D', 2: u'two_pair AC 2C 8C 2D 8D', 3: u'pair JH 6D 8C QC 8D', 4: u'pair AD KC 8C QC 8D', 5: u'two_pair TH TS 8C QC 8D', 6: u'pair KS 9S 8C QC 8D', 7: u'two_pair QS 6C 8C QC 8D', 8: u'pair KD AH 8C QC 8D'}}
+
+player1: 5C 9C 
+player2: 4C JC 
+player3: 4H 2C 
+player4: 7H TD 
+player5: 2H 5S 
+player6: 3H 7D 
+player7: 6S 4D 
+player8: AS AD 
+shared cards: 2S 6D 5H 9D JS 
+player 1: two_pair 5C 9C 5H 9D JS 
+player 2: pair JC 6D 5H 9D JS 
+player 3: pair 2C 2S 6D 9D JS 
+player 4: high_card 7H TD 6D 9D JS 
+player 5: two_pair 2H 5S 2S 5H JS 
+player 6: high_card 7D 6D 5H 9D JS 
+player 7: pair 6S 6D 5H 9D JS 
+player 8: pair AS AD 6D 9D JS 
+WINNER: two_pair 5C 9C 5H 9D JS
+
+{'river': u'JS', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 5C 9C 5H 9D JS']}, 'starting_hands': {1: [u'5C', u'9C'], 2: [u'4C', u'JC'], 3: [u'4H', u'2C'], 4: [u'7H', u'TD'], 5: [u'2H', u'5S'], 6: [u'3H', u'7D'], 7: [u'6S', u'4D'], 8: [u'AS', u'AD']}, 'flop': [u'2S', u'6D'], 'turn': u'9D', 'shared_cards': [u'2S', u'6D', u'5H', u'9D', u'JS'], 'player_hands': {1: u'two_pair 5C 9C 5H 9D JS', 2: u'pair JC 6D 5H 9D JS', 3: u'pair 2C 2S 6D 9D JS', 4: u'high_card 7H TD 6D 9D JS', 5: u'two_pair 2H 5S 2S 5H JS', 6: u'high_card 7D 6D 5H 9D JS', 7: u'pair 6S 6D 5H 9D JS', 8: u'pair AS AD 6D 9D JS'}}
+
+player1: 9S TC 
+player2: 2C 9D 
+player3: JD 2S 
+player4: 3S 7C 
+player5: QD 3C 
+player6: 5S JS 
+player7: QS KS 
+player8: 4D QH 
+shared cards: JH JC KD 7D AS 
+player 1: pair TC JH JC KD AS 
+player 2: pair 9D JH JC KD AS 
+player 3: three_of_a_kind JD JH JC KD AS 
+player 4: two_pair 7C JH JC 7D AS 
+player 5: pair QD JH JC KD AS 
+player 6: three_of_a_kind JS JH JC KD AS 
+player 7: two_pair KS JH JC KD AS 
+player 8: pair QH JH JC KD AS 
+SPLIT POT: three_of_a_kind JD JH JC KD AS three_of_a_kind JS JH JC KD AS 
+
+{'river': u'AS', 'winner': {'status': 'SPLIT POT', 'hand': [u'three_of_a_kind JD JH JC KD AS', u'three_of_a_kind JS JH JC KD AS']}, 'starting_hands': {1: [u'9S', u'TC'], 2: [u'2C', u'9D'], 3: [u'JD', u'2S'], 4: [u'3S', u'7C'], 5: [u'QD', u'3C'], 6: [u'5S', u'JS'], 7: [u'QS', u'KS'], 8: [u'4D', u'QH']}, 'flop': [u'JH', u'JC'], 'turn': u'7D', 'shared_cards': [u'JH', u'JC', u'KD', u'7D', u'AS'], 'player_hands': {1: u'pair TC JH JC KD AS', 2: u'pair 9D JH JC KD AS', 3: u'three_of_a_kind JD JH JC KD AS', 4: u'two_pair 7C JH JC 7D AS', 5: u'pair QD JH JC KD AS', 6: u'three_of_a_kind JS JH JC KD AS', 7: u'two_pair KS JH JC KD AS', 8: u'pair QH JH JC KD AS'}}
+
+player1: 7H 6C 
+player2: AD 2C 
+player3: AS 8C 
+player4: AH 3S 
+player5: 9D QH 
+player6: 3H AC 
+player7: TH KH 
+player8: 5H 2H 
+shared cards: QD 8S 6H 4S 7D 
+player 1: two_pair 7H 6C QD 6H 7D 
+player 2: high_card AD QD 8S 6H 7D 
+player 3: pair AS 8C QD 8S 7D 
+player 4: high_card AH QD 8S 6H 7D 
+player 5: pair 9D QH QD 8S 7D 
+player 6: high_card AC QD 8S 6H 7D 
+player 7: high_card TH KH QD 8S 7D 
+player 8: straight 5H 8S 6H 4S 7D 
+WINNER: straight 5H 8S 6H 4S 7D
+
+{'river': u'7D', 'winner': {'status': 'WINNER', 'hand': [u'straight 5H 8S 6H 4S 7D']}, 'starting_hands': {1: [u'7H', u'6C'], 2: [u'AD', u'2C'], 3: [u'AS', u'8C'], 4: [u'AH', u'3S'], 5: [u'9D', u'QH'], 6: [u'3H', u'AC'], 7: [u'TH', u'KH'], 8: [u'5H', u'2H']}, 'flop': [u'QD', u'8S'], 'turn': u'4S', 'shared_cards': [u'QD', u'8S', u'6H', u'4S', u'7D'], 'player_hands': {1: u'two_pair 7H 6C QD 6H 7D', 2: u'high_card AD QD 8S 6H 7D', 3: u'pair AS 8C QD 8S 7D', 4: u'high_card AH QD 8S 6H 7D', 5: u'pair 9D QH QD 8S 7D', 6: u'high_card AC QD 8S 6H 7D', 7: u'high_card TH KH QD 8S 7D', 8: u'straight 5H 8S 6H 4S 7D'}}
+
+player1: 7H 2S 
+player2: AC 9S 
+player3: TS 4C 
+player4: KS 9H 
+player5: 8D JS 
+player6: 2D KH 
+player7: AH 8C 
+player8: AD 4S 
+shared cards: JH 8H TH 9D JD 
+player 1: pair JH 8H TH 9D JD 
+player 2: two_pair AC 9S JH 9D JD 
+player 3: two_pair TS JH TH 9D JD 
+player 4: two_pair KS 9H JH 9D JD 
+player 5: full_house 8D JS JH 8H JD 
+player 6: pair KH JH TH 9D JD 
+player 7: two_pair AH 8C JH 8H JD 
+player 8: pair AD JH TH 9D JD 
+WINNER: full_house 8D JS JH 8H JD
+
+{'river': u'JD', 'winner': {'status': 'WINNER', 'hand': [u'full_house 8D JS JH 8H JD']}, 'starting_hands': {1: [u'7H', u'2S'], 2: [u'AC', u'9S'], 3: [u'TS', u'4C'], 4: [u'KS', u'9H'], 5: [u'8D', u'JS'], 6: [u'2D', u'KH'], 7: [u'AH', u'8C'], 8: [u'AD', u'4S']}, 'flop': [u'JH', u'8H'], 'turn': u'9D', 'shared_cards': [u'JH', u'8H', u'TH', u'9D', u'JD'], 'player_hands': {1: u'pair JH 8H TH 9D JD', 2: u'two_pair AC 9S JH 9D JD', 3: u'two_pair TS JH TH 9D JD', 4: u'two_pair KS 9H JH 9D JD', 5: u'full_house 8D JS JH 8H JD', 6: u'pair KH JH TH 9D JD', 7: u'two_pair AH 8C JH 8H JD', 8: u'pair AD JH TH 9D JD'}}
+
+player1: 2H 9H 
+player2: 7H QS 
+player3: TD 5S 
+player4: 6S 6C 
+player5: AH 8D 
+player6: QD TS 
+player7: 8C 2D 
+player8: QC 5C 
+shared cards: 6H KH 6D 7D 3S 
+player 1: pair 9H 6H KH 6D 7D 
+player 2: two_pair 7H 6H KH 6D 7D 
+player 3: pair TD 6H KH 6D 7D 
+player 4: quads 6S 6C 6H KH 6D 
+player 5: pair AH 8D 6H KH 6D 
+player 6: pair QD TS 6H KH 6D 
+player 7: pair 8C 6H KH 6D 7D 
+player 8: pair QC 6H KH 6D 7D 
+WINNER: quads 6S 6C 6H KH 6D
+
+{'river': u'3S', 'winner': {'status': 'WINNER', 'hand': [u'quads 6S 6C 6H KH 6D']}, 'starting_hands': {1: [u'2H', u'9H'], 2: [u'7H', u'QS'], 3: [u'TD', u'5S'], 4: [u'6S', u'6C'], 5: [u'AH', u'8D'], 6: [u'QD', u'TS'], 7: [u'8C', u'2D'], 8: [u'QC', u'5C']}, 'flop': [u'6H', u'KH'], 'turn': u'7D', 'shared_cards': [u'6H', u'KH', u'6D', u'7D', u'3S'], 'player_hands': {1: u'pair 9H 6H KH 6D 7D', 2: u'two_pair 7H 6H KH 6D 7D', 3: u'pair TD 6H KH 6D 7D', 4: u'quads 6S 6C 6H KH 6D', 5: u'pair AH 8D 6H KH 6D', 6: u'pair QD TS 6H KH 6D', 7: u'pair 8C 6H KH 6D 7D', 8: u'pair QC 6H KH 6D 7D'}}
+
+player1: 6C 6S 
+player2: JH 9H 
+player3: KD 6H 
+player4: 4H TC 
+player5: AC 2S 
+player6: TS 8C 
+player7: 5D 2C 
+player8: 2H 3S 
+shared cards: 7S AH 8D QD 5S 
+player 1: pair 6C 6S AH 8D QD 
+player 2: high_card JH 9H AH 8D QD 
+player 3: high_card KD 7S AH 8D QD 
+player 4: high_card TC 7S AH 8D QD 
+player 5: pair AC 7S AH 8D QD 
+player 6: pair TS 8C AH 8D QD 
+player 7: pair 5D AH 8D QD 5S 
+player 8: high_card 7S AH 8D QD 5S 
+WINNER: pair AC 7S AH 8D QD
+
+{'river': u'5S', 'winner': {'status': 'WINNER', 'hand': [u'pair AC 7S AH 8D QD']}, 'starting_hands': {1: [u'6C', u'6S'], 2: [u'JH', u'9H'], 3: [u'KD', u'6H'], 4: [u'4H', u'TC'], 5: [u'AC', u'2S'], 6: [u'TS', u'8C'], 7: [u'5D', u'2C'], 8: [u'2H', u'3S']}, 'flop': [u'7S', u'AH'], 'turn': u'QD', 'shared_cards': [u'7S', u'AH', u'8D', u'QD', u'5S'], 'player_hands': {1: u'pair 6C 6S AH 8D QD', 2: u'high_card JH 9H AH 8D QD', 3: u'high_card KD 7S AH 8D QD', 4: u'high_card TC 7S AH 8D QD', 5: u'pair AC 7S AH 8D QD', 6: u'pair TS 8C AH 8D QD', 7: u'pair 5D AH 8D QD 5S', 8: u'high_card 7S AH 8D QD 5S'}}
+
+player1: 5S 8H 
+player2: 3C TS 
+player3: AS 7C 
+player4: 9S 3S 
+player5: 2H KS 
+player6: 6C 6H 
+player7: JD QS 
+player8: 3H QC 
+shared cards: 3D 4S KC QH 2S 
+player 1: high_card 5S 8H 4S KC QH 
+player 2: pair 3C TS 3D KC QH 
+player 3: high_card AS 7C 4S KC QH 
+player 4: pair 9S 3S 3D KC QH 
+player 5: two_pair 2H KS KC QH 2S 
+player 6: pair 6C 6H 4S KC QH 
+player 7: pair JD QS 4S KC QH 
+player 8: two_pair 3H QC 3D KC QH 
+WINNER: two_pair 2H KS KC QH 2S
+
+{'river': u'2S', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 2H KS KC QH 2S']}, 'starting_hands': {1: [u'5S', u'8H'], 2: [u'3C', u'TS'], 3: [u'AS', u'7C'], 4: [u'9S', u'3S'], 5: [u'2H', u'KS'], 6: [u'6C', u'6H'], 7: [u'JD', u'QS'], 8: [u'3H', u'QC']}, 'flop': [u'3D', u'4S'], 'turn': u'QH', 'shared_cards': [u'3D', u'4S', u'KC', u'QH', u'2S'], 'player_hands': {1: u'high_card 5S 8H 4S KC QH', 2: u'pair 3C TS 3D KC QH', 3: u'high_card AS 7C 4S KC QH', 4: u'pair 9S 3S 3D KC QH', 5: u'two_pair 2H KS KC QH 2S', 6: u'pair 6C 6H 4S KC QH', 7: u'pair JD QS 4S KC QH', 8: u'two_pair 3H QC 3D KC QH'}}
+
+player1: KD TS 
+player2: KH 5D 
+player3: 7S 3H 
+player4: 8H 8D 
+player5: AH 4S 
+player6: 6D TH 
+player7: JC 7C 
+player8: 8C 4H 
+shared cards: 5C 3S 6H 2D 7H 
+player 1: high_card KD TS 5C 6H 7H 
+player 2: pair KH 5D 5C 6H 7H 
+player 3: two_pair 7S 3H 3S 6H 7H 
+player 4: pair 8H 8D 5C 6H 7H 
+player 5: straight 4S 5C 3S 6H 7H 
+player 6: pair 6D TH 5C 6H 7H 
+player 7: pair JC 7C 5C 6H 7H 
+player 8: straight 8C 4H 5C 6H 7H 
+WINNER: straight 8C 4H 5C 6H 7H
+
+{'river': u'7H', 'winner': {'status': 'WINNER', 'hand': [u'straight 8C 4H 5C 6H 7H']}, 'starting_hands': {1: [u'KD', u'TS'], 2: [u'KH', u'5D'], 3: [u'7S', u'3H'], 4: [u'8H', u'8D'], 5: [u'AH', u'4S'], 6: [u'6D', u'TH'], 7: [u'JC', u'7C'], 8: [u'8C', u'4H']}, 'flop': [u'5C', u'3S'], 'turn': u'2D', 'shared_cards': [u'5C', u'3S', u'6H', u'2D', u'7H'], 'player_hands': {1: u'high_card KD TS 5C 6H 7H', 2: u'pair KH 5D 5C 6H 7H', 3: u'two_pair 7S 3H 3S 6H 7H', 4: u'pair 8H 8D 5C 6H 7H', 5: u'straight 4S 5C 3S 6H 7H', 6: u'pair 6D TH 5C 6H 7H', 7: u'pair JC 7C 5C 6H 7H', 8: u'straight 8C 4H 5C 6H 7H'}}
+
+player1: 9C 8D 
+player2: 4C 2S 
+player3: KD QS 
+player4: KC AH 
+player5: TC 9D 
+player6: AS 6C 
+player7: 5D 6D 
+player8: JC 8C 
+shared cards: 6S JS 3H JH TD 
+player 1: pair 9C 8D JS JH TD 
+player 2: pair 4C 6S JS JH TD 
+player 3: pair KD QS JS JH TD 
+player 4: pair KC AH JS JH TD 
+player 5: two_pair TC 9D JS JH TD 
+player 6: two_pair AS 6C 6S JS JH 
+player 7: two_pair 6D 6S JS JH TD 
+player 8: three_of_a_kind JC 8C JS JH TD 
+WINNER: three_of_a_kind JC 8C JS JH TD
+
+{'river': u'TD', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind JC 8C JS JH TD']}, 'starting_hands': {1: [u'9C', u'8D'], 2: [u'4C', u'2S'], 3: [u'KD', u'QS'], 4: [u'KC', u'AH'], 5: [u'TC', u'9D'], 6: [u'AS', u'6C'], 7: [u'5D', u'6D'], 8: [u'JC', u'8C']}, 'flop': [u'6S', u'JS'], 'turn': u'JH', 'shared_cards': [u'6S', u'JS', u'3H', u'JH', u'TD'], 'player_hands': {1: u'pair 9C 8D JS JH TD', 2: u'pair 4C 6S JS JH TD', 3: u'pair KD QS JS JH TD', 4: u'pair KC AH JS JH TD', 5: u'two_pair TC 9D JS JH TD', 6: u'two_pair AS 6C 6S JS JH', 7: u'two_pair 6D 6S JS JH TD', 8: u'three_of_a_kind JC 8C JS JH TD'}}
+
+player1: 2H JS 
+player2: QC 6C 
+player3: 5D TS 
+player4: JC TD 
+player5: JH AD 
+player6: QS 4D 
+player7: 2D AS 
+player8: AC QD 
+shared cards: 9C 9S KH QH 8C 
+player 1: pair JS 9C 9S KH QH 
+player 2: two_pair QC 9C 9S KH QH 
+player 3: pair TS 9C 9S KH QH 
+player 4: pair JC 9C 9S KH QH 
+player 5: pair AD 9C 9S KH QH 
+player 6: two_pair QS 9C 9S KH QH 
+player 7: pair AS 9C 9S KH QH 
+player 8: two_pair AC QD 9C 9S QH 
+WINNER: two_pair AC QD 9C 9S QH
+
+{'river': u'8C', 'winner': {'status': 'WINNER', 'hand': [u'two_pair AC QD 9C 9S QH']}, 'starting_hands': {1: [u'2H', u'JS'], 2: [u'QC', u'6C'], 3: [u'5D', u'TS'], 4: [u'JC', u'TD'], 5: [u'JH', u'AD'], 6: [u'QS', u'4D'], 7: [u'2D', u'AS'], 8: [u'AC', u'QD']}, 'flop': [u'9C', u'9S'], 'turn': u'QH', 'shared_cards': [u'9C', u'9S', u'KH', u'QH', u'8C'], 'player_hands': {1: u'pair JS 9C 9S KH QH', 2: u'two_pair QC 9C 9S KH QH', 3: u'pair TS 9C 9S KH QH', 4: u'pair JC 9C 9S KH QH', 5: u'pair AD 9C 9S KH QH', 6: u'two_pair QS 9C 9S KH QH', 7: u'pair AS 9C 9S KH QH', 8: u'two_pair AC QD 9C 9S QH'}}
+
+player1: 4H 7S 
+player2: AH 7D 
+player3: 6D 3D 
+player4: QS 3S 
+player5: 9C TH 
+player6: 8C 8H 
+player7: TC 5D 
+player8: JS 7H 
+shared cards: 7C AC QH 3C QC 
+player 1: two_pair 7S 7C AC QH QC 
+player 2: two_pair AH 7D AC QH QC 
+player 3: two_pair 3D AC QH 3C QC 
+player 4: full_house QS 3S QH 3C QC 
+player 5: flush 9C 7C AC 3C QC 
+player 6: flush 8C 7C AC 3C QC 
+player 7: flush TC 7C AC 3C QC 
+player 8: two_pair 7H 7C AC QH QC 
+WINNER: full_house QS 3S QH 3C QC
+
+{'river': u'QC', 'winner': {'status': 'WINNER', 'hand': [u'full_house QS 3S QH 3C QC']}, 'starting_hands': {1: [u'4H', u'7S'], 2: [u'AH', u'7D'], 3: [u'6D', u'3D'], 4: [u'QS', u'3S'], 5: [u'9C', u'TH'], 6: [u'8C', u'8H'], 7: [u'TC', u'5D'], 8: [u'JS', u'7H']}, 'flop': [u'7C', u'AC'], 'turn': u'3C', 'shared_cards': [u'7C', u'AC', u'QH', u'3C', u'QC'], 'player_hands': {1: u'two_pair 7S 7C AC QH QC', 2: u'two_pair AH 7D AC QH QC', 3: u'two_pair 3D AC QH 3C QC', 4: u'full_house QS 3S QH 3C QC', 5: u'flush 9C 7C AC 3C QC', 6: u'flush 8C 7C AC 3C QC', 7: u'flush TC 7C AC 3C QC', 8: u'two_pair 7H 7C AC QH QC'}}
+
+player1: AS 5S 
+player2: 5H QC 
+player3: JD 7C 
+player4: 4S 7D 
+player5: JS 5D 
+player6: JH KD 
+player7: 3D 7H 
+player8: 5C QH 
+shared cards: 2D 6S 6D 9S 3C 
+player 1: pair AS 5S 6S 6D 9S 
+player 2: pair 5H QC 6S 6D 9S 
+player 3: pair JD 7C 6S 6D 9S 
+player 4: pair 4S 7D 6S 6D 9S 
+player 5: pair JS 5D 6S 6D 9S 
+player 6: pair JH KD 6S 6D 9S 
+player 7: two_pair 3D 6S 6D 9S 3C 
+player 8: pair 5C QH 6S 6D 9S 
+WINNER: two_pair 3D 6S 6D 9S 3C
+
+{'river': u'3C', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 3D 6S 6D 9S 3C']}, 'starting_hands': {1: [u'AS', u'5S'], 2: [u'5H', u'QC'], 3: [u'JD', u'7C'], 4: [u'4S', u'7D'], 5: [u'JS', u'5D'], 6: [u'JH', u'KD'], 7: [u'3D', u'7H'], 8: [u'5C', u'QH']}, 'flop': [u'2D', u'6S'], 'turn': u'9S', 'shared_cards': [u'2D', u'6S', u'6D', u'9S', u'3C'], 'player_hands': {1: u'pair AS 5S 6S 6D 9S', 2: u'pair 5H QC 6S 6D 9S', 3: u'pair JD 7C 6S 6D 9S', 4: u'pair 4S 7D 6S 6D 9S', 5: u'pair JS 5D 6S 6D 9S', 6: u'pair JH KD 6S 6D 9S', 7: u'two_pair 3D 6S 6D 9S 3C', 8: u'pair 5C QH 6S 6D 9S'}}
+
+player1: JS 2H 
+player2: 9D AS 
+player3: 3H 4H 
+player4: AC KC 
+player5: 2C JH 
+player6: KS 7H 
+player7: JD AD 
+player8: 7C 7D 
+shared cards: TD 9C QD 2S TH 
+player 1: two_pair 2H TD QD 2S TH 
+player 2: two_pair 9D AS TD 9C TH 
+player 3: pair 4H TD 9C QD TH 
+player 4: pair AC KC TD QD TH 
+player 5: two_pair 2C TD QD 2S TH 
+player 6: pair KS TD 9C QD TH 
+player 7: pair JD AD TD QD TH 
+player 8: two_pair 7C 7D TD QD TH 
+WINNER: two_pair 9D AS TD 9C TH
+
+{'river': u'TH', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 9D AS TD 9C TH']}, 'starting_hands': {1: [u'JS', u'2H'], 2: [u'9D', u'AS'], 3: [u'3H', u'4H'], 4: [u'AC', u'KC'], 5: [u'2C', u'JH'], 6: [u'KS', u'7H'], 7: [u'JD', u'AD'], 8: [u'7C', u'7D']}, 'flop': [u'TD', u'9C'], 'turn': u'2S', 'shared_cards': [u'TD', u'9C', u'QD', u'2S', u'TH'], 'player_hands': {1: u'two_pair 2H TD QD 2S TH', 2: u'two_pair 9D AS TD 9C TH', 3: u'pair 4H TD 9C QD TH', 4: u'pair AC KC TD QD TH', 5: u'two_pair 2C TD QD 2S TH', 6: u'pair KS TD 9C QD TH', 7: u'pair JD AD TD QD TH', 8: u'two_pair 7C 7D TD QD TH'}}
+
+player1: QH 9C 
+player2: QD TC 
+player3: 9S KC 
+player4: 6D 5C 
+player5: 4S QS 
+player6: 7S 6C 
+player7: 4C TD 
+player8: 3S 5H 
+shared cards: 5S 3H TH 9D JD 
+player 1: pair QH 9C TH 9D JD 
+player 2: pair QD TC TH 9D JD 
+player 3: pair 9S KC TH 9D JD 
+player 4: pair 5C 5S TH 9D JD 
+player 5: high_card QS 5S TH 9D JD 
+player 6: high_card 7S 6C TH 9D JD 
+player 7: pair TD 5S TH 9D JD 
+player 8: two_pair 3S 5H 5S 3H JD 
+WINNER: two_pair 3S 5H 5S 3H JD
+
+{'river': u'JD', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 3S 5H 5S 3H JD']}, 'starting_hands': {1: [u'QH', u'9C'], 2: [u'QD', u'TC'], 3: [u'9S', u'KC'], 4: [u'6D', u'5C'], 5: [u'4S', u'QS'], 6: [u'7S', u'6C'], 7: [u'4C', u'TD'], 8: [u'3S', u'5H']}, 'flop': [u'5S', u'3H'], 'turn': u'9D', 'shared_cards': [u'5S', u'3H', u'TH', u'9D', u'JD'], 'player_hands': {1: u'pair QH 9C TH 9D JD', 2: u'pair QD TC TH 9D JD', 3: u'pair 9S KC TH 9D JD', 4: u'pair 5C 5S TH 9D JD', 5: u'high_card QS 5S TH 9D JD', 6: u'high_card 7S 6C TH 9D JD', 7: u'pair TD 5S TH 9D JD', 8: u'two_pair 3S 5H 5S 3H JD'}}
+
+player1: 8S 8C 
+player2: AS KD 
+player3: AH 3C 
+player4: 3H 2S 
+player5: 9D KC 
+player6: QS 7D 
+player7: 6H 7C 
+player8: 9H 3S 
+shared cards: 4S 2C KH 7S TC 
+player 1: pair 8S 8C KH 7S TC 
+player 2: pair AS KD KH 7S TC 
+player 3: high_card AH 4S KH 7S TC 
+player 4: pair 2S 2C KH 7S TC 
+player 5: pair 9D KC KH 7S TC 
+player 6: pair QS 7D KH 7S TC 
+player 7: pair 6H 7C KH 7S TC 
+player 8: high_card 9H 4S KH 7S TC 
+WINNER: pair AS KD KH 7S TC
+
+{'river': u'TC', 'winner': {'status': 'WINNER', 'hand': [u'pair AS KD KH 7S TC']}, 'starting_hands': {1: [u'8S', u'8C'], 2: [u'AS', u'KD'], 3: [u'AH', u'3C'], 4: [u'3H', u'2S'], 5: [u'9D', u'KC'], 6: [u'QS', u'7D'], 7: [u'6H', u'7C'], 8: [u'9H', u'3S']}, 'flop': [u'4S', u'2C'], 'turn': u'7S', 'shared_cards': [u'4S', u'2C', u'KH', u'7S', u'TC'], 'player_hands': {1: u'pair 8S 8C KH 7S TC', 2: u'pair AS KD KH 7S TC', 3: u'high_card AH 4S KH 7S TC', 4: u'pair 2S 2C KH 7S TC', 5: u'pair 9D KC KH 7S TC', 6: u'pair QS 7D KH 7S TC', 7: u'pair 6H 7C KH 7S TC', 8: u'high_card 9H 4S KH 7S TC'}}
+
+player1: 8C 4D 
+player2: TS TD 
+player3: 6H 3D 
+player4: 2C 7S 
+player5: KS QD 
+player6: JD 4C 
+player7: 8S 4H 
+player8: KC AH 
+shared cards: 9D 7C JH 5C TH 
+player 1: high_card 8C 9D 7C JH TH 
+player 2: three_of_a_kind TS TD 9D JH TH 
+player 3: high_card 6H 9D 7C JH TH 
+player 4: pair 7S 9D 7C JH TH 
+player 5: high_card KS QD 9D JH TH 
+player 6: pair JD 9D 7C JH TH 
+player 7: high_card 8S 9D 7C JH TH 
+player 8: high_card KC AH 9D JH TH 
+WINNER: three_of_a_kind TS TD 9D JH TH
+
+{'river': u'TH', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind TS TD 9D JH TH']}, 'starting_hands': {1: [u'8C', u'4D'], 2: [u'TS', u'TD'], 3: [u'6H', u'3D'], 4: [u'2C', u'7S'], 5: [u'KS', u'QD'], 6: [u'JD', u'4C'], 7: [u'8S', u'4H'], 8: [u'KC', u'AH']}, 'flop': [u'9D', u'7C'], 'turn': u'5C', 'shared_cards': [u'9D', u'7C', u'JH', u'5C', u'TH'], 'player_hands': {1: u'high_card 8C 9D 7C JH TH', 2: u'three_of_a_kind TS TD 9D JH TH', 3: u'high_card 6H 9D 7C JH TH', 4: u'pair 7S 9D 7C JH TH', 5: u'high_card KS QD 9D JH TH', 6: u'pair JD 9D 7C JH TH', 7: u'high_card 8S 9D 7C JH TH', 8: u'high_card KC AH 9D JH TH'}}
+
+player1: AS TD 
+player2: JC 7S 
+player3: KC 6S 
+player4: 6C 9C 
+player5: TH TC 
+player6: JS 2D 
+player7: 3D 4H 
+player8: 3H 4D 
+shared cards: 6D 9D 7H 9S 8S 
+player 1: straight TD 6D 9D 7H 8S 
+player 2: two_pair JC 7S 9D 7H 9S 
+player 3: two_pair KC 6S 6D 9D 9S 
+player 4: full_house 6C 9C 6D 9D 9S 
+player 5: straight TH 6D 9D 7H 8S 
+player 6: pair JS 9D 7H 9S 8S 
+player 7: pair 6D 9D 7H 9S 8S 
+player 8: pair 6D 9D 7H 9S 8S 
+WINNER: full_house 6C 9C 6D 9D 9S
+
+{'river': u'8S', 'winner': {'status': 'WINNER', 'hand': [u'full_house 6C 9C 6D 9D 9S']}, 'starting_hands': {1: [u'AS', u'TD'], 2: [u'JC', u'7S'], 3: [u'KC', u'6S'], 4: [u'6C', u'9C'], 5: [u'TH', u'TC'], 6: [u'JS', u'2D'], 7: [u'3D', u'4H'], 8: [u'3H', u'4D']}, 'flop': [u'6D', u'9D'], 'turn': u'9S', 'shared_cards': [u'6D', u'9D', u'7H', u'9S', u'8S'], 'player_hands': {1: u'straight TD 6D 9D 7H 8S', 2: u'two_pair JC 7S 9D 7H 9S', 3: u'two_pair KC 6S 6D 9D 9S', 4: u'full_house 6C 9C 6D 9D 9S', 5: u'straight TH 6D 9D 7H 8S', 6: u'pair JS 9D 7H 9S 8S', 7: u'pair 6D 9D 7H 9S 8S', 8: u'pair 6D 9D 7H 9S 8S'}}
+
+player1: 7D 9S 
+player2: 5S 3S 
+player3: KD QH 
+player4: QD 8D 
+player5: JH 7S 
+player6: 7H 9H 
+player7: 4S 5C 
+player8: KS 4C 
+shared cards: AH QS 3C 6D TD 
+player 1: high_card 7D 9S AH QS TD 
+player 2: pair 3S AH QS 3C TD 
+player 3: pair KD QH AH QS TD 
+player 4: pair QD 8D AH QS TD 
+player 5: high_card JH 7S AH QS TD 
+player 6: high_card 7H 9H AH QS TD 
+player 7: high_card 5C AH QS 6D TD 
+player 8: high_card KS AH QS 6D TD 
+WINNER: pair KD QH AH QS TD
+
+{'river': u'TD', 'winner': {'status': 'WINNER', 'hand': [u'pair KD QH AH QS TD']}, 'starting_hands': {1: [u'7D', u'9S'], 2: [u'5S', u'3S'], 3: [u'KD', u'QH'], 4: [u'QD', u'8D'], 5: [u'JH', u'7S'], 6: [u'7H', u'9H'], 7: [u'4S', u'5C'], 8: [u'KS', u'4C']}, 'flop': [u'AH', u'QS'], 'turn': u'6D', 'shared_cards': [u'AH', u'QS', u'3C', u'6D', u'TD'], 'player_hands': {1: u'high_card 7D 9S AH QS TD', 2: u'pair 3S AH QS 3C TD', 3: u'pair KD QH AH QS TD', 4: u'pair QD 8D AH QS TD', 5: u'high_card JH 7S AH QS TD', 6: u'high_card 7H 9H AH QS TD', 7: u'high_card 5C AH QS 6D TD', 8: u'high_card KS AH QS 6D TD'}}
+
+player1: 9H JS 
+player2: 4S KS 
+player3: QC 6H 
+player4: 8S 3D 
+player5: TC 8D 
+player6: 2C QS 
+player7: TH JC 
+player8: 7C 4H 
+shared cards: 7S AH JH 2H 5C 
+player 1: pair 9H JS 7S AH JH 
+player 2: high_card KS 7S AH JH 5C 
+player 3: high_card QC 6H 7S AH JH 
+player 4: high_card 8S 7S AH JH 5C 
+player 5: high_card TC 8D 7S AH JH 
+player 6: pair 2C QS AH JH 2H 
+player 7: pair TH JC 7S AH JH 
+player 8: pair 7C 7S AH JH 5C 
+WINNER: pair TH JC 7S AH JH
+
+{'river': u'5C', 'winner': {'status': 'WINNER', 'hand': [u'pair TH JC 7S AH JH']}, 'starting_hands': {1: [u'9H', u'JS'], 2: [u'4S', u'KS'], 3: [u'QC', u'6H'], 4: [u'8S', u'3D'], 5: [u'TC', u'8D'], 6: [u'2C', u'QS'], 7: [u'TH', u'JC'], 8: [u'7C', u'4H']}, 'flop': [u'7S', u'AH'], 'turn': u'2H', 'shared_cards': [u'7S', u'AH', u'JH', u'2H', u'5C'], 'player_hands': {1: u'pair 9H JS 7S AH JH', 2: u'high_card KS 7S AH JH 5C', 3: u'high_card QC 6H 7S AH JH', 4: u'high_card 8S 7S AH JH 5C', 5: u'high_card TC 8D 7S AH JH', 6: u'pair 2C QS AH JH 2H', 7: u'pair TH JC 7S AH JH', 8: u'pair 7C 7S AH JH 5C'}}
+
+player1: QD KS 
+player2: 8H 5C 
+player3: 5S JH 
+player4: 4D 2S 
+player5: 7S KD 
+player6: 4H 3C 
+player7: JD 9S 
+player8: JC 4C 
+shared cards: 4S TS 7D 9C 5H 
+player 1: high_card QD KS TS 7D 9C 
+player 2: pair 8H 5C TS 9C 5H 
+player 3: pair 5S JH TS 9C 5H 
+player 4: pair 4D 4S TS 7D 9C 
+player 5: pair 7S KD TS 7D 9C 
+player 6: pair 4H 4S TS 7D 9C 
+player 7: pair JD 9S TS 7D 9C 
+player 8: pair JC 4C 4S TS 9C 
+WINNER: pair JD 9S TS 7D 9C
+
+{'river': u'5H', 'winner': {'status': 'WINNER', 'hand': [u'pair JD 9S TS 7D 9C']}, 'starting_hands': {1: [u'QD', u'KS'], 2: [u'8H', u'5C'], 3: [u'5S', u'JH'], 4: [u'4D', u'2S'], 5: [u'7S', u'KD'], 6: [u'4H', u'3C'], 7: [u'JD', u'9S'], 8: [u'JC', u'4C']}, 'flop': [u'4S', u'TS'], 'turn': u'9C', 'shared_cards': [u'4S', u'TS', u'7D', u'9C', u'5H'], 'player_hands': {1: u'high_card QD KS TS 7D 9C', 2: u'pair 8H 5C TS 9C 5H', 3: u'pair 5S JH TS 9C 5H', 4: u'pair 4D 4S TS 7D 9C', 5: u'pair 7S KD TS 7D 9C', 6: u'pair 4H 4S TS 7D 9C', 7: u'pair JD 9S TS 7D 9C', 8: u'pair JC 4C 4S TS 9C'}}
+
+player1: 3S 8H 
+player2: 7C 3C 
+player3: TH TC 
+player4: QS TS 
+player5: 2S 9H 
+player6: KS AH 
+player7: 5D 4C 
+player8: QC 8C 
+shared cards: 4S 2H 7S AC 2D 
+player 1: pair 8H 2H 7S AC 2D 
+player 2: two_pair 7C 2H 7S AC 2D 
+player 3: two_pair TH TC 2H AC 2D 
+player 4: pair QS TS 2H AC 2D 
+player 5: three_of_a_kind 2S 9H 2H AC 2D 
+player 6: two_pair KS AH 2H AC 2D 
+player 7: two_pair 4C 4S 2H AC 2D 
+player 8: pair QC 8C 2H AC 2D 
+WINNER: three_of_a_kind 2S 9H 2H AC 2D
+
+{'river': u'2D', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind 2S 9H 2H AC 2D']}, 'starting_hands': {1: [u'3S', u'8H'], 2: [u'7C', u'3C'], 3: [u'TH', u'TC'], 4: [u'QS', u'TS'], 5: [u'2S', u'9H'], 6: [u'KS', u'AH'], 7: [u'5D', u'4C'], 8: [u'QC', u'8C']}, 'flop': [u'4S', u'2H'], 'turn': u'AC', 'shared_cards': [u'4S', u'2H', u'7S', u'AC', u'2D'], 'player_hands': {1: u'pair 8H 2H 7S AC 2D', 2: u'two_pair 7C 2H 7S AC 2D', 3: u'two_pair TH TC 2H AC 2D', 4: u'pair QS TS 2H AC 2D', 5: u'three_of_a_kind 2S 9H 2H AC 2D', 6: u'two_pair KS AH 2H AC 2D', 7: u'two_pair 4C 4S 2H AC 2D', 8: u'pair QC 8C 2H AC 2D'}}
+
+player1: AS TC 
+player2: KS 3S 
+player3: 6H JD 
+player4: 2D 7H 
+player5: 4S 8C 
+player6: 5D 9S 
+player7: 2C KH 
+player8: TS QS 
+shared cards: QC QD TD 6C 4C 
+player 1: two_pair AS TC QC QD TD 
+player 2: pair KS QC QD TD 6C 
+player 3: two_pair 6H JD QC QD 6C 
+player 4: pair 7H QC QD TD 6C 
+player 5: two_pair 4S QC QD TD 4C 
+player 6: pair 9S QC QD TD 6C 
+player 7: pair KH QC QD TD 6C 
+player 8: full_house TS QS QC QD TD 
+WINNER: full_house TS QS QC QD TD
+
+{'river': u'4C', 'winner': {'status': 'WINNER', 'hand': [u'full_house TS QS QC QD TD']}, 'starting_hands': {1: [u'AS', u'TC'], 2: [u'KS', u'3S'], 3: [u'6H', u'JD'], 4: [u'2D', u'7H'], 5: [u'4S', u'8C'], 6: [u'5D', u'9S'], 7: [u'2C', u'KH'], 8: [u'TS', u'QS']}, 'flop': [u'QC', u'QD'], 'turn': u'6C', 'shared_cards': [u'QC', u'QD', u'TD', u'6C', u'4C'], 'player_hands': {1: u'two_pair AS TC QC QD TD', 2: u'pair KS QC QD TD 6C', 3: u'two_pair 6H JD QC QD 6C', 4: u'pair 7H QC QD TD 6C', 5: u'two_pair 4S QC QD TD 4C', 6: u'pair 9S QC QD TD 6C', 7: u'pair KH QC QD TD 6C', 8: u'full_house TS QS QC QD TD'}}
+
+player1: 2C KH 
+player2: 9C 7H 
+player3: JD 7C 
+player4: KC TS 
+player5: JC TD 
+player6: AH 3H 
+player7: 6D 3D 
+player8: 2D 7D 
+shared cards: 4H QH 6C TC 5C 
+player 1: high_card KH QH 6C TC 5C 
+player 2: high_card 9C 7H QH 6C TC 
+player 3: high_card JD 7C QH 6C TC 
+player 4: pair KC TS QH 6C TC 
+player 5: pair JC TD QH 6C TC 
+player 6: high_card AH QH 6C TC 5C 
+player 7: pair 6D QH 6C TC 5C 
+player 8: high_card 7D QH 6C TC 5C 
+WINNER: pair KC TS QH 6C TC
+
+{'river': u'5C', 'winner': {'status': 'WINNER', 'hand': [u'pair KC TS QH 6C TC']}, 'starting_hands': {1: [u'2C', u'KH'], 2: [u'9C', u'7H'], 3: [u'JD', u'7C'], 4: [u'KC', u'TS'], 5: [u'JC', u'TD'], 6: [u'AH', u'3H'], 7: [u'6D', u'3D'], 8: [u'2D', u'7D']}, 'flop': [u'4H', u'QH'], 'turn': u'TC', 'shared_cards': [u'4H', u'QH', u'6C', u'TC', u'5C'], 'player_hands': {1: u'high_card KH QH 6C TC 5C', 2: u'high_card 9C 7H QH 6C TC', 3: u'high_card JD 7C QH 6C TC', 4: u'pair KC TS QH 6C TC', 5: u'pair JC TD QH 6C TC', 6: u'high_card AH QH 6C TC 5C', 7: u'pair 6D QH 6C TC 5C', 8: u'high_card 7D QH 6C TC 5C'}}
+
+player1: 2S QD 
+player2: 9C 5D 
+player3: 7D 4H 
+player4: KC 2D 
+player5: JS 7S 
+player6: 4C KH 
+player7: 4S 9D 
+player8: 7C 9H 
+shared cards: AC 3C AS 2H AD 
+player 1: full_house 2S AC AS 2H AD 
+player 2: three_of_a_kind 9C 5D AC AS AD 
+player 3: three_of_a_kind 7D 4H AC AS AD 
+player 4: full_house 2D AC AS 2H AD 
+player 5: three_of_a_kind JS 7S AC AS AD 
+player 6: three_of_a_kind 4C KH AC AS AD 
+player 7: three_of_a_kind 4S 9D AC AS AD 
+player 8: three_of_a_kind 7C 9H AC AS AD 
+SPLIT POT: full_house 2S AC AS 2H AD full_house 2D AC AS 2H AD 
+
+{'river': u'AD', 'winner': {'status': 'SPLIT POT', 'hand': [u'full_house 2S AC AS 2H AD', u'full_house 2D AC AS 2H AD']}, 'starting_hands': {1: [u'2S', u'QD'], 2: [u'9C', u'5D'], 3: [u'7D', u'4H'], 4: [u'KC', u'2D'], 5: [u'JS', u'7S'], 6: [u'4C', u'KH'], 7: [u'4S', u'9D'], 8: [u'7C', u'9H']}, 'flop': [u'AC', u'3C'], 'turn': u'2H', 'shared_cards': [u'AC', u'3C', u'AS', u'2H', u'AD'], 'player_hands': {1: u'full_house 2S AC AS 2H AD', 2: u'three_of_a_kind 9C 5D AC AS AD', 3: u'three_of_a_kind 7D 4H AC AS AD', 4: u'full_house 2D AC AS 2H AD', 5: u'three_of_a_kind JS 7S AC AS AD', 6: u'three_of_a_kind 4C KH AC AS AD', 7: u'three_of_a_kind 4S 9D AC AS AD', 8: u'three_of_a_kind 7C 9H AC AS AD'}}
+
+player1: 7H 5C 
+player2: TH 4C 
+player3: 9S AD 
+player4: KC 8D 
+player5: 4S 5H 
+player6: QC 4H 
+player7: TS 9D 
+player8: 2D QS 
+shared cards: 6D 7D 9C JS 6H 
+player 1: two_pair 7H 6D 7D JS 6H 
+player 2: pair TH 6D 9C JS 6H 
+player 3: two_pair 9S AD 6D 9C 6H 
+player 4: pair KC 6D 9C JS 6H 
+player 5: pair 6D 7D 9C JS 6H 
+player 6: pair QC 6D 9C JS 6H 
+player 7: two_pair 9D 6D 9C JS 6H 
+player 8: pair QS 6D 9C JS 6H 
+WINNER: two_pair 9S AD 6D 9C 6H
+
+{'river': u'6H', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 9S AD 6D 9C 6H']}, 'starting_hands': {1: [u'7H', u'5C'], 2: [u'TH', u'4C'], 3: [u'9S', u'AD'], 4: [u'KC', u'8D'], 5: [u'4S', u'5H'], 6: [u'QC', u'4H'], 7: [u'TS', u'9D'], 8: [u'2D', u'QS']}, 'flop': [u'6D', u'7D'], 'turn': u'JS', 'shared_cards': [u'6D', u'7D', u'9C', u'JS', u'6H'], 'player_hands': {1: u'two_pair 7H 6D 7D JS 6H', 2: u'pair TH 6D 9C JS 6H', 3: u'two_pair 9S AD 6D 9C 6H', 4: u'pair KC 6D 9C JS 6H', 5: u'pair 6D 7D 9C JS 6H', 6: u'pair QC 6D 9C JS 6H', 7: u'two_pair 9D 6D 9C JS 6H', 8: u'pair QS 6D 9C JS 6H'}}
+
+player1: 3C KS 
+player2: 2H QH 
+player3: JC 9C 
+player4: 5D JH 
+player5: KH QC 
+player6: 6S AC 
+player7: 8H 4S 
+player8: 8S KD 
+shared cards: 7D 5H 5S 6H 2D 
+player 1: pair KS 7D 5H 5S 6H 
+player 2: two_pair 2H QH 5H 5S 2D 
+player 3: pair JC 9C 7D 5H 5S 
+player 4: three_of_a_kind 5D JH 7D 5H 5S 
+player 5: pair KH QC 7D 5H 5S 
+player 6: two_pair 6S AC 5H 5S 6H 
+player 7: straight 8H 4S 7D 5H 6H 
+player 8: pair 8S KD 7D 5H 5S 
+WINNER: straight 8H 4S 7D 5H 6H
+
+{'river': u'2D', 'winner': {'status': 'WINNER', 'hand': [u'straight 8H 4S 7D 5H 6H']}, 'starting_hands': {1: [u'3C', u'KS'], 2: [u'2H', u'QH'], 3: [u'JC', u'9C'], 4: [u'5D', u'JH'], 5: [u'KH', u'QC'], 6: [u'6S', u'AC'], 7: [u'8H', u'4S'], 8: [u'8S', u'KD']}, 'flop': [u'7D', u'5H'], 'turn': u'6H', 'shared_cards': [u'7D', u'5H', u'5S', u'6H', u'2D'], 'player_hands': {1: u'pair KS 7D 5H 5S 6H', 2: u'two_pair 2H QH 5H 5S 2D', 3: u'pair JC 9C 7D 5H 5S', 4: u'three_of_a_kind 5D JH 7D 5H 5S', 5: u'pair KH QC 7D 5H 5S', 6: u'two_pair 6S AC 5H 5S 6H', 7: u'straight 8H 4S 7D 5H 6H', 8: u'pair 8S KD 7D 5H 5S'}}
+
+player1: 5S 4H 
+player2: 5D 9H 
+player3: TH 2C 
+player4: 7C AC 
+player5: QD 8C 
+player6: 9S 9D 
+player7: QS 2D 
+player8: KC AH 
+shared cards: AD 7H JD 8H 9C 
+player 1: high_card AD 7H JD 8H 9C 
+player 2: pair 9H AD JD 8H 9C 
+player 3: high_card TH AD JD 8H 9C 
+player 4: two_pair 7C AC AD 7H JD 
+player 5: pair QD 8C AD JD 8H 
+player 6: three_of_a_kind 9S 9D AD JD 9C 
+player 7: high_card QS AD JD 8H 9C 
+player 8: pair KC AH AD JD 9C 
+WINNER: three_of_a_kind 9S 9D AD JD 9C
+
+{'river': u'9C', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind 9S 9D AD JD 9C']}, 'starting_hands': {1: [u'5S', u'4H'], 2: [u'5D', u'9H'], 3: [u'TH', u'2C'], 4: [u'7C', u'AC'], 5: [u'QD', u'8C'], 6: [u'9S', u'9D'], 7: [u'QS', u'2D'], 8: [u'KC', u'AH']}, 'flop': [u'AD', u'7H'], 'turn': u'8H', 'shared_cards': [u'AD', u'7H', u'JD', u'8H', u'9C'], 'player_hands': {1: u'high_card AD 7H JD 8H 9C', 2: u'pair 9H AD JD 8H 9C', 3: u'high_card TH AD JD 8H 9C', 4: u'two_pair 7C AC AD 7H JD', 5: u'pair QD 8C AD JD 8H', 6: u'three_of_a_kind 9S 9D AD JD 9C', 7: u'high_card QS AD JD 8H 9C', 8: u'pair KC AH AD JD 9C'}}
+
+player1: KD 4C 
+player2: 2H TH 
+player3: JH 8H 
+player4: QC QS 
+player5: 6C 5S 
+player6: 8D AS 
+player7: 9S 9H 
+player8: AD JS 
+shared cards: 9D AH 9C 2S 5H 
+player 1: pair KD 9D AH 9C 5H 
+player 2: two_pair 2H 9D AH 9C 2S 
+player 3: pair JH 8H 9D AH 9C 
+player 4: two_pair QC QS 9D AH 9C 
+player 5: two_pair 5S 9D AH 9C 5H 
+player 6: two_pair 8D AS 9D AH 9C 
+player 7: quads 9S 9H 9D AH 9C 
+player 8: two_pair AD JS 9D AH 9C 
+WINNER: quads 9S 9H 9D AH 9C
+
+{'river': u'5H', 'winner': {'status': 'WINNER', 'hand': [u'quads 9S 9H 9D AH 9C']}, 'starting_hands': {1: [u'KD', u'4C'], 2: [u'2H', u'TH'], 3: [u'JH', u'8H'], 4: [u'QC', u'QS'], 5: [u'6C', u'5S'], 6: [u'8D', u'AS'], 7: [u'9S', u'9H'], 8: [u'AD', u'JS']}, 'flop': [u'9D', u'AH'], 'turn': u'2S', 'shared_cards': [u'9D', u'AH', u'9C', u'2S', u'5H'], 'player_hands': {1: u'pair KD 9D AH 9C 5H', 2: u'two_pair 2H 9D AH 9C 2S', 3: u'pair JH 8H 9D AH 9C', 4: u'two_pair QC QS 9D AH 9C', 5: u'two_pair 5S 9D AH 9C 5H', 6: u'two_pair 8D AS 9D AH 9C', 7: u'quads 9S 9H 9D AH 9C', 8: u'two_pair AD JS 9D AH 9C'}}
+
+player1: AC TD 
+player2: 7H 6C 
+player3: 5C 3S 
+player4: 7C KC 
+player5: 8S TH 
+player6: 8H 3H 
+player7: QD 6H 
+player8: JD KD 
+shared cards: 5S 5D 6D 9D 8C 
+player 1: pair AC TD 5S 5D 9D 
+player 2: straight 7H 6C 5S 9D 8C 
+player 3: three_of_a_kind 5C 5S 5D 9D 8C 
+player 4: straight 7C 5S 6D 9D 8C 
+player 5: two_pair 8S TH 5S 5D 8C 
+player 6: two_pair 8H 5S 5D 9D 8C 
+player 7: two_pair QD 6H 5S 5D 6D 
+player 8: flush JD KD 5D 6D 9D 
+WINNER: flush JD KD 5D 6D 9D
+
+{'river': u'8C', 'winner': {'status': 'WINNER', 'hand': [u'flush JD KD 5D 6D 9D']}, 'starting_hands': {1: [u'AC', u'TD'], 2: [u'7H', u'6C'], 3: [u'5C', u'3S'], 4: [u'7C', u'KC'], 5: [u'8S', u'TH'], 6: [u'8H', u'3H'], 7: [u'QD', u'6H'], 8: [u'JD', u'KD']}, 'flop': [u'5S', u'5D'], 'turn': u'9D', 'shared_cards': [u'5S', u'5D', u'6D', u'9D', u'8C'], 'player_hands': {1: u'pair AC TD 5S 5D 9D', 2: u'straight 7H 6C 5S 9D 8C', 3: u'three_of_a_kind 5C 5S 5D 9D 8C', 4: u'straight 7C 5S 6D 9D 8C', 5: u'two_pair 8S TH 5S 5D 8C', 6: u'two_pair 8H 5S 5D 9D 8C', 7: u'two_pair QD 6H 5S 5D 6D', 8: u'flush JD KD 5D 6D 9D'}}
+
+player1: 4D 2D 
+player2: 5H 6D 
+player3: KS AD 
+player4: 4C 8D 
+player5: 8S 3D 
+player6: KD JS 
+player7: 5S 2C 
+player8: AC 7H 
+shared cards: 7C 6H JD 5C 7S 
+player 1: pair 7C 6H JD 5C 7S 
+player 2: two_pair 6D 7C 6H JD 7S 
+player 3: pair KS AD 7C JD 7S 
+player 4: straight 4C 8D 7C 6H 5C 
+player 5: pair 8S 7C 6H JD 7S 
+player 6: two_pair KD JS 7C JD 7S 
+player 7: two_pair 5S 7C JD 5C 7S 
+player 8: three_of_a_kind AC 7H 7C JD 7S 
+WINNER: straight 4C 8D 7C 6H 5C
+
+{'river': u'7S', 'winner': {'status': 'WINNER', 'hand': [u'straight 4C 8D 7C 6H 5C']}, 'starting_hands': {1: [u'4D', u'2D'], 2: [u'5H', u'6D'], 3: [u'KS', u'AD'], 4: [u'4C', u'8D'], 5: [u'8S', u'3D'], 6: [u'KD', u'JS'], 7: [u'5S', u'2C'], 8: [u'AC', u'7H']}, 'flop': [u'7C', u'6H'], 'turn': u'5C', 'shared_cards': [u'7C', u'6H', u'JD', u'5C', u'7S'], 'player_hands': {1: u'pair 7C 6H JD 5C 7S', 2: u'two_pair 6D 7C 6H JD 7S', 3: u'pair KS AD 7C JD 7S', 4: u'straight 4C 8D 7C 6H 5C', 5: u'pair 8S 7C 6H JD 7S', 6: u'two_pair KD JS 7C JD 7S', 7: u'two_pair 5S 7C JD 5C 7S', 8: u'three_of_a_kind AC 7H 7C JD 7S'}}
+
+player1: KD JS 
+player2: 9D QH 
+player3: 8H 3H 
+player4: 2C 7D 
+player5: 4C 3C 
+player6: 4D 6C 
+player7: 3D JH 
+player8: JC 9H 
+shared cards: 4S AS QC 8S 5H 
+player 1: high_card KD JS AS QC 8S 
+player 2: pair 9D QH AS QC 8S 
+player 3: pair 8H AS QC 8S 5H 
+player 4: high_card 7D AS QC 8S 5H 
+player 5: pair 4C 4S AS QC 8S 
+player 6: pair 4D 4S AS QC 8S 
+player 7: high_card JH AS QC 8S 5H 
+player 8: high_card JC 9H AS QC 8S 
+WINNER: pair 9D QH AS QC 8S
+
+{'river': u'5H', 'winner': {'status': 'WINNER', 'hand': [u'pair 9D QH AS QC 8S']}, 'starting_hands': {1: [u'KD', u'JS'], 2: [u'9D', u'QH'], 3: [u'8H', u'3H'], 4: [u'2C', u'7D'], 5: [u'4C', u'3C'], 6: [u'4D', u'6C'], 7: [u'3D', u'JH'], 8: [u'JC', u'9H']}, 'flop': [u'4S', u'AS'], 'turn': u'8S', 'shared_cards': [u'4S', u'AS', u'QC', u'8S', u'5H'], 'player_hands': {1: u'high_card KD JS AS QC 8S', 2: u'pair 9D QH AS QC 8S', 3: u'pair 8H AS QC 8S 5H', 4: u'high_card 7D AS QC 8S 5H', 5: u'pair 4C 4S AS QC 8S', 6: u'pair 4D 4S AS QC 8S', 7: u'high_card JH AS QC 8S 5H', 8: u'high_card JC 9H AS QC 8S'}}
+
+player1: KS TS 
+player2: 5C AC 
+player3: 4S 3C 
+player4: 5S 5H 
+player5: 7S AD 
+player6: QS QD 
+player7: 4C 9D 
+player8: 3S KH 
+shared cards: AH 6D TD 4H KD 
+player 1: two_pair KS TS AH TD KD 
+player 2: pair AC AH 6D TD KD 
+player 3: pair 4S AH TD 4H KD 
+player 4: pair 5S 5H AH TD KD 
+player 5: pair 7S AD AH TD KD 
+player 6: pair QS QD AH TD KD 
+player 7: pair 4C AH TD 4H KD 
+player 8: pair KH AH 6D TD KD 
+WINNER: two_pair KS TS AH TD KD
+
+{'river': u'KD', 'winner': {'status': 'WINNER', 'hand': [u'two_pair KS TS AH TD KD']}, 'starting_hands': {1: [u'KS', u'TS'], 2: [u'5C', u'AC'], 3: [u'4S', u'3C'], 4: [u'5S', u'5H'], 5: [u'7S', u'AD'], 6: [u'QS', u'QD'], 7: [u'4C', u'9D'], 8: [u'3S', u'KH']}, 'flop': [u'AH', u'6D'], 'turn': u'4H', 'shared_cards': [u'AH', u'6D', u'TD', u'4H', u'KD'], 'player_hands': {1: u'two_pair KS TS AH TD KD', 2: u'pair AC AH 6D TD KD', 3: u'pair 4S AH TD 4H KD', 4: u'pair 5S 5H AH TD KD', 5: u'pair 7S AD AH TD KD', 6: u'pair QS QD AH TD KD', 7: u'pair 4C AH TD 4H KD', 8: u'pair KH AH 6D TD KD'}}
+
+player1: 3C 6H 
+player2: 8D 4C 
+player3: JC 2H 
+player4: 3S KS 
+player5: KC KH 
+player6: QD AC 
+player7: TH 5C 
+player8: 4D 8S 
+shared cards: KD 9D 4S AS 9S 
+player 1: pair 6H KD 9D AS 9S 
+player 2: two_pair 4C 9D 4S AS 9S 
+player 3: pair JC KD 9D AS 9S 
+player 4: flush 3S KS 4S AS 9S 
+player 5: full_house KC KH KD 9D 9S 
+player 6: two_pair AC KD 9D AS 9S 
+player 7: pair TH KD 9D AS 9S 
+player 8: two_pair 4D 9D 4S AS 9S 
+WINNER: full_house KC KH KD 9D 9S
+
+{'river': u'9S', 'winner': {'status': 'WINNER', 'hand': [u'full_house KC KH KD 9D 9S']}, 'starting_hands': {1: [u'3C', u'6H'], 2: [u'8D', u'4C'], 3: [u'JC', u'2H'], 4: [u'3S', u'KS'], 5: [u'KC', u'KH'], 6: [u'QD', u'AC'], 7: [u'TH', u'5C'], 8: [u'4D', u'8S']}, 'flop': [u'KD', u'9D'], 'turn': u'AS', 'shared_cards': [u'KD', u'9D', u'4S', u'AS', u'9S'], 'player_hands': {1: u'pair 6H KD 9D AS 9S', 2: u'two_pair 4C 9D 4S AS 9S', 3: u'pair JC KD 9D AS 9S', 4: u'flush 3S KS 4S AS 9S', 5: u'full_house KC KH KD 9D 9S', 6: u'two_pair AC KD 9D AS 9S', 7: u'pair TH KD 9D AS 9S', 8: u'two_pair 4D 9D 4S AS 9S'}}
+
+player1: 7S 2C 
+player2: 3H 8C 
+player3: TC 3D 
+player4: 9H 4C 
+player5: 5S AS 
+player6: 5D KS 
+player7: 9S JD 
+player8: KC 3C 
+shared cards: JH 9C 4H 7C TH 
+player 1: pair 7S JH 9C 7C TH 
+player 2: high_card 8C JH 9C 7C TH 
+player 3: pair TC JH 9C 7C TH 
+player 4: two_pair 9H 4C JH 9C 4H 
+player 5: high_card AS JH 9C 7C TH 
+player 6: high_card KS JH 9C 7C TH 
+player 7: two_pair 9S JD JH 9C TH 
+player 8: high_card KC JH 9C 7C TH 
+WINNER: two_pair 9S JD JH 9C TH
+
+{'river': u'TH', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 9S JD JH 9C TH']}, 'starting_hands': {1: [u'7S', u'2C'], 2: [u'3H', u'8C'], 3: [u'TC', u'3D'], 4: [u'9H', u'4C'], 5: [u'5S', u'AS'], 6: [u'5D', u'KS'], 7: [u'9S', u'JD'], 8: [u'KC', u'3C']}, 'flop': [u'JH', u'9C'], 'turn': u'7C', 'shared_cards': [u'JH', u'9C', u'4H', u'7C', u'TH'], 'player_hands': {1: u'pair 7S JH 9C 7C TH', 2: u'high_card 8C JH 9C 7C TH', 3: u'pair TC JH 9C 7C TH', 4: u'two_pair 9H 4C JH 9C 4H', 5: u'high_card AS JH 9C 7C TH', 6: u'high_card KS JH 9C 7C TH', 7: u'two_pair 9S JD JH 9C TH', 8: u'high_card KC JH 9C 7C TH'}}
+
+player1: AD 5D 
+player2: 4C 8D 
+player3: 5S 9H 
+player4: KC 4D 
+player5: QS 6D 
+player6: 8S JD 
+player7: 4H JS 
+player8: 6C 8C 
+shared cards: 2C JC TS KS 7S 
+player 1: high_card AD JC TS KS 7S 
+player 2: high_card 8D JC TS KS 7S 
+player 3: high_card 9H JC TS KS 7S 
+player 4: pair KC JC TS KS 7S 
+player 5: high_card QS JC TS KS 7S 
+player 6: pair 8S JD JC TS KS 
+player 7: pair JS JC TS KS 7S 
+player 8: high_card 8C JC TS KS 7S 
+WINNER: pair KC JC TS KS 7S
+
+{'river': u'7S', 'winner': {'status': 'WINNER', 'hand': [u'pair KC JC TS KS 7S']}, 'starting_hands': {1: [u'AD', u'5D'], 2: [u'4C', u'8D'], 3: [u'5S', u'9H'], 4: [u'KC', u'4D'], 5: [u'QS', u'6D'], 6: [u'8S', u'JD'], 7: [u'4H', u'JS'], 8: [u'6C', u'8C']}, 'flop': [u'2C', u'JC'], 'turn': u'KS', 'shared_cards': [u'2C', u'JC', u'TS', u'KS', u'7S'], 'player_hands': {1: u'high_card AD JC TS KS 7S', 2: u'high_card 8D JC TS KS 7S', 3: u'high_card 9H JC TS KS 7S', 4: u'pair KC JC TS KS 7S', 5: u'high_card QS JC TS KS 7S', 6: u'pair 8S JD JC TS KS', 7: u'pair JS JC TS KS 7S', 8: u'high_card 8C JC TS KS 7S'}}
+
+player1: QC KC 
+player2: 2S JD 
+player3: 4H 9D 
+player4: 2D 7S 
+player5: 4D AD 
+player6: AC JC 
+player7: 3S 7C 
+player8: QH 7D 
+shared cards: 5S 5D 3D 5C 3H 
+player 1: full_house 5S 5D 3D 5C 3H 
+player 2: full_house 5S 5D 3D 5C 3H 
+player 3: full_house 5S 5D 3D 5C 3H 
+player 4: full_house 5S 5D 3D 5C 3H 
+player 5: full_house 5S 5D 3D 5C 3H 
+player 6: full_house 5S 5D 3D 5C 3H 
+player 7: full_house 3S 5S 5D 3D 5C 
+player 8: full_house 5S 5D 3D 5C 3H 
+SPLIT POT: full_house 5S 5D 3D 5C 3H full_house 5S 5D 3D 5C 3H full_house 5S 5D 3D 5C 3H full_house 5S 5D 3D 5C 3H full_house 5S 5D 3D 5C 3H full_house 5S 5D 3D 5C 3H full_house 3S 5S 5D 3D 5C full_house 5S 5D 3D 5C 3H 
+
+{'river': u'3H', 'winner': {'status': 'SPLIT POT', 'hand': [u'full_house 5S 5D 3D 5C 3H', u'full_house 5S 5D 3D 5C 3H', u'full_house 5S 5D 3D 5C 3H', u'full_house 5S 5D 3D 5C 3H', u'full_house 5S 5D 3D 5C 3H', u'full_house 5S 5D 3D 5C 3H', u'full_house 3S 5S 5D 3D 5C', u'full_house 5S 5D 3D 5C 3H']}, 'starting_hands': {1: [u'QC', u'KC'], 2: [u'2S', u'JD'], 3: [u'4H', u'9D'], 4: [u'2D', u'7S'], 5: [u'4D', u'AD'], 6: [u'AC', u'JC'], 7: [u'3S', u'7C'], 8: [u'QH', u'7D']}, 'flop': [u'5S', u'5D'], 'turn': u'5C', 'shared_cards': [u'5S', u'5D', u'3D', u'5C', u'3H'], 'player_hands': {1: u'full_house 5S 5D 3D 5C 3H', 2: u'full_house 5S 5D 3D 5C 3H', 3: u'full_house 5S 5D 3D 5C 3H', 4: u'full_house 5S 5D 3D 5C 3H', 5: u'full_house 5S 5D 3D 5C 3H', 6: u'full_house 5S 5D 3D 5C 3H', 7: u'full_house 3S 5S 5D 3D 5C', 8: u'full_house 5S 5D 3D 5C 3H'}}
+
+player1: 4H JH 
+player2: JD 4C 
+player3: KD QC 
+player4: AH QD 
+player5: JS 3D 
+player6: 4D 2S 
+player7: 5D 2H 
+player8: 7D 6H 
+shared cards: 2C TD JC QH 8D 
+player 1: pair JH TD JC QH 8D 
+player 2: pair JD TD JC QH 8D 
+player 3: pair KD QC TD JC QH 
+player 4: pair AH QD TD JC QH 
+player 5: pair JS TD JC QH 8D 
+player 6: pair 2S 2C TD JC QH 
+player 7: pair 2H 2C TD JC QH 
+player 8: high_card 7D TD JC QH 8D 
+WINNER: pair AH QD TD JC QH
+
+{'river': u'8D', 'winner': {'status': 'WINNER', 'hand': [u'pair AH QD TD JC QH']}, 'starting_hands': {1: [u'4H', u'JH'], 2: [u'JD', u'4C'], 3: [u'KD', u'QC'], 4: [u'AH', u'QD'], 5: [u'JS', u'3D'], 6: [u'4D', u'2S'], 7: [u'5D', u'2H'], 8: [u'7D', u'6H']}, 'flop': [u'2C', u'TD'], 'turn': u'QH', 'shared_cards': [u'2C', u'TD', u'JC', u'QH', u'8D'], 'player_hands': {1: u'pair JH TD JC QH 8D', 2: u'pair JD TD JC QH 8D', 3: u'pair KD QC TD JC QH', 4: u'pair AH QD TD JC QH', 5: u'pair JS TD JC QH 8D', 6: u'pair 2S 2C TD JC QH', 7: u'pair 2H 2C TD JC QH', 8: u'high_card 7D TD JC QH 8D'}}
+
+player1: 6S 7H 
+player2: 8C 2H 
+player3: KH 3H 
+player4: 4D 2S 
+player5: 2D 3C 
+player6: TD 4C 
+player7: KD 7D 
+player8: 8D 3D 
+shared cards: 5D 4S 4H QS 7S 
+player 1: two_pair 7H 4S 4H QS 7S 
+player 2: pair 8C 4S 4H QS 7S 
+player 3: pair KH 4S 4H QS 7S 
+player 4: three_of_a_kind 4D 4S 4H QS 7S 
+player 5: pair 5D 4S 4H QS 7S 
+player 6: three_of_a_kind TD 4C 4S 4H QS 
+player 7: two_pair KD 7D 4S 4H 7S 
+player 8: pair 8D 4S 4H QS 7S 
+WINNER: three_of_a_kind TD 4C 4S 4H QS
+
+{'river': u'7S', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind TD 4C 4S 4H QS']}, 'starting_hands': {1: [u'6S', u'7H'], 2: [u'8C', u'2H'], 3: [u'KH', u'3H'], 4: [u'4D', u'2S'], 5: [u'2D', u'3C'], 6: [u'TD', u'4C'], 7: [u'KD', u'7D'], 8: [u'8D', u'3D']}, 'flop': [u'5D', u'4S'], 'turn': u'QS', 'shared_cards': [u'5D', u'4S', u'4H', u'QS', u'7S'], 'player_hands': {1: u'two_pair 7H 4S 4H QS 7S', 2: u'pair 8C 4S 4H QS 7S', 3: u'pair KH 4S 4H QS 7S', 4: u'three_of_a_kind 4D 4S 4H QS 7S', 5: u'pair 5D 4S 4H QS 7S', 6: u'three_of_a_kind TD 4C 4S 4H QS', 7: u'two_pair KD 7D 4S 4H 7S', 8: u'pair 8D 4S 4H QS 7S'}}
+
+player1: JD QD 
+player2: AD 3S 
+player3: 5S 9S 
+player4: JH QC 
+player5: 7H TD 
+player6: TH AS 
+player7: 2C 4H 
+player8: 3D 3C 
+shared cards: AH 7S 9D AC 6C 
+player 1: pair JD QD AH 9D AC 
+player 2: three_of_a_kind AD AH 7S 9D AC 
+player 3: two_pair 9S AH 7S 9D AC 
+player 4: pair JH QC AH 9D AC 
+player 5: two_pair 7H TD AH 7S AC 
+player 6: three_of_a_kind TH AS AH 9D AC 
+player 7: pair AH 7S 9D AC 6C 
+player 8: two_pair 3D 3C AH 9D AC 
+WINNER: three_of_a_kind TH AS AH 9D AC
+
+{'river': u'6C', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind TH AS AH 9D AC']}, 'starting_hands': {1: [u'JD', u'QD'], 2: [u'AD', u'3S'], 3: [u'5S', u'9S'], 4: [u'JH', u'QC'], 5: [u'7H', u'TD'], 6: [u'TH', u'AS'], 7: [u'2C', u'4H'], 8: [u'3D', u'3C']}, 'flop': [u'AH', u'7S'], 'turn': u'AC', 'shared_cards': [u'AH', u'7S', u'9D', u'AC', u'6C'], 'player_hands': {1: u'pair JD QD AH 9D AC', 2: u'three_of_a_kind AD AH 7S 9D AC', 3: u'two_pair 9S AH 7S 9D AC', 4: u'pair JH QC AH 9D AC', 5: u'two_pair 7H TD AH 7S AC', 6: u'three_of_a_kind TH AS AH 9D AC', 7: u'pair AH 7S 9D AC 6C', 8: u'two_pair 3D 3C AH 9D AC'}}
+
+player1: 6H 7C 
+player2: 2C 3S 
+player3: 9C 7D 
+player4: 4H KS 
+player5: 4S 5C 
+player6: 8D KH 
+player7: JC AD 
+player8: 5S AH 
+shared cards: AC 6D TD JD 2D 
+player 1: pair 6H AC 6D TD JD 
+player 2: pair 2C AC TD JD 2D 
+player 3: flush 7D 6D TD JD 2D 
+player 4: high_card KS AC 6D TD JD 
+player 5: high_card 5C AC 6D TD JD 
+player 6: flush 8D 6D TD JD 2D 
+player 7: flush AD 6D TD JD 2D 
+player 8: pair AH AC 6D TD JD 
+WINNER: flush AD 6D TD JD 2D
+
+{'river': u'2D', 'winner': {'status': 'WINNER', 'hand': [u'flush AD 6D TD JD 2D']}, 'starting_hands': {1: [u'6H', u'7C'], 2: [u'2C', u'3S'], 3: [u'9C', u'7D'], 4: [u'4H', u'KS'], 5: [u'4S', u'5C'], 6: [u'8D', u'KH'], 7: [u'JC', u'AD'], 8: [u'5S', u'AH']}, 'flop': [u'AC', u'6D'], 'turn': u'JD', 'shared_cards': [u'AC', u'6D', u'TD', u'JD', u'2D'], 'player_hands': {1: u'pair 6H AC 6D TD JD', 2: u'pair 2C AC TD JD 2D', 3: u'flush 7D 6D TD JD 2D', 4: u'high_card KS AC 6D TD JD', 5: u'high_card 5C AC 6D TD JD', 6: u'flush 8D 6D TD JD 2D', 7: u'flush AD 6D TD JD 2D', 8: u'pair AH AC 6D TD JD'}}
+
+player1: 7D KC 
+player2: 2C QS 
+player3: 4D 3D 
+player4: 6H 3C 
+player5: 2D AS 
+player6: JS AD 
+player7: JD 8H 
+player8: JH 4H 
+shared cards: 8D 5H KH 7C 4S 
+player 1: two_pair 7D KC 8D KH 7C 
+player 2: high_card QS 8D 5H KH 7C 
+player 3: pair 4D 8D KH 7C 4S 
+player 4: straight 6H 8D 5H 7C 4S 
+player 5: high_card AS 8D 5H KH 7C 
+player 6: high_card JS AD 8D KH 7C 
+player 7: pair JD 8H 8D KH 7C 
+player 8: pair JH 4H 8D KH 4S 
+WINNER: straight 6H 8D 5H 7C 4S
+
+{'river': u'4S', 'winner': {'status': 'WINNER', 'hand': [u'straight 6H 8D 5H 7C 4S']}, 'starting_hands': {1: [u'7D', u'KC'], 2: [u'2C', u'QS'], 3: [u'4D', u'3D'], 4: [u'6H', u'3C'], 5: [u'2D', u'AS'], 6: [u'JS', u'AD'], 7: [u'JD', u'8H'], 8: [u'JH', u'4H']}, 'flop': [u'8D', u'5H'], 'turn': u'7C', 'shared_cards': [u'8D', u'5H', u'KH', u'7C', u'4S'], 'player_hands': {1: u'two_pair 7D KC 8D KH 7C', 2: u'high_card QS 8D 5H KH 7C', 3: u'pair 4D 8D KH 7C 4S', 4: u'straight 6H 8D 5H 7C 4S', 5: u'high_card AS 8D 5H KH 7C', 6: u'high_card JS AD 8D KH 7C', 7: u'pair JD 8H 8D KH 7C', 8: u'pair JH 4H 8D KH 4S'}}
+
+player1: 5C QS 
+player2: 9D 4H 
+player3: 5H 8H 
+player4: 9S 6S 
+player5: 7D 4S 
+player6: TD JD 
+player7: AS AD 
+player8: 4D TS 
+shared cards: 8D 6H TH QH 2H 
+player 1: pair QS 8D 6H TH QH 
+player 2: flush 4H 6H TH QH 2H 
+player 3: flush 5H 8H 6H TH QH 
+player 4: pair 9S 6S 6H TH QH 
+player 5: high_card 7D 8D 6H TH QH 
+player 6: pair TD JD 8D TH QH 
+player 7: pair AS AD 8D TH QH 
+player 8: pair TS 8D 6H TH QH 
+WINNER: flush 5H 8H 6H TH QH
+
+{'river': u'2H', 'winner': {'status': 'WINNER', 'hand': [u'flush 5H 8H 6H TH QH']}, 'starting_hands': {1: [u'5C', u'QS'], 2: [u'9D', u'4H'], 3: [u'5H', u'8H'], 4: [u'9S', u'6S'], 5: [u'7D', u'4S'], 6: [u'TD', u'JD'], 7: [u'AS', u'AD'], 8: [u'4D', u'TS']}, 'flop': [u'8D', u'6H'], 'turn': u'QH', 'shared_cards': [u'8D', u'6H', u'TH', u'QH', u'2H'], 'player_hands': {1: u'pair QS 8D 6H TH QH', 2: u'flush 4H 6H TH QH 2H', 3: u'flush 5H 8H 6H TH QH', 4: u'pair 9S 6S 6H TH QH', 5: u'high_card 7D 8D 6H TH QH', 6: u'pair TD JD 8D TH QH', 7: u'pair AS AD 8D TH QH', 8: u'pair TS 8D 6H TH QH'}}
+
+player1: 3S AC 
+player2: 2C TC 
+player3: 7H 4S 
+player4: JC 6H 
+player5: 6C TD 
+player6: 4C 9C 
+player7: 8D KH 
+player8: 4H AD 
+shared cards: 2D 2S JH JS 2H 
+player 1: full_house 2D 2S JH JS 2H 
+player 2: quads 2C 2D 2S JH 2H 
+player 3: full_house 2D 2S JH JS 2H 
+player 4: full_house JC 2D 2S JH JS 
+player 5: full_house 2D 2S JH JS 2H 
+player 6: full_house 2D 2S JH JS 2H 
+player 7: full_house 2D 2S JH JS 2H 
+player 8: full_house 2D 2S JH JS 2H 
+WINNER: quads 2C 2D 2S JH 2H
+
+{'river': u'2H', 'winner': {'status': 'WINNER', 'hand': [u'quads 2C 2D 2S JH 2H']}, 'starting_hands': {1: [u'3S', u'AC'], 2: [u'2C', u'TC'], 3: [u'7H', u'4S'], 4: [u'JC', u'6H'], 5: [u'6C', u'TD'], 6: [u'4C', u'9C'], 7: [u'8D', u'KH'], 8: [u'4H', u'AD']}, 'flop': [u'2D', u'2S'], 'turn': u'JS', 'shared_cards': [u'2D', u'2S', u'JH', u'JS', u'2H'], 'player_hands': {1: u'full_house 2D 2S JH JS 2H', 2: u'quads 2C 2D 2S JH 2H', 3: u'full_house 2D 2S JH JS 2H', 4: u'full_house JC 2D 2S JH JS', 5: u'full_house 2D 2S JH JS 2H', 6: u'full_house 2D 2S JH JS 2H', 7: u'full_house 2D 2S JH JS 2H', 8: u'full_house 2D 2S JH JS 2H'}}
+
+player1: QD 8C 
+player2: AH QH 
+player3: KC 6S 
+player4: 3H 6C 
+player5: 9S 6D 
+player6: 5S 4S 
+player7: 4C 8H 
+player8: 8S KD 
+shared cards: 9H 5H 5C AC 6H 
+player 1: pair QD 9H 5H 5C AC 
+player 2: flush AH QH 9H 5H 6H 
+player 3: two_pair 6S 5H 5C AC 6H 
+player 4: two_pair 6C 5H 5C AC 6H 
+player 5: two_pair 9S 6D 9H AC 6H 
+player 6: three_of_a_kind 5S 9H 5H 5C AC 
+player 7: pair 8H 9H 5H 5C AC 
+player 8: pair KD 9H 5H 5C AC 
+WINNER: flush AH QH 9H 5H 6H
+
+{'river': u'6H', 'winner': {'status': 'WINNER', 'hand': [u'flush AH QH 9H 5H 6H']}, 'starting_hands': {1: [u'QD', u'8C'], 2: [u'AH', u'QH'], 3: [u'KC', u'6S'], 4: [u'3H', u'6C'], 5: [u'9S', u'6D'], 6: [u'5S', u'4S'], 7: [u'4C', u'8H'], 8: [u'8S', u'KD']}, 'flop': [u'9H', u'5H'], 'turn': u'AC', 'shared_cards': [u'9H', u'5H', u'5C', u'AC', u'6H'], 'player_hands': {1: u'pair QD 9H 5H 5C AC', 2: u'flush AH QH 9H 5H 6H', 3: u'two_pair 6S 5H 5C AC 6H', 4: u'two_pair 6C 5H 5C AC 6H', 5: u'two_pair 9S 6D 9H AC 6H', 6: u'three_of_a_kind 5S 9H 5H 5C AC', 7: u'pair 8H 9H 5H 5C AC', 8: u'pair KD 9H 5H 5C AC'}}
+
+player1: 5D 7C 
+player2: 3D 4C 
+player3: KS 2C 
+player4: 7D QS 
+player5: QH 2S 
+player6: 5S 7H 
+player7: 3S QD 
+player8: TC 6C 
+shared cards: KD AS 4S JS AH 
+player 1: pair 7C KD AS JS AH 
+player 2: two_pair 4C KD AS 4S AH 
+player 3: two_pair KS KD AS JS AH 
+player 4: pair QS KD AS JS AH 
+player 5: pair QH KD AS JS AH 
+player 6: pair 7H KD AS JS AH 
+player 7: pair QD KD AS JS AH 
+player 8: pair TC KD AS JS AH 
+WINNER: two_pair KS KD AS JS AH
+
+{'river': u'AH', 'winner': {'status': 'WINNER', 'hand': [u'two_pair KS KD AS JS AH']}, 'starting_hands': {1: [u'5D', u'7C'], 2: [u'3D', u'4C'], 3: [u'KS', u'2C'], 4: [u'7D', u'QS'], 5: [u'QH', u'2S'], 6: [u'5S', u'7H'], 7: [u'3S', u'QD'], 8: [u'TC', u'6C']}, 'flop': [u'KD', u'AS'], 'turn': u'JS', 'shared_cards': [u'KD', u'AS', u'4S', u'JS', u'AH'], 'player_hands': {1: u'pair 7C KD AS JS AH', 2: u'two_pair 4C KD AS 4S AH', 3: u'two_pair KS KD AS JS AH', 4: u'pair QS KD AS JS AH', 5: u'pair QH KD AS JS AH', 6: u'pair 7H KD AS JS AH', 7: u'pair QD KD AS JS AH', 8: u'pair TC KD AS JS AH'}}
+
+player1: 8H 6S 
+player2: 6C 5C 
+player3: 6H KS 
+player4: JS 9H 
+player5: QC AH 
+player6: 9D 2S 
+player7: QD 4H 
+player8: 2D KH 
+shared cards: JD 8D JH 4D TS 
+player 1: two_pair 8H JD 8D JH TS 
+player 2: pair 6C JD 8D JH TS 
+player 3: pair KS JD 8D JH TS 
+player 4: three_of_a_kind JS 9H JD JH TS 
+player 5: pair QC AH JD JH TS 
+player 6: pair 9D JD 8D JH TS 
+player 7: two_pair QD 4H JD JH 4D 
+player 8: pair KH JD 8D JH TS 
+WINNER: three_of_a_kind JS 9H JD JH TS
+
+{'river': u'TS', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind JS 9H JD JH TS']}, 'starting_hands': {1: [u'8H', u'6S'], 2: [u'6C', u'5C'], 3: [u'6H', u'KS'], 4: [u'JS', u'9H'], 5: [u'QC', u'AH'], 6: [u'9D', u'2S'], 7: [u'QD', u'4H'], 8: [u'2D', u'KH']}, 'flop': [u'JD', u'8D'], 'turn': u'4D', 'shared_cards': [u'JD', u'8D', u'JH', u'4D', u'TS'], 'player_hands': {1: u'two_pair 8H JD 8D JH TS', 2: u'pair 6C JD 8D JH TS', 3: u'pair KS JD 8D JH TS', 4: u'three_of_a_kind JS 9H JD JH TS', 5: u'pair QC AH JD JH TS', 6: u'pair 9D JD 8D JH TS', 7: u'two_pair QD 4H JD JH 4D', 8: u'pair KH JD 8D JH TS'}}
+
+player1: 3C QH 
+player2: AC QS 
+player3: 7S 5C 
+player4: 2D QD 
+player5: AS 5D 
+player6: 8S 8C 
+player7: 6C 3D 
+player8: TS 2H 
+shared cards: 6H 2S TC 4S AD 
+player 1: high_card QH 6H TC 4S AD 
+player 2: pair AC QS 6H TC AD 
+player 3: high_card 7S 5C 6H TC AD 
+player 4: pair 2D QD 2S TC AD 
+player 5: pair AS 5D 6H TC AD 
+player 6: pair 8S 8C 6H TC AD 
+player 7: pair 6C 6H TC 4S AD 
+player 8: two_pair TS 2H 2S TC AD 
+WINNER: two_pair TS 2H 2S TC AD
+
+{'river': u'AD', 'winner': {'status': 'WINNER', 'hand': [u'two_pair TS 2H 2S TC AD']}, 'starting_hands': {1: [u'3C', u'QH'], 2: [u'AC', u'QS'], 3: [u'7S', u'5C'], 4: [u'2D', u'QD'], 5: [u'AS', u'5D'], 6: [u'8S', u'8C'], 7: [u'6C', u'3D'], 8: [u'TS', u'2H']}, 'flop': [u'6H', u'2S'], 'turn': u'4S', 'shared_cards': [u'6H', u'2S', u'TC', u'4S', u'AD'], 'player_hands': {1: u'high_card QH 6H TC 4S AD', 2: u'pair AC QS 6H TC AD', 3: u'high_card 7S 5C 6H TC AD', 4: u'pair 2D QD 2S TC AD', 5: u'pair AS 5D 6H TC AD', 6: u'pair 8S 8C 6H TC AD', 7: u'pair 6C 6H TC 4S AD', 8: u'two_pair TS 2H 2S TC AD'}}
+
+player1: QH AC 
+player2: TC 3C 
+player3: QD 7D 
+player4: 9D 6H 
+player5: 5S 4C 
+player6: KC AD 
+player7: 2C 3H 
+player8: 6D 8H 
+shared cards: TH 4H 7C KH 6S 
+player 1: high_card QH AC TH 7C KH 
+player 2: pair TC TH 7C KH 6S 
+player 3: pair QD 7D TH 7C KH 
+player 4: pair 9D 6H TH KH 6S 
+player 5: pair 4C TH 4H 7C KH 
+player 6: pair KC AD TH 7C KH 
+player 7: high_card TH 4H 7C KH 6S 
+player 8: pair 6D 8H TH KH 6S 
+WINNER: pair KC AD TH 7C KH
+
+{'river': u'6S', 'winner': {'status': 'WINNER', 'hand': [u'pair KC AD TH 7C KH']}, 'starting_hands': {1: [u'QH', u'AC'], 2: [u'TC', u'3C'], 3: [u'QD', u'7D'], 4: [u'9D', u'6H'], 5: [u'5S', u'4C'], 6: [u'KC', u'AD'], 7: [u'2C', u'3H'], 8: [u'6D', u'8H']}, 'flop': [u'TH', u'4H'], 'turn': u'KH', 'shared_cards': [u'TH', u'4H', u'7C', u'KH', u'6S'], 'player_hands': {1: u'high_card QH AC TH 7C KH', 2: u'pair TC TH 7C KH 6S', 3: u'pair QD 7D TH 7C KH', 4: u'pair 9D 6H TH KH 6S', 5: u'pair 4C TH 4H 7C KH', 6: u'pair KC AD TH 7C KH', 7: u'high_card TH 4H 7C KH 6S', 8: u'pair 6D 8H TH KH 6S'}}
+
+player1: 2S JC 
+player2: JD KD 
+player3: KH KC 
+player4: 9D 7D 
+player5: 4S QD 
+player6: 6C 6D 
+player7: 5H 6S 
+player8: JS 5S 
+shared cards: 2H 4D 6H 9H 8D 
+player 1: pair 2S JC 2H 9H 8D 
+player 2: high_card JD KD 6H 9H 8D 
+player 3: pair KH KC 6H 9H 8D 
+player 4: pair 9D 7D 6H 9H 8D 
+player 5: pair 4S QD 4D 9H 8D 
+player 6: three_of_a_kind 6C 6D 6H 9H 8D 
+player 7: pair 5H 6S 6H 9H 8D 
+player 8: high_card JS 5S 6H 9H 8D 
+WINNER: three_of_a_kind 6C 6D 6H 9H 8D
+
+{'river': u'8D', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind 6C 6D 6H 9H 8D']}, 'starting_hands': {1: [u'2S', u'JC'], 2: [u'JD', u'KD'], 3: [u'KH', u'KC'], 4: [u'9D', u'7D'], 5: [u'4S', u'QD'], 6: [u'6C', u'6D'], 7: [u'5H', u'6S'], 8: [u'JS', u'5S']}, 'flop': [u'2H', u'4D'], 'turn': u'9H', 'shared_cards': [u'2H', u'4D', u'6H', u'9H', u'8D'], 'player_hands': {1: u'pair 2S JC 2H 9H 8D', 2: u'high_card JD KD 6H 9H 8D', 3: u'pair KH KC 6H 9H 8D', 4: u'pair 9D 7D 6H 9H 8D', 5: u'pair 4S QD 4D 9H 8D', 6: u'three_of_a_kind 6C 6D 6H 9H 8D', 7: u'pair 5H 6S 6H 9H 8D', 8: u'high_card JS 5S 6H 9H 8D'}}
+
+player1: 3H JC 
+player2: 9H TS 
+player3: QH 4H 
+player4: 9C JS 
+player5: 5D AC 
+player6: JD 3S 
+player7: 5S 5H 
+player8: 3D 2C 
+shared cards: 8D 9D 8S TC KD 
+player 1: pair JC 8D 8S TC KD 
+player 2: two_pair 9H TS 9D TC KD 
+player 3: pair QH 8D 8S TC KD 
+player 4: two_pair 9C 8D 9D 8S KD 
+player 5: pair AC 8D 8S TC KD 
+player 6: pair JD 8D 8S TC KD 
+player 7: two_pair 5S 5H 8D 8S KD 
+player 8: pair 8D 9D 8S TC KD 
+WINNER: two_pair 9H TS 9D TC KD
+
+{'river': u'KD', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 9H TS 9D TC KD']}, 'starting_hands': {1: [u'3H', u'JC'], 2: [u'9H', u'TS'], 3: [u'QH', u'4H'], 4: [u'9C', u'JS'], 5: [u'5D', u'AC'], 6: [u'JD', u'3S'], 7: [u'5S', u'5H'], 8: [u'3D', u'2C']}, 'flop': [u'8D', u'9D'], 'turn': u'TC', 'shared_cards': [u'8D', u'9D', u'8S', u'TC', u'KD'], 'player_hands': {1: u'pair JC 8D 8S TC KD', 2: u'two_pair 9H TS 9D TC KD', 3: u'pair QH 8D 8S TC KD', 4: u'two_pair 9C 8D 9D 8S KD', 5: u'pair AC 8D 8S TC KD', 6: u'pair JD 8D 8S TC KD', 7: u'two_pair 5S 5H 8D 8S KD', 8: u'pair 8D 9D 8S TC KD'}}
+
+player1: AC 4H 
+player2: 8S QC 
+player3: 4C TS 
+player4: 8C 2H 
+player5: 7H 5S 
+player6: KS QS 
+player7: KD 6S 
+player8: JH 9C 
+shared cards: 6D 5H JC 3S KH 
+player 1: high_card AC 6D 5H JC KH 
+player 2: high_card 8S QC 6D JC KH 
+player 3: high_card TS 6D 5H JC KH 
+player 4: high_card 8C 6D 5H JC KH 
+player 5: pair 7H 5S 5H JC KH 
+player 6: pair KS QS 6D JC KH 
+player 7: two_pair KD 6S 6D JC KH 
+player 8: pair JH 9C 6D JC KH 
+WINNER: two_pair KD 6S 6D JC KH
+
+{'river': u'KH', 'winner': {'status': 'WINNER', 'hand': [u'two_pair KD 6S 6D JC KH']}, 'starting_hands': {1: [u'AC', u'4H'], 2: [u'8S', u'QC'], 3: [u'4C', u'TS'], 4: [u'8C', u'2H'], 5: [u'7H', u'5S'], 6: [u'KS', u'QS'], 7: [u'KD', u'6S'], 8: [u'JH', u'9C']}, 'flop': [u'6D', u'5H'], 'turn': u'3S', 'shared_cards': [u'6D', u'5H', u'JC', u'3S', u'KH'], 'player_hands': {1: u'high_card AC 6D 5H JC KH', 2: u'high_card 8S QC 6D JC KH', 3: u'high_card TS 6D 5H JC KH', 4: u'high_card 8C 6D 5H JC KH', 5: u'pair 7H 5S 5H JC KH', 6: u'pair KS QS 6D JC KH', 7: u'two_pair KD 6S 6D JC KH', 8: u'pair JH 9C 6D JC KH'}}
+
+player1: 2C 5H 
+player2: 7S 9H 
+player3: 8H 4H 
+player4: AS 3H 
+player5: 3D 2H 
+player6: 4S TS 
+player7: 2S AH 
+player8: QD JS 
+shared cards: 8C AD JC 7C 3C 
+player 1: flush 2C 8C JC 7C 3C 
+player 2: pair 7S 9H AD JC 7C 
+player 3: pair 8H 8C AD JC 7C 
+player 4: two_pair AS 3H AD JC 3C 
+player 5: pair 3D 8C AD JC 3C 
+player 6: high_card TS 8C AD JC 7C 
+player 7: pair AH 8C AD JC 7C 
+player 8: pair QD JS 8C AD JC 
+WINNER: flush 2C 8C JC 7C 3C
+
+{'river': u'3C', 'winner': {'status': 'WINNER', 'hand': [u'flush 2C 8C JC 7C 3C']}, 'starting_hands': {1: [u'2C', u'5H'], 2: [u'7S', u'9H'], 3: [u'8H', u'4H'], 4: [u'AS', u'3H'], 5: [u'3D', u'2H'], 6: [u'4S', u'TS'], 7: [u'2S', u'AH'], 8: [u'QD', u'JS']}, 'flop': [u'8C', u'AD'], 'turn': u'7C', 'shared_cards': [u'8C', u'AD', u'JC', u'7C', u'3C'], 'player_hands': {1: u'flush 2C 8C JC 7C 3C', 2: u'pair 7S 9H AD JC 7C', 3: u'pair 8H 8C AD JC 7C', 4: u'two_pair AS 3H AD JC 3C', 5: u'pair 3D 8C AD JC 3C', 6: u'high_card TS 8C AD JC 7C', 7: u'pair AH 8C AD JC 7C', 8: u'pair QD JS 8C AD JC'}}
+
+player1: 7C KH 
+player2: QC 6C 
+player3: TD 7D 
+player4: TH 7H 
+player5: KS TS 
+player6: 9D 3D 
+player7: AC 2C 
+player8: 3S 3C 
+shared cards: JD JS AH 7S 5C 
+player 1: two_pair 7C JD JS AH 7S 
+player 2: pair QC JD JS AH 7S 
+player 3: two_pair 7D JD JS AH 7S 
+player 4: two_pair 7H JD JS AH 7S 
+player 5: pair KS TS JD JS AH 
+player 6: pair 9D JD JS AH 7S 
+player 7: two_pair AC JD JS AH 7S 
+player 8: two_pair 3S 3C JD JS AH 
+WINNER: two_pair AC JD JS AH 7S
+
+{'river': u'5C', 'winner': {'status': 'WINNER', 'hand': [u'two_pair AC JD JS AH 7S']}, 'starting_hands': {1: [u'7C', u'KH'], 2: [u'QC', u'6C'], 3: [u'TD', u'7D'], 4: [u'TH', u'7H'], 5: [u'KS', u'TS'], 6: [u'9D', u'3D'], 7: [u'AC', u'2C'], 8: [u'3S', u'3C']}, 'flop': [u'JD', u'JS'], 'turn': u'7S', 'shared_cards': [u'JD', u'JS', u'AH', u'7S', u'5C'], 'player_hands': {1: u'two_pair 7C JD JS AH 7S', 2: u'pair QC JD JS AH 7S', 3: u'two_pair 7D JD JS AH 7S', 4: u'two_pair 7H JD JS AH 7S', 5: u'pair KS TS JD JS AH', 6: u'pair 9D JD JS AH 7S', 7: u'two_pair AC JD JS AH 7S', 8: u'two_pair 3S 3C JD JS AH'}}
+
+player1: 3S 7D 
+player2: JD AH 
+player3: 2H TD 
+player4: 4H 7C 
+player5: 5H 4D 
+player6: 8D AC 
+player7: TC 6D 
+player8: 9H 5S 
+shared cards: 7H 6H 5D 9C 4S 
+player 1: straight 3S 7D 6H 5D 4S 
+player 2: high_card JD AH 7H 6H 9C 
+player 3: high_card TD 7H 6H 5D 9C 
+player 4: two_pair 4H 7C 7H 9C 4S 
+player 5: two_pair 5H 4D 5D 9C 4S 
+player 6: straight 8D 7H 6H 5D 9C 
+player 7: pair TC 6D 7H 6H 9C 
+player 8: two_pair 9H 5S 7H 5D 9C 
+WINNER: straight 8D 7H 6H 5D 9C
+
+{'river': u'4S', 'winner': {'status': 'WINNER', 'hand': [u'straight 8D 7H 6H 5D 9C']}, 'starting_hands': {1: [u'3S', u'7D'], 2: [u'JD', u'AH'], 3: [u'2H', u'TD'], 4: [u'4H', u'7C'], 5: [u'5H', u'4D'], 6: [u'8D', u'AC'], 7: [u'TC', u'6D'], 8: [u'9H', u'5S']}, 'flop': [u'7H', u'6H'], 'turn': u'9C', 'shared_cards': [u'7H', u'6H', u'5D', u'9C', u'4S'], 'player_hands': {1: u'straight 3S 7D 6H 5D 4S', 2: u'high_card JD AH 7H 6H 9C', 3: u'high_card TD 7H 6H 5D 9C', 4: u'two_pair 4H 7C 7H 9C 4S', 5: u'two_pair 5H 4D 5D 9C 4S', 6: u'straight 8D 7H 6H 5D 9C', 7: u'pair TC 6D 7H 6H 9C', 8: u'two_pair 9H 5S 7H 5D 9C'}}
+
+player1: 8S QD 
+player2: KH KD 
+player3: AH 4H 
+player4: 9C 6H 
+player5: QC 6S 
+player6: 8D 2D 
+player7: 2H 2S 
+player8: JH 3D 
+shared cards: 9S JD 7C TH AS 
+player 1: high_card QD 9S JD TH AS 
+player 2: pair KH KD JD TH AS 
+player 3: pair AH 9S JD TH AS 
+player 4: pair 9C 9S JD TH AS 
+player 5: high_card QC 9S JD TH AS 
+player 6: high_card 8D 9S JD TH AS 
+player 7: pair 2H 2S JD TH AS 
+player 8: pair JH 9S JD TH AS 
+WINNER: pair AH 9S JD TH AS
+
+{'river': u'AS', 'winner': {'status': 'WINNER', 'hand': [u'pair AH 9S JD TH AS']}, 'starting_hands': {1: [u'8S', u'QD'], 2: [u'KH', u'KD'], 3: [u'AH', u'4H'], 4: [u'9C', u'6H'], 5: [u'QC', u'6S'], 6: [u'8D', u'2D'], 7: [u'2H', u'2S'], 8: [u'JH', u'3D']}, 'flop': [u'9S', u'JD'], 'turn': u'TH', 'shared_cards': [u'9S', u'JD', u'7C', u'TH', u'AS'], 'player_hands': {1: u'high_card QD 9S JD TH AS', 2: u'pair KH KD JD TH AS', 3: u'pair AH 9S JD TH AS', 4: u'pair 9C 9S JD TH AS', 5: u'high_card QC 9S JD TH AS', 6: u'high_card 8D 9S JD TH AS', 7: u'pair 2H 2S JD TH AS', 8: u'pair JH 9S JD TH AS'}}
+
+player1: 9H 3C 
+player2: 5S 9S 
+player3: 4H AS 
+player4: 5C TD 
+player5: AD TS 
+player6: 8S 6H 
+player7: 7C 6S 
+player8: 7S 8D 
+shared cards: 5H KC 4S AC 2S 
+player 1: straight 3C 5H 4S AC 2S 
+player 2: pair 5S 9S 5H KC AC 
+player 3: two_pair 4H AS KC 4S AC 
+player 4: pair 5C TD 5H KC AC 
+player 5: pair AD TS 5H KC AC 
+player 6: high_card 8S 6H 5H KC AC 
+player 7: high_card 7C 6S 5H KC AC 
+player 8: high_card 7S 8D 5H KC AC 
+WINNER: straight 3C 5H 4S AC 2S
+
+{'river': u'2S', 'winner': {'status': 'WINNER', 'hand': [u'straight 3C 5H 4S AC 2S']}, 'starting_hands': {1: [u'9H', u'3C'], 2: [u'5S', u'9S'], 3: [u'4H', u'AS'], 4: [u'5C', u'TD'], 5: [u'AD', u'TS'], 6: [u'8S', u'6H'], 7: [u'7C', u'6S'], 8: [u'7S', u'8D']}, 'flop': [u'5H', u'KC'], 'turn': u'AC', 'shared_cards': [u'5H', u'KC', u'4S', u'AC', u'2S'], 'player_hands': {1: u'straight 3C 5H 4S AC 2S', 2: u'pair 5S 9S 5H KC AC', 3: u'two_pair 4H AS KC 4S AC', 4: u'pair 5C TD 5H KC AC', 5: u'pair AD TS 5H KC AC', 6: u'high_card 8S 6H 5H KC AC', 7: u'high_card 7C 6S 5H KC AC', 8: u'high_card 7S 8D 5H KC AC'}}
+
+player1: 6H KS 
+player2: JD 2D 
+player3: KC TD 
+player4: 6D AS 
+player5: 9S QC 
+player6: 8C 6C 
+player7: TS 9C 
+player8: QH 4H 
+shared cards: 8H 4D AC JH QD 
+player 1: high_card KS 8H AC JH QD 
+player 2: pair JD 8H AC JH QD 
+player 3: straight KC TD AC JH QD 
+player 4: pair AS 8H AC JH QD 
+player 5: pair 9S QC AC JH QD 
+player 6: pair 8C 8H AC JH QD 
+player 7: high_card TS 9C AC JH QD 
+player 8: two_pair QH 4H 4D AC QD 
+WINNER: straight KC TD AC JH QD
+
+{'river': u'QD', 'winner': {'status': 'WINNER', 'hand': [u'straight KC TD AC JH QD']}, 'starting_hands': {1: [u'6H', u'KS'], 2: [u'JD', u'2D'], 3: [u'KC', u'TD'], 4: [u'6D', u'AS'], 5: [u'9S', u'QC'], 6: [u'8C', u'6C'], 7: [u'TS', u'9C'], 8: [u'QH', u'4H']}, 'flop': [u'8H', u'4D'], 'turn': u'JH', 'shared_cards': [u'8H', u'4D', u'AC', u'JH', u'QD'], 'player_hands': {1: u'high_card KS 8H AC JH QD', 2: u'pair JD 8H AC JH QD', 3: u'straight KC TD AC JH QD', 4: u'pair AS 8H AC JH QD', 5: u'pair 9S QC AC JH QD', 6: u'pair 8C 8H AC JH QD', 7: u'high_card TS 9C AC JH QD', 8: u'two_pair QH 4H 4D AC QD'}}
+
+player1: AH KC 
+player2: JS 2H 
+player3: QS 8D 
+player4: 9C AD 
+player5: 9S KD 
+player6: AS KH 
+player7: 3C 8H 
+player8: 4H QD 
+shared cards: 7H 6D 4S 8S 2S 
+player 1: high_card AH KC 7H 6D 8S 
+player 2: pair JS 2H 7H 8S 2S 
+player 3: pair QS 8D 7H 6D 8S 
+player 4: high_card 9C AD 7H 6D 8S 
+player 5: high_card 9S KD 7H 6D 8S 
+player 6: high_card AS KH 7H 6D 8S 
+player 7: pair 8H 7H 6D 4S 8S 
+player 8: pair 4H QD 7H 4S 8S 
+WINNER: pair QS 8D 7H 6D 8S
+
+{'river': u'2S', 'winner': {'status': 'WINNER', 'hand': [u'pair QS 8D 7H 6D 8S']}, 'starting_hands': {1: [u'AH', u'KC'], 2: [u'JS', u'2H'], 3: [u'QS', u'8D'], 4: [u'9C', u'AD'], 5: [u'9S', u'KD'], 6: [u'AS', u'KH'], 7: [u'3C', u'8H'], 8: [u'4H', u'QD']}, 'flop': [u'7H', u'6D'], 'turn': u'8S', 'shared_cards': [u'7H', u'6D', u'4S', u'8S', u'2S'], 'player_hands': {1: u'high_card AH KC 7H 6D 8S', 2: u'pair JS 2H 7H 8S 2S', 3: u'pair QS 8D 7H 6D 8S', 4: u'high_card 9C AD 7H 6D 8S', 5: u'high_card 9S KD 7H 6D 8S', 6: u'high_card AS KH 7H 6D 8S', 7: u'pair 8H 7H 6D 4S 8S', 8: u'pair 4H QD 7H 4S 8S'}}
+
+player1: 9S 3H 
+player2: 2H 6D 
+player3: 5S 6C 
+player4: 5C JH 
+player5: 8S 5D 
+player6: AD TC 
+player7: 2C AH 
+player8: 8D KS 
+shared cards: KH 4S 5H 7S QS 
+player 1: high_card 9S KH 5H 7S QS 
+player 2: high_card 6D KH 5H 7S QS 
+player 3: pair 5S KH 5H 7S QS 
+player 4: pair 5C JH KH 5H QS 
+player 5: pair 8S 5D KH 5H QS 
+player 6: high_card AD TC KH 7S QS 
+player 7: high_card AH KH 5H 7S QS 
+player 8: pair 8D KS KH 7S QS 
+WINNER: pair 8D KS KH 7S QS
+
+{'river': u'QS', 'winner': {'status': 'WINNER', 'hand': [u'pair 8D KS KH 7S QS']}, 'starting_hands': {1: [u'9S', u'3H'], 2: [u'2H', u'6D'], 3: [u'5S', u'6C'], 4: [u'5C', u'JH'], 5: [u'8S', u'5D'], 6: [u'AD', u'TC'], 7: [u'2C', u'AH'], 8: [u'8D', u'KS']}, 'flop': [u'KH', u'4S'], 'turn': u'7S', 'shared_cards': [u'KH', u'4S', u'5H', u'7S', u'QS'], 'player_hands': {1: u'high_card 9S KH 5H 7S QS', 2: u'high_card 6D KH 5H 7S QS', 3: u'pair 5S KH 5H 7S QS', 4: u'pair 5C JH KH 5H QS', 5: u'pair 8S 5D KH 5H QS', 6: u'high_card AD TC KH 7S QS', 7: u'high_card AH KH 5H 7S QS', 8: u'pair 8D KS KH 7S QS'}}
+
+player1: JD 7H 
+player2: 4S 5S 
+player3: 8D 7S 
+player4: AS AH 
+player5: 3C 6D 
+player6: KS KC 
+player7: QC KH 
+player8: 7D 9C 
+shared cards: 2D 4H 5C TC 2C 
+player 1: pair JD 7H 2D TC 2C 
+player 2: two_pair 4S 5S 4H 5C TC 
+player 3: pair 8D 7S 2D TC 2C 
+player 4: two_pair AS AH 2D TC 2C 
+player 5: straight 3C 6D 2D 4H 5C 
+player 6: two_pair KS KC 2D TC 2C 
+player 7: pair QC KH 2D TC 2C 
+player 8: pair 7D 9C 2D TC 2C 
+WINNER: straight 3C 6D 2D 4H 5C
+
+{'river': u'2C', 'winner': {'status': 'WINNER', 'hand': [u'straight 3C 6D 2D 4H 5C']}, 'starting_hands': {1: [u'JD', u'7H'], 2: [u'4S', u'5S'], 3: [u'8D', u'7S'], 4: [u'AS', u'AH'], 5: [u'3C', u'6D'], 6: [u'KS', u'KC'], 7: [u'QC', u'KH'], 8: [u'7D', u'9C']}, 'flop': [u'2D', u'4H'], 'turn': u'TC', 'shared_cards': [u'2D', u'4H', u'5C', u'TC', u'2C'], 'player_hands': {1: u'pair JD 7H 2D TC 2C', 2: u'two_pair 4S 5S 4H 5C TC', 3: u'pair 8D 7S 2D TC 2C', 4: u'two_pair AS AH 2D TC 2C', 5: u'straight 3C 6D 2D 4H 5C', 6: u'two_pair KS KC 2D TC 2C', 7: u'pair QC KH 2D TC 2C', 8: u'pair 7D 9C 2D TC 2C'}}
+
+player1: TS 9D 
+player2: AS AD 
+player3: AC 3S 
+player4: 6D 3H 
+player5: 5H 4H 
+player6: 5D 2C 
+player7: AH 6C 
+player8: QC KC 
+shared cards: TD 8D KS KD 8C 
+player 1: two_pair TS 9D TD KS KD 
+player 2: two_pair AS AD TD KS KD 
+player 3: two_pair AC 8D KS KD 8C 
+player 4: two_pair TD 8D KS KD 8C 
+player 5: two_pair TD 8D KS KD 8C 
+player 6: two_pair TD 8D KS KD 8C 
+player 7: two_pair AH 8D KS KD 8C 
+player 8: full_house KC 8D KS KD 8C 
+WINNER: full_house KC 8D KS KD 8C
+
+{'river': u'8C', 'winner': {'status': 'WINNER', 'hand': [u'full_house KC 8D KS KD 8C']}, 'starting_hands': {1: [u'TS', u'9D'], 2: [u'AS', u'AD'], 3: [u'AC', u'3S'], 4: [u'6D', u'3H'], 5: [u'5H', u'4H'], 6: [u'5D', u'2C'], 7: [u'AH', u'6C'], 8: [u'QC', u'KC']}, 'flop': [u'TD', u'8D'], 'turn': u'KD', 'shared_cards': [u'TD', u'8D', u'KS', u'KD', u'8C'], 'player_hands': {1: u'two_pair TS 9D TD KS KD', 2: u'two_pair AS AD TD KS KD', 3: u'two_pair AC 8D KS KD 8C', 4: u'two_pair TD 8D KS KD 8C', 5: u'two_pair TD 8D KS KD 8C', 6: u'two_pair TD 8D KS KD 8C', 7: u'two_pair AH 8D KS KD 8C', 8: u'full_house KC 8D KS KD 8C'}}
+
+player1: TS 3H 
+player2: 5C 7S 
+player3: 4S 5S 
+player4: KC 2D 
+player5: QC AH 
+player6: 6H TD 
+player7: 2C AC 
+player8: KH 2H 
+shared cards: KS QD QH 4C 5H 
+player 1: pair TS KS QD QH 5H 
+player 2: two_pair 5C KS QD QH 5H 
+player 3: two_pair 5S KS QD QH 5H 
+player 4: two_pair KC KS QD QH 5H 
+player 5: three_of_a_kind QC AH KS QD QH 
+player 6: pair 6H TD KS QD QH 
+player 7: pair AC KS QD QH 5H 
+player 8: two_pair KH KS QD QH 5H 
+WINNER: three_of_a_kind QC AH KS QD QH
+
+{'river': u'5H', 'winner': {'status': 'WINNER', 'hand': [u'three_of_a_kind QC AH KS QD QH']}, 'starting_hands': {1: [u'TS', u'3H'], 2: [u'5C', u'7S'], 3: [u'4S', u'5S'], 4: [u'KC', u'2D'], 5: [u'QC', u'AH'], 6: [u'6H', u'TD'], 7: [u'2C', u'AC'], 8: [u'KH', u'2H']}, 'flop': [u'KS', u'QD'], 'turn': u'4C', 'shared_cards': [u'KS', u'QD', u'QH', u'4C', u'5H'], 'player_hands': {1: u'pair TS KS QD QH 5H', 2: u'two_pair 5C KS QD QH 5H', 3: u'two_pair 5S KS QD QH 5H', 4: u'two_pair KC KS QD QH 5H', 5: u'three_of_a_kind QC AH KS QD QH', 6: u'pair 6H TD KS QD QH', 7: u'pair AC KS QD QH 5H', 8: u'two_pair KH KS QD QH 5H'}}
+
+player1: TC KD 
+player2: TH 6C 
+player3: QH TD 
+player4: 9H 8S 
+player5: 4C KH 
+player6: 3S 3D 
+player7: JC 3H 
+player8: JD QC 
+shared cards: 4D 5S JH 7S 5D 
+player 1: pair TC KD 5S JH 5D 
+player 2: pair TH 5S JH 7S 5D 
+player 3: pair QH TD 5S JH 5D 
+player 4: pair 9H 8S 5S JH 5D 
+player 5: two_pair 4C KH 4D 5S 5D 
+player 6: two_pair 3S 3D 5S JH 5D 
+player 7: two_pair JC 5S JH 7S 5D 
+player 8: two_pair JD QC 5S JH 5D 
+WINNER: two_pair JD QC 5S JH 5D
+
+{'river': u'5D', 'winner': {'status': 'WINNER', 'hand': [u'two_pair JD QC 5S JH 5D']}, 'starting_hands': {1: [u'TC', u'KD'], 2: [u'TH', u'6C'], 3: [u'QH', u'TD'], 4: [u'9H', u'8S'], 5: [u'4C', u'KH'], 6: [u'3S', u'3D'], 7: [u'JC', u'3H'], 8: [u'JD', u'QC']}, 'flop': [u'4D', u'5S'], 'turn': u'7S', 'shared_cards': [u'4D', u'5S', u'JH', u'7S', u'5D'], 'player_hands': {1: u'pair TC KD 5S JH 5D', 2: u'pair TH 5S JH 7S 5D', 3: u'pair QH TD 5S JH 5D', 4: u'pair 9H 8S 5S JH 5D', 5: u'two_pair 4C KH 4D 5S 5D', 6: u'two_pair 3S 3D 5S JH 5D', 7: u'two_pair JC 5S JH 7S 5D', 8: u'two_pair JD QC 5S JH 5D'}}
+
+player1: TS 5H 
+player2: KS JD 
+player3: 3D 9C 
+player4: 3H QS 
+player5: 4H 2C 
+player6: AS KH 
+player7: 9D 4D 
+player8: 7C QH 
+shared cards: 6H 7H QC 5D 3S 
+player 1: pair TS 5H 7H QC 5D 
+player 2: high_card KS JD 6H 7H QC 
+player 3: pair 3D 9C 7H QC 3S 
+player 4: two_pair 3H QS 7H QC 3S 
+player 5: straight 4H 6H 7H 5D 3S 
+player 6: high_card AS KH 6H 7H QC 
+player 7: straight 4D 6H 7H 5D 3S 
+player 8: two_pair 7C QH 6H 7H QC 
+SPLIT POT: straight 4H 6H 7H 5D 3S straight 4D 6H 7H 5D 3S 
+
+{'river': u'3S', 'winner': {'status': 'SPLIT POT', 'hand': [u'straight 4H 6H 7H 5D 3S', u'straight 4D 6H 7H 5D 3S']}, 'starting_hands': {1: [u'TS', u'5H'], 2: [u'KS', u'JD'], 3: [u'3D', u'9C'], 4: [u'3H', u'QS'], 5: [u'4H', u'2C'], 6: [u'AS', u'KH'], 7: [u'9D', u'4D'], 8: [u'7C', u'QH']}, 'flop': [u'6H', u'7H'], 'turn': u'5D', 'shared_cards': [u'6H', u'7H', u'QC', u'5D', u'3S'], 'player_hands': {1: u'pair TS 5H 7H QC 5D', 2: u'high_card KS JD 6H 7H QC', 3: u'pair 3D 9C 7H QC 3S', 4: u'two_pair 3H QS 7H QC 3S', 5: u'straight 4H 6H 7H 5D 3S', 6: u'high_card AS KH 6H 7H QC', 7: u'straight 4D 6H 7H 5D 3S', 8: u'two_pair 7C QH 6H 7H QC'}}
+
+player1: 8C 2C 
+player2: QS 5C 
+player3: TD 5D 
+player4: AH TS 
+player5: 7C 7H 
+player6: 4H 6S 
+player7: TH TC 
+player8: 9H QH 
+shared cards: KC 4D 9S 2D 5H 
+player 1: pair 8C 2C KC 9S 2D 
+player 2: pair QS 5C KC 9S 5H 
+player 3: pair TD 5D KC 9S 5H 
+player 4: high_card AH TS KC 9S 5H 
+player 5: pair 7C 7H KC 9S 5H 
+player 6: pair 4H 6S KC 4D 9S 
+player 7: pair TH TC KC 9S 5H 
+player 8: pair 9H QH KC 9S 5H 
+WINNER: pair TH TC KC 9S 5H
+
+{'river': u'5H', 'winner': {'status': 'WINNER', 'hand': [u'pair TH TC KC 9S 5H']}, 'starting_hands': {1: [u'8C', u'2C'], 2: [u'QS', u'5C'], 3: [u'TD', u'5D'], 4: [u'AH', u'TS'], 5: [u'7C', u'7H'], 6: [u'4H', u'6S'], 7: [u'TH', u'TC'], 8: [u'9H', u'QH']}, 'flop': [u'KC', u'4D'], 'turn': u'2D', 'shared_cards': [u'KC', u'4D', u'9S', u'2D', u'5H'], 'player_hands': {1: u'pair 8C 2C KC 9S 2D', 2: u'pair QS 5C KC 9S 5H', 3: u'pair TD 5D KC 9S 5H', 4: u'high_card AH TS KC 9S 5H', 5: u'pair 7C 7H KC 9S 5H', 6: u'pair 4H 6S KC 4D 9S', 7: u'pair TH TC KC 9S 5H', 8: u'pair 9H QH KC 9S 5H'}}
+
+player1: 6H QD 
+player2: JD AD 
+player3: AH 5C 
+player4: 8H 3C 
+player5: TC 9D 
+player6: 9H 7C 
+player7: 2H 8D 
+player8: KH 6C 
+shared cards: 3D KC 5H 4S 7D 
+player 1: straight 6H 3D 5H 4S 7D 
+player 2: high_card JD AD KC 5H 7D 
+player 3: pair AH 5C KC 5H 7D 
+player 4: pair 8H 3C 3D KC 7D 
+player 5: high_card TC 9D KC 5H 7D 
+player 6: pair 9H 7C KC 5H 7D 
+player 7: high_card 8D KC 5H 4S 7D 
+player 8: straight 6C 3D 5H 4S 7D 
+SPLIT POT: straight 6H 3D 5H 4S 7D straight 6C 3D 5H 4S 7D 
+
+{'river': u'7D', 'winner': {'status': 'SPLIT POT', 'hand': [u'straight 6H 3D 5H 4S 7D', u'straight 6C 3D 5H 4S 7D']}, 'starting_hands': {1: [u'6H', u'QD'], 2: [u'JD', u'AD'], 3: [u'AH', u'5C'], 4: [u'8H', u'3C'], 5: [u'TC', u'9D'], 6: [u'9H', u'7C'], 7: [u'2H', u'8D'], 8: [u'KH', u'6C']}, 'flop': [u'3D', u'KC'], 'turn': u'4S', 'shared_cards': [u'3D', u'KC', u'5H', u'4S', u'7D'], 'player_hands': {1: u'straight 6H 3D 5H 4S 7D', 2: u'high_card JD AD KC 5H 7D', 3: u'pair AH 5C KC 5H 7D', 4: u'pair 8H 3C 3D KC 7D', 5: u'high_card TC 9D KC 5H 7D', 6: u'pair 9H 7C KC 5H 7D', 7: u'high_card 8D KC 5H 4S 7D', 8: u'straight 6C 3D 5H 4S 7D'}}
+
+player1: 3H 4D 
+player2: 3S JH 
+player3: 8H QS 
+player4: 4H AH 
+player5: 7D 2H 
+player6: AD TH 
+player7: 5D 7S 
+player8: 2S 3D 
+shared cards: KC TS 7C KD 6S 
+player 1: pair KC TS 7C KD 6S 
+player 2: pair JH KC TS 7C KD 
+player 3: pair 8H QS KC TS KD 
+player 4: pair AH KC TS 7C KD 
+player 5: two_pair 7D KC TS 7C KD 
+player 6: two_pair AD TH KC TS KD 
+player 7: two_pair 7S KC TS 7C KD 
+player 8: pair KC TS 7C KD 6S 
+WINNER: two_pair AD TH KC TS KD
+
+{'river': u'6S', 'winner': {'status': 'WINNER', 'hand': [u'two_pair AD TH KC TS KD']}, 'starting_hands': {1: [u'3H', u'4D'], 2: [u'3S', u'JH'], 3: [u'8H', u'QS'], 4: [u'4H', u'AH'], 5: [u'7D', u'2H'], 6: [u'AD', u'TH'], 7: [u'5D', u'7S'], 8: [u'2S', u'3D']}, 'flop': [u'KC', u'TS'], 'turn': u'KD', 'shared_cards': [u'KC', u'TS', u'7C', u'KD', u'6S'], 'player_hands': {1: u'pair KC TS 7C KD 6S', 2: u'pair JH KC TS 7C KD', 3: u'pair 8H QS KC TS KD', 4: u'pair AH KC TS 7C KD', 5: u'two_pair 7D KC TS 7C KD', 6: u'two_pair AD TH KC TS KD', 7: u'two_pair 7S KC TS 7C KD', 8: u'pair KC TS 7C KD 6S'}}
+
+player1: AD 7C 
+player2: 4H TC 
+player3: KC 2S 
+player4: JH 9C 
+player5: 4D 6H 
+player6: 3D AH 
+player7: JC TS 
+player8: 2H QH 
+shared cards: JS AC 3H 2D KD 
+player 1: pair AD 7C JS AC KD 
+player 2: high_card 4H TC JS AC KD 
+player 3: two_pair KC 2S AC 2D KD 
+player 4: pair JH 9C JS AC KD 
+player 5: high_card 4D 6H JS AC KD 
+player 6: two_pair 3D AH AC 3H KD 
+player 7: pair JC TS JS AC KD 
+player 8: pair 2H QH AC 2D KD 
+WINNER: two_pair 3D AH AC 3H KD
+
+{'river': u'KD', 'winner': {'status': 'WINNER', 'hand': [u'two_pair 3D AH AC 3H KD']}, 'starting_hands': {1: [u'AD', u'7C'], 2: [u'4H', u'TC'], 3: [u'KC', u'2S'], 4: [u'JH', u'9C'], 5: [u'4D', u'6H'], 6: [u'3D', u'AH'], 7: [u'JC', u'TS'], 8: [u'2H', u'QH']}, 'flop': [u'JS', u'AC'], 'turn': u'2D', 'shared_cards': [u'JS', u'AC', u'3H', u'2D', u'KD'], 'player_hands': {1: u'pair AD 7C JS AC KD', 2: u'high_card 4H TC JS AC KD', 3: u'two_pair KC 2S AC 2D KD', 4: u'pair JH 9C JS AC KD', 5: u'high_card 4D 6H JS AC KD', 6: u'two_pair 3D AH AC 3H KD', 7: u'pair JC TS JS AC KD', 8: u'pair 2H QH AC 2D KD'}}
+
+player1: 4H JH 
+player2: 6D 2D 
+player3: TC QS 
+player4: 7S 8D 
+player5: 6H KS 
+player6: 8S 4D 
+player7: TD 9D 
+player8: 2H 8H 
+shared cards: TH 4C AS AD 9C 
+player 1: two_pair 4H JH 4C AS AD 
+player 2: pair 6D TH AS AD 9C 
+player 3: two_pair TC QS TH AS AD 
+player 4: pair 8D TH AS AD 9C 
+player 5: pair KS TH AS AD 9C 
+player 6: two_pair 4D TH 4C AS AD 
+player 7: two_pair TD 9D TH AS AD 
+player 8: pair 8H TH AS AD 9C 
+WINNER: two_pair TC QS TH AS AD
+
+{'river': u'9C', 'winner': {'status': 'WINNER', 'hand': [u'two_pair TC QS TH AS AD']}, 'starting_hands': {1: [u'4H', u'JH'], 2: [u'6D', u'2D'], 3: [u'TC', u'QS'], 4: [u'7S', u'8D'], 5: [u'6H', u'KS'], 6: [u'8S', u'4D'], 7: [u'TD', u'9D'], 8: [u'2H', u'8H']}, 'flop': [u'TH', u'4C'], 'turn': u'AD', 'shared_cards': [u'TH', u'4C', u'AS', u'AD', u'9C'], 'player_hands': {1: u'two_pair 4H JH 4C AS AD', 2: u'pair 6D TH AS AD 9C', 3: u'two_pair TC QS TH AS AD', 4: u'pair 8D TH AS AD 9C', 5: u'pair KS TH AS AD 9C', 6: u'two_pair 4D TH 4C AS AD', 7: u'two_pair TD 9D TH AS AD', 8: u'pair 8H TH AS AD 9C'}}
+
+player1: 9S 6S 
+player2: 2D 5D 
+player3: AS 7H 
+player4: 8S KS 
+player5: 9H 2S 
+player6: QH QS 
+player7: 8H 6D 
+player8: 3S 6H 
+shared cards: 4S JH QC QD JS 
+player 1: two_pair 9S JH QC QD JS 
+player 2: two_pair 5D JH QC QD JS 
+player 3: two_pair AS JH QC QD JS 
+player 4: two_pair KS JH QC QD JS 
+player 5: two_pair 9H JH QC QD JS 
+player 6: quads QH QS JH QC QD 
+player 7: two_pair 8H JH QC QD JS 
+player 8: two_pair 6H JH QC QD JS 
+WINNER: quads QH QS JH QC QD
+
+{'river': u'JS', 'winner': {'status': 'WINNER', 'hand': [u'quads QH QS JH QC QD']}, 'starting_hands': {1: [u'9S', u'6S'], 2: [u'2D', u'5D'], 3: [u'AS', u'7H'], 4: [u'8S', u'KS'], 5: [u'9H', u'2S'], 6: [u'QH', u'QS'], 7: [u'8H', u'6D'], 8: [u'3S', u'6H']}, 'flop': [u'4S', u'JH'], 'turn': u'QD', 'shared_cards': [u'4S', u'JH', u'QC', u'QD', u'JS'], 'player_hands': {1: u'two_pair 9S JH QC QD JS', 2: u'two_pair 5D JH QC QD JS', 3: u'two_pair AS JH QC QD JS', 4: u'two_pair KS JH QC QD JS', 5: u'two_pair 9H JH QC QD JS', 6: u'quads QH QS JH QC QD', 7: u'two_pair 8H JH QC QD JS', 8: u'two_pair 6H JH QC QD JS'}}
+
+player1: 2S 3C 
+player2: 8H 8D 
+player3: JC QD 
+player4: 7H AS 
+player5: 7S 7C 
+player6: 6D KD 
+player7: JS AH 
+player8: KH 9C 
+shared cards: 5D 3H 7D 4S 5H 
+player 1: two_pair 3C 5D 3H 7D 5H 
+player 2: two_pair 8H 8D 5D 7D 5H 
+player 3: pair JC QD 5D 7D 5H 
+player 4: two_pair 7H AS 5D 7D 5H 
+player 5: full_house 7S 7C 5D 7D 5H 
+player 6: straight 6D 5D 3H 7D 4S 
+player 7: pair JS AH 5D 7D 5H 
+player 8: pair KH 9C 5D 7D 5H 
+WINNER: full_house 7S 7C 5D 7D 5H
+
+{'river': u'5H', 'winner': {'status': 'WINNER', 'hand': [u'full_house 7S 7C 5D 7D 5H']}, 'starting_hands': {1: [u'2S', u'3C'], 2: [u'8H', u'8D'], 3: [u'JC', u'QD'], 4: [u'7H', u'AS'], 5: [u'7S', u'7C'], 6: [u'6D', u'KD'], 7: [u'JS', u'AH'], 8: [u'KH', u'9C']}, 'flop': [u'5D', u'3H'], 'turn': u'4S', 'shared_cards': [u'5D', u'3H', u'7D', u'4S', u'5H'], 'player_hands': {1: u'two_pair 3C 5D 3H 7D 5H', 2: u'two_pair 8H 8D 5D 7D 5H', 3: u'pair JC QD 5D 7D 5H', 4: u'two_pair 7H AS 5D 7D 5H', 5: u'full_house 7S 7C 5D 7D 5H', 6: u'straight 6D 5D 3H 7D 4S', 7: u'pair JS AH 5D 7D 5H', 8: u'pair KH 9C 5D 7D 5H'}}
+
+player1: JH QD 
+player2: AD 3S 
+player3: 2D 6H 
+player4: 3C 2S 
+player5: 6S 5H 
+player6: 5C 7C 
+player7: QS 9D 
+player8: QH 6C 
+shared cards: JS 8S AS 8C 7D 
+player 1: two_pair JH JS 8S AS 8C 
+player 2: two_pair AD JS 8S AS 8C 
+player 3: pair JS 8S AS 8C 7D 
+player 4: pair JS 8S AS 8C 7D 
+player 5: pair JS 8S AS 8C 7D 
+player 6: two_pair 7C 8S AS 8C 7D 
+player 7: pair QS JS 8S AS 8C 
+player 8: pair QH JS 8S AS 8C 
+WINNER: two_pair AD JS 8S AS 8C
+
+{'river': u'7D', 'winner': {'status': 'WINNER', 'hand': [u'two_pair AD JS 8S AS 8C']}, 'starting_hands': {1: [u'JH', u'QD'], 2: [u'AD', u'3S'], 3: [u'2D', u'6H'], 4: [u'3C', u'2S'], 5: [u'6S', u'5H'], 6: [u'5C', u'7C'], 7: [u'QS', u'9D'], 8: [u'QH', u'6C']}, 'flop': [u'JS', u'8S'], 'turn': u'8C', 'shared_cards': [u'JS', u'8S', u'AS', u'8C', u'7D'], 'player_hands': {1: u'two_pair JH JS 8S AS 8C', 2: u'two_pair AD JS 8S AS 8C', 3: u'pair JS 8S AS 8C 7D', 4: u'pair JS 8S AS 8C 7D', 5: u'pair JS 8S AS 8C 7D', 6: u'two_pair 7C 8S AS 8C 7D', 7: u'pair QS JS 8S AS 8C', 8: u'pair QH JS 8S AS 8C'}}
+
+player1: 4D 5H 
+player2: KC 3D 
+player3: 6H 3C 
+player4: 7C 8S 
+player5: QD TH 
+player6: 4C 6D 
+player7: 7S 2S 
+player8: 2C 9D 
+shared cards: AS JD TS 8D JS 
+player 1: pair AS JD TS 8D JS 
+player 2: pair KC AS JD TS JS 
+player 3: pair AS JD TS 8D JS 
+player 4: two_pair 8S AS JD 8D JS 
+player 5: two_pair TH AS JD TS JS 
+player 6: pair AS JD TS 8D JS 
+player 7: flush 7S 2S AS TS JS 
+player 8: pair 9D AS JD TS JS 
+WINNER: flush 7S 2S AS TS JS
+
+{'river': u'JS', 'winner': {'status': 'WINNER', 'hand': [u'flush 7S 2S AS TS JS']}, 'starting_hands': {1: [u'4D', u'5H'], 2: [u'KC', u'3D'], 3: [u'6H', u'3C'], 4: [u'7C', u'8S'], 5: [u'QD', u'TH'], 6: [u'4C', u'6D'], 7: [u'7S', u'2S'], 8: [u'2C', u'9D']}, 'flop': [u'AS', u'JD'], 'turn': u'8D', 'shared_cards': [u'AS', u'JD', u'TS', u'8D', u'JS'], 'player_hands': {1: u'pair AS JD TS 8D JS', 2: u'pair KC AS JD TS JS', 3: u'pair AS JD TS 8D JS', 4: u'two_pair 8S AS JD 8D JS', 5: u'two_pair TH AS JD TS JS', 6: u'pair AS JD TS 8D JS', 7: u'flush 7S 2S AS TS JS', 8: u'pair 9D AS JD TS JS'}}
+
+player1: AH 3D 
+player2: 3C TD 
+player3: 8H QH 
+player4: 8C 9D 
+player5: QD 6S 
+player6: 9C 4D 
+player7: 6C KH 
+player8: KD JC 
+shared cards: JH 9H 6H AD JS 
+player 1: two_pair AH JH 9H AD JS 
+player 2: pair TD JH 9H AD JS 
+player 3: flush 8H QH JH 9H 6H 
+player 4: two_pair 9D JH 9H AD JS 
+player 5: two_pair 6S JH 6H AD JS 
+player 6: two_pair 9C JH 9H AD JS 
+player 7: two_pair 6C JH 6H AD JS 
+player 8: three_of_a_kind KD JC JH AD JS 
+WINNER: flush 8H QH JH 9H 6H
+
+{'river': u'JS', 'winner': {'status': 'WINNER', 'hand': [u'flush 8H QH JH 9H 6H']}, 'starting_hands': {1: [u'AH', u'3D'], 2: [u'3C', u'TD'], 3: [u'8H', u'QH'], 4: [u'8C', u'9D'], 5: [u'QD', u'6S'], 6: [u'9C', u'4D'], 7: [u'6C', u'KH'], 8: [u'KD', u'JC']}, 'flop': [u'JH', u'9H'], 'turn': u'AD', 'shared_cards': [u'JH', u'9H', u'6H', u'AD', u'JS'], 'player_hands': {1: u'two_pair AH JH 9H AD JS', 2: u'pair TD JH 9H AD JS', 3: u'flush 8H QH JH 9H 6H', 4: u'two_pair 9D JH 9H AD JS', 5: u'two_pair 6S JH 6H AD JS', 6: u'two_pair 9C JH 9H AD JS', 7: u'two_pair 6C JH 6H AD JS', 8: u'three_of_a_kind KD JC JH AD JS'}}
+
+player1: 2S TS 
+player2: QS 3D 
+player3: AD 2H 
+player4: 3H 3C 
+player5: JD TC 
+player6: 4D QH 
+player7: 6C 2D 
+player8: 7D AH 
+shared cards: 9S 7H 5S 4C TD 
+player 1: pair TS 9S 7H 5S TD 
+player 2: high_card QS 9S 7H 5S TD 
+player 3: high_card AD 9S 7H 5S TD 
+player 4: pair 3H 3C 9S 7H TD 
+player 5: pair JD TC 9S 7H TD 
+player 6: pair 4D QH 9S 4C TD 
+player 7: high_card 6C 9S 7H 5S TD 
+player 8: pair 7D AH 9S 7H TD 
+WINNER: pair JD TC 9S 7H TD
+
+{'river': u'TD', 'winner': {'status': 'WINNER', 'hand': [u'pair JD TC 9S 7H TD']}, 'starting_hands': {1: [u'2S', u'TS'], 2: [u'QS', u'3D'], 3: [u'AD', u'2H'], 4: [u'3H', u'3C'], 5: [u'JD', u'TC'], 6: [u'4D', u'QH'], 7: [u'6C', u'2D'], 8: [u'7D', u'AH']}, 'flop': [u'9S', u'7H'], 'turn': u'4C', 'shared_cards': [u'9S', u'7H', u'5S', u'4C', u'TD'], 'player_hands': {1: u'pair TS 9S 7H 5S TD', 2: u'high_card QS 9S 7H 5S TD', 3: u'high_card AD 9S 7H 5S TD', 4: u'pair 3H 3C 9S 7H TD', 5: u'pair JD TC 9S 7H TD', 6: u'pair 4D QH 9S 4C TD', 7: u'high_card 6C 9S 7H 5S TD', 8: u'pair 7D AH 9S 7H TD'}}
+
