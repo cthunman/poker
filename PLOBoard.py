@@ -19,23 +19,39 @@ class PLOBoard():
 			cardList.append(self.river)
 
 		# is board paired?
+		pairedBoard = False
+		setOnBoard = False
+		quadsOnBoard = False
+
 		valueDict = {}
 		for card in cardList:
-			if card not in cardList:
+			if card not in valueDict:
 				valueDict[card.value] = []
 			valueDict[card.value].append(card)
+		for k in valueDict:
+			if len(valueDict[k]) == 2:
+				pairedBoard = True
+			elif len(valueDict[k]) == 3:
+				setOnBoard = True
+			elif len(valueDict[k]) == 4:
+				quadsOnBoard = True
 
 		# is there flush possibility?
+		possibleFlush = False
 		flushDict = {}
 		for card in cardList:
-			if card not in cardList:
+			if card not in flushDict:
 				flushDict[card.suit] = []
 			flushDict[card.suit].append(card)
+		for k in flushDict:
+			if len(flushDict[k]) > 2:
+				possibleFlush = True
 
 		# is there straight possibility?
 		straightDict = {}
 		for i in range(5, 15):
 			straightDict[i] = []
+		print straightDict
 		for card in cardList:
 			if card.numeric_value == 14:
 				straightDict[5].append(card)
@@ -43,8 +59,20 @@ class PLOBoard():
 			else:
 				j = card.numeric_value
 				index = 0
-				while j < 14 and index < 5:
+				while j < 15 and index < 5:
 					straightDict[j].append(card)
+					j += 1
+					index += 1
+		possibleStraight = False
+		for k in straightDict:
+			if len(straightDict[k]) > 2:
+				possibleStraight = True
+
+		# for k in straightDict:
+		# 	out = ''
+		# 	for c in straightDict[k]:
+		# 		out += unicode(c) + ' '
+		# 	print k, out
 
 		# is there straight flush possibility?
 
@@ -57,7 +85,9 @@ class PLOBoard():
 		pass
 
 def main():
-	print 'test'
+	flop = [Card('AS'), Card('KS'), Card('QS')]
+	board = PLOBoard(flop=flop)
+	board.currentNuts()
 
 if __name__ == '__main__':
 	main()
