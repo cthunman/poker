@@ -299,7 +299,6 @@ def test_big_o(num_players=4, debug=False):
 			print unicode(h)
 	return find_winner(player_hands), player_hands
 
-
 def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
 	winning_tally = {}
 	winning_tally['straight_flush'] = {'tally': 0, 'ties': 0}
@@ -358,8 +357,6 @@ def find_winners(runs=1000, num_players=6, debug=False):
 	starting_hands = {}
 	for i in range(runs):
 		if runs > 500 and i % 500 == 0: print i
-
-
 
 def main():
 	# test_plo(num_players=9, debug=True)
