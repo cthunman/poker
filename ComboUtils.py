@@ -41,6 +41,21 @@ def find_winner(handlist):
 			winner_list.append(handlist[i])
 	return winner_list
 
+def find_winner_seat(handDict):
+	winner_list = []
+	current_best = None
+	for h in handDict:
+		if len(winner_list) == 0:
+			winner_list.append((h, handDict[h]))
+			current_best = handDict[h]
+		elif current_best.compare_to_hand(handDict[h]) > 0:
+			continue
+		elif current_best.compare_to_hand(handDict[h]) < 0:
+			winner_list = [(h, handDict[h])]
+		elif current_best.compare_to_hand(handDict[h]) == 0:
+			winner_list.append((h, handDict[h]))
+	return winner_list
+
 # I think this should work for Big O also
 def find_best_plo_hand(player_cards, shared_cards):
 	combos = select_combinations([
