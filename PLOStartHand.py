@@ -7,6 +7,11 @@ class PLOStartHand():
 		self.cardList = []
 		for arg in args:
 			self.cardList.append(Card(arg))
+		# else:
+		# 	self.cardList = cardList
+
+	def appendCard(self, card):
+		self.cardList.append(card)
 
 def main():
 	hand = PLOStartHand('AS', 'KD', '5D', 'AC')

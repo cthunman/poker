@@ -19,6 +19,9 @@ class PLOHandSimulator():
 			cardDict[card] = c
 
 		for hand in self.handList:
+			print hand
+			for card in hand.cardList:
+				print card
 			for card in hand.cardList:
 				del cardDict[unicode(card)]
 		
@@ -43,18 +46,27 @@ class PLOHandSimulator():
 			for i in range(len(self.handList)):
 				if i not in handDict:
 					handDict[i] = {}
-				handDict[i]['cards'] = self.handList[i].cardList
+				handDict[i]['hand'] = self.handList[i]
 			for i in range(len(self.handList), self.numPlayers):
 				if i not in handDict:
-					handDict[i] = {'cards':[]}
+					handDict[i] = {}
+				cardArgs = []
 				for j in range(4):
-					handDict[i]['cards'].append(cardList[idx])
+					
+					cardArgs.append(unicode(cardList[idx]))
 					idx += 1
+
+				handDict[i]['hand'] = PLOStartHand(
+					cardArgs[0],
+					cardArgs[1],
+					cardArgs[2],
+					cardArgs[3]
+				)
 
 			if self.debug:
 				for h in handDict:
 					hand = ''
-					for c in handDict[h]['cards']:
+					for c in handDict[h]['hand'].cardList:
 						hand += unicode(c) + ' '
 					print h, hand
 			# deal board
@@ -70,7 +82,7 @@ class PLOHandSimulator():
 			madeHandDict = {}
 			player_hands = []
 			for player in handDict:
-				best_hand = find_best_plo_hand(handDict[player]['cards'], sharedCards)
+				best_hand = find_best_plo_hand(handDict[player]['hand'].cardList, sharedCards)
 				player_hands.append(best_hand)
 				madeHandDict[player] = best_hand
 
@@ -81,10 +93,11 @@ class PLOHandSimulator():
 
 def main():
 	hand1 = PLOStartHand('AS', 'KD', 'KC', 'AC')
-	hand2 = PLOStartHand('AD', 'KS', 'KH', 'AH')
+	# hand2 = PLOStartHand('AD', 'KS', 'KH', 'AH')
 
-	s = PLOHandSimulator([hand1, hand2], 9, debug=True)
-	s.simulate(10)
+	# s = PLOHandSimulator([hand1, hand2], 9, debug=True)
+	s = PLOHandSimulator([hand1], 9, debug=True)
+	s.simulate(2)
 
 if __name__ == '__main__':
 	main()
