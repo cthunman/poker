@@ -33,12 +33,13 @@ class PLOHandSimulator():
 			handStats[hand] = {
 				'wins': 0,
 				'handsPlayed': 0,
-				'bestHandList': []
 			}
+		handHistory = {}
 
-		for i in range(runs):
+		for r in range(runs):
+			handHistory[r] = {}
 			if self.debug:
-				print 'run ' + unicode(i)
+				print 'run ' + unicode(r)
 			idx = 0
 			random.shuffle(cardList)
 			handDict = {}
@@ -71,7 +72,7 @@ class PLOHandSimulator():
 					print h, hand
 			# deal board
 			sharedCards = []
-			for i in range(5):
+			for k in range(5):
 				sharedCards.append(cardList[idx])
 				idx += 1
 			if self.debug:
@@ -83,6 +84,10 @@ class PLOHandSimulator():
 			player_hands = []
 			for player in handDict:
 				best_hand = find_best_plo_hand(handDict[player]['hand'].cardList, sharedCards)
+				print r, player
+				handHistory[r][player] = {
+					'hand': best_hand
+				}
 				player_hands.append(best_hand)
 				madeHandDict[player] = best_hand
 
@@ -90,6 +95,11 @@ class PLOHandSimulator():
 				print 'winner'
 				for w in find_winner_seat(madeHandDict):
 					print '\t' + unicode(w[0]) + ' : ' + unicode(w[1])
+					handHistory[r]['winner'] = w[0]
+					handHistory[r]['winningHand'] = w[1]
+
+		for h in handHistory:
+			print h, handHistory[h]
 
 def main():
 	hand1 = PLOStartHand('AS', 'KD', 'KC', 'AC')
