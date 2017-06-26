@@ -1,4 +1,5 @@
 from Hand import Hand, Card
-import random, itertools
+import random
+import itertools
 from cards import cards
 

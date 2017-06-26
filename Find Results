@@ -1,0 +1,1411 @@
+Searching 36 files for "	"
+
+/Users/Carl/dev/poker/cards.py:
+    1  cards = [
+    2: 	'2S','3S','4S','5S','6S','7S','8S','9S','TS','JS','QS','KS','AS',
+    3: 	'2C','3C','4C','5C','6C','7C','8C','9C','TC','JC','QC','KC','AC',
+    4: 	'2H','3H','4H','5H','6H','7H','8H','9H','TH','JH','QH','KH','AH',
+    5: 	'2D','3D','4D','5D','6D','7D','8D','9D','TD','JD','QD','KD','AD',
+    6  ]
+
+/Users/Carl/dev/poker/ComboUtils.py:
+    4
+    5  def select_combinations(combo_list):
+    6: 	combos = []
+    7: 	for combo in combo_list:
+    8: 		combos.append(itertools.combinations(combo[0], combo[1]))
+    9
+   10: 	combined_results = itertools.product(*combos)
+   11: 	result_list = []
+   12: 	for r in combined_results:
+   13: 		result_list.append([i for sub in r for i in sub])
+   14
+   15: 	return result_list
+   16
+   17  def find_best_hand(cardlist):
+   18: 	combos = itertools.combinations(cardlist, 5)
+   19: 	best_hand = None
+   20: 	for c in combos:
+   21: 		if best_hand is None:
+   22: 			best_hand = Hand(c)
+   23: 		else:
+   24: 			compare = best_hand.compare_to_hand(Hand(c))
+   25: 			if compare == 1:
+   26: 				continue
+   27: 			elif compare == -1:
+   28: 				best_hand = Hand(c)
+   29: 			elif compare == 0:
+   30: 				continue
+   31: 	return best_hand
+   32
+   33  def find_winner(handlist):
+   34: 	winner_list = [handlist[0]]
+   35: 	for i in range(1, len(handlist)):
+   36: 		if winner_list[0].compare_to_hand(handlist[i]) > 0:
+   37: 			continue
+   38: 		elif winner_list[0].compare_to_hand(handlist[i]) < 0:
+   39: 			winner_list = [handlist[i]]
+   40: 		elif winner_list[0].compare_to_hand(handlist[i]) == 0:
+   41: 			winner_list.append(handlist[i])
+   42: 	return winner_list
+   43
+   44  def find_winner_seat(handDict):
+   45: 	winner_list = []
+   46: 	current_best = None
+   47: 	for h in handDict:
+   48: 		if len(winner_list) == 0:
+   49: 			winner_list.append((h, handDict[h]))
+   50: 			current_best = handDict[h]
+   51: 		elif current_best.compare_to_hand(handDict[h]) > 0:
+   52: 			continue
+   53: 		elif current_best.compare_to_hand(handDict[h]) < 0:
+   54: 			winner_list = [(h, handDict[h])]
+   55: 		elif current_best.compare_to_hand(handDict[h]) == 0:
+   56: 			winner_list.append((h, handDict[h]))
+   57: 	return winner_list
+   58
+   59  # I think this should work for Big O also
+   60  def find_best_plo_hand(player_cards, shared_cards):
+   61: 	combos = select_combinations([
+   62: 		(player_cards, 2),
+   63: 		(shared_cards, 3),
+   64: 	])
+   65: 	best_hand = None
+   66: 	for c in combos:
+   67: 		if best_hand is None:
+   68: 			best_hand = Hand(list(c))
+   69: 		else:
+   70: 			compare = best_hand.compare_to_hand(Hand(list(c)))
+   71: 			if compare == 1:
+   72: 				continue
+   73: 			elif compare == -1:
+   74: 				best_hand = Hand(list(c))
+   75: 			elif compare == 0:
+   76: 				continue
+   77: 	return best_hand
+   78
+   79  def test_nlh(num_players=4, debug=False, file=None):
+   80: 	# f = open('db.txt', 'wb+')
+   81: 	hand_record = {}
+   82: 	cardlist = []
+   83: 	for card in cards:
+   84: 		cardlist.append(Card(card))
+   85: 	random.shuffle(cardlist)
+   86:
+   87: 	playerlist = []
+   88: 	for p in range(num_players):
+   89: 		playerlist.append({'cards':[]})
+   90
+   91: 	hand_record['starting_hands'] = {}
+   92: 	for index, player in enumerate(playerlist):
+   93: 		player['cards'].append(cardlist.pop())
+   94: 		player['cards'].append(cardlist.pop())
+   95: 		hand_record['starting_hands'][index + 1] = []
+   96: 		for c in player['cards']:
+   97: 			hand_record['starting_hands'][index + 1].append(unicode(c))
+   98: 		if file != None:
+   99: 			file.write('player' + unicode(index + 1) + ': ')
+  100: 			for c in player['cards']:
+  101: 				file.write(unicode(c) + ' ')
+  102: 			file.write('\n')
+  103
+  104: 	shared_cards = []
+  105: 	shared_cards.append(cardlist.pop())
+  106: 	shared_cards.append(cardlist.pop())
+  107: 	shared_cards.append(cardlist.pop())
+  108: 	shared_cards.append(cardlist.pop())
+  109: 	shared_cards.append(cardlist.pop())
+  110: 	hand_record['shared_cards'] = []
+  111: 	for c in shared_cards:
+  112: 		hand_record['shared_cards'].append(unicode(c))
+  113: 	hand_record['flop'] = []
+  114: 	for c in shared_cards[0:3]:
+  115: 		hand_record['flop'].append(unicode(c))
+  116: 	hand_record['turn'] = unicode(shared_cards[3])
+  117: 	hand_record['river'] = unicode(shared_cards[4])
+  118
+  119: 	if file != None:
+  120: 		file.write('shared cards: ')
+  121: 		for c in shared_cards:
+  122: 			file.write(unicode(c) + ' ')
+  123: 		file.write('\n')
+  124
+  125: 	for index, player in enumerate(playerlist):
+  126: 		card_string = ''
+  127: 		for card in player['cards']:
+  128: 			card_string += unicode(card) + ' '
+  129: 		if debug:
+  130: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  131: 		index += 1
+  132: 	card_string = ''
+  133: 	for card in shared_cards:
+  134: 		card_string += unicode(card) + ' '
+  135: 	if debug:
+  136: 		print 'Shared cards: ' + card_string
+  137
+  138: 	player_hands = []
+  139: 	for index, player in enumerate(playerlist):
+  140: 		card_set = []
+  141: 		card_set.extend(player['cards'])
+  142: 		card_set.extend(shared_cards)
+  143:
+  144: 		card_string = ''
+  145: 		for card in card_set:
+  146: 			card_string += unicode(card) + ' '
+  147: 		if debug:
+  148: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  149: 		best_hand = find_best_hand(card_set)
+  150: 		player_hands.append(best_hand)
+  151: 		if debug:
+  152: 			print unicode(best_hand)
+  153
+  154: 		combos = itertools.combinations(card_set, 5)
+  155: 		for combo in combos:
+  156: 			card_string = ''
+  157: 			for c in combo:
+  158: 				card_string += unicode(c) + ' '
+  159: 	hand_record['player_hands'] = {}
+  160: 	for index, h in enumerate(player_hands):
+  161: 		hand_record['player_hands'][index + 1] = unicode(h)
+  162: 		file.write('player ' + unicode(index + 1) + ': ' + unicode(h) + ' \n')
+  163
+  164: 	winner = find_winner(player_hands)
+  165: 	hand_record['winner'] = {}
+  166: 	hand_record['winner']['hand'] = []
+  167: 	if len(winner) > 1:
+  168: 		file.write('SPLIT POT: ')
+  169: 		hand_record['winner']['status'] = 'SPLIT POT'
+  170: 		for w in winner:
+  171: 			file.write(unicode(w) + ' ')
+  172: 			hand_record['winner']['hand'].append(unicode(w))
+  173: 	else:
+  174: 		file.write('WINNER: ')
+  175: 		hand_record['winner']['status'] = 'WINNER'
+  176: 		hand_record['winner']['hand'].append(unicode(winner[0]))
+  177: 		file.write(unicode(winner[0]))
+  178: 	file.write('\n\n')
+  179: 	file.write(unicode(hand_record))
+  180: 	file.write('\n\n')
+  181
+  182: 	return find_winner(player_hands), player_hands
+  183
+  184  def test_plo(num_players=4, debug=False):
+  185: 	cardlist = []
+  186: 	for card in cards:
+  187: 		cardlist.append(Card(card))
+  188: 	random.shuffle(cardlist)
+  189:
+  190: 	playerlist = []
+  191: 	for p in range(num_players):
+  192: 		playerlist.append({'cards':[]})
+  193
+  194: 	for player in playerlist:
+  195: 		player['cards'].append(cardlist.pop())
+  196: 		player['cards'].append(cardlist.pop())
+  197: 		player['cards'].append(cardlist.pop())
+  198: 		player['cards'].append(cardlist.pop())
+  199
+  200: 	shared_cards = []
+  201: 	shared_cards.append(cardlist.pop())
+  202: 	shared_cards.append(cardlist.pop())
+  203: 	shared_cards.append(cardlist.pop())
+  204: 	shared_cards.append(cardlist.pop())
+  205: 	shared_cards.append(cardlist.pop())
+  206
+  207: 	for index, player in enumerate(playerlist):
+  208: 		card_string = ''
+  209: 		for card in player['cards']:
+  210: 			card_string += unicode(card) + ' '
+  211: 		if debug:
+  212: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  213: 		index += 1
+  214: 	card_string = ''
+  215: 	for card in shared_cards:
+  216: 		card_string += unicode(card) + ' '
+  217: 	if debug:
+  218: 		print 'Shared cards: ' + card_string
+  219
+  220: 	player_hands = []
+  221: 	for index, player in enumerate(playerlist):
+  222: 		card_set = []
+  223: 		card_set.extend(player['cards'])
+  224: 		card_set.extend(shared_cards)
+  225:
+  226: 		card_string = ''
+  227: 		for card in card_set:
+  228: 			card_string += unicode(card) + ' '
+  229: 		if debug:
+  230: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  231: 		best_hand = find_best_plo_hand(player['cards'], shared_cards)
+  232: 		player_hands.append(best_hand)
+  233: 		if debug:
+  234: 			print unicode(best_hand)
+  235
+  236: 		combos = itertools.combinations(card_set, 5)
+  237: 		for combo in combos:
+  238: 			card_string = ''
+  239: 			for c in combo:
+  240: 				card_string += unicode(c) + ' '
+  241
+  242: 	if debug:
+  243: 		print 'find_winner(player_hands)'
+  244: 	# print unicode(find_winner(player_hands))
+  245: 	for h in find_winner(player_hands):
+  246: 		if debug:
+  247: 			print unicode(h)
+  248: 	return find_winner(player_hands), player_hands
+  249
+  250  def test_big_o(num_players=4, debug=False):
+  251: 	cardlist = []
+  252: 	for card in cards:
+  253: 		cardlist.append(Card(card))
+  254: 	random.shuffle(cardlist)
+  255:
+  256: 	playerlist = []
+  257: 	for p in range(num_players):
+  258: 		playerlist.append({'cards':[]})
+  259
+  260: 	for player in playerlist:
+  261: 		player['cards'].append(cardlist.pop())
+  262: 		player['cards'].append(cardlist.pop())
+  263: 		player['cards'].append(cardlist.pop())
+  264: 		player['cards'].append(cardlist.pop())
+  265: 		player['cards'].append(cardlist.pop())
+  266
+  267: 	shared_cards = []
+  268: 	shared_cards.append(cardlist.pop())
+  269: 	shared_cards.append(cardlist.pop())
+  270: 	shared_cards.append(cardlist.pop())
+  271: 	shared_cards.append(cardlist.pop())
+  272: 	shared_cards.append(cardlist.pop())
+  273
+  274: 	for index, player in enumerate(playerlist):
+  275: 		card_string = ''
+  276: 		for card in player['cards']:
+  277: 			card_string += unicode(card) + ' '
+  278: 		if debug:
+  279: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  280: 		index += 1
+  281: 	card_string = ''
+  282: 	for card in shared_cards:
+  283: 		card_string += unicode(card) + ' '
+  284: 	if debug:
+  285: 		print 'Shared cards: ' + card_string
+  286
+  287: 	player_hands = []
+  288: 	for index, player in enumerate(playerlist):
+  289: 		card_set = []
+  290: 		card_set.extend(player['cards'])
+  291: 		card_set.extend(shared_cards)
+  292:
+  293: 		card_string = ''
+  294: 		for card in card_set:
+  295: 			card_string += unicode(card) + ' '
+  296: 		if debug:
+  297: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  298: 		best_hand = find_best_plo_hand(player['cards'], shared_cards)
+  299: 		player_hands.append(best_hand)
+  300: 		if debug:
+  301: 			print unicode(best_hand)
+  302
+  303: 		combos = itertools.combinations(card_set, 5)
+  304: 		for combo in combos:
+  305: 			card_string = ''
+  306: 			for c in combo:
+  307: 				card_string += unicode(c) + ' '
+  308
+  309: 	if debug:
+  310: 		print 'find_winner(player_hands)'
+  311: 	# print unicode(find_winner(player_hands))
+  312: 	for h in find_winner(player_hands):
+  313: 		if debug:
+  314: 			print unicode(h)
+  315: 	return find_winner(player_hands), player_hands
+  316
+  317  def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
+  318: 	winning_tally = {}
+  319: 	winning_tally['straight_flush'] = {'tally': 0, 'ties': 0}
+  320: 	winning_tally['quads'] = {'tally': 0, 'ties': 0}
+  321: 	winning_tally['full_house'] = {'tally': 0, 'ties': 0}
+  322: 	winning_tally['flush'] = {'tally': 0, 'ties': 0}
+  323: 	winning_tally['straight'] = {'tally': 0, 'ties': 0}
+  324: 	winning_tally['three_of_a_kind'] = {'tally': 0, 'ties': 0}
+  325: 	winning_tally['two_pair'] = {'tally': 0, 'ties': 0}
+  326: 	winning_tally['pair'] = {'tally': 0, 'ties': 0}
+  327: 	winning_tally['high_card'] = {'tally': 0, 'ties': 0}
+  328
+  329: 	player_hand_tally = {}
+  330: 	player_hand_tally['straight_flush'] = {'tally': 0}
+  331: 	player_hand_tally['quads'] = {'tally': 0}
+  332: 	player_hand_tally['full_house'] = {'tally': 0}
+  333: 	player_hand_tally['flush'] = {'tally': 0}
+  334: 	player_hand_tally['straight'] = {'tally': 0}
+  335: 	player_hand_tally['three_of_a_kind'] = {'tally': 0}
+  336: 	player_hand_tally['two_pair'] = {'tally': 0}
+  337: 	player_hand_tally['pair'] = {'tally': 0}
+  338: 	player_hand_tally['high_card'] = {'tally': 0}
+  339
+  340: 	f = open('data/db' + unicode(num_players) + '.txt', 'wb+')
+  341: 	for i in range(runs):
+  342: 		if runs > 500 and i % 500 == 0: print i
+  343:
+  344: 		if game == 'nlh':
+  345: 			winning_hands, player_hands = test_nlh(num_players=num_players, file=f)
+  346: 		elif game == 'plo':
+  347: 			winning_hands, player_hands = test_plo(num_players=num_players)
+  348: 		winning_tally[winning_hands[0].value]['tally'] = winning_tally[winning_hands[0].value]['tally'] + 1
+  349: 		if len(winning_hands) > 1:
+  350: 			winning_tally[winning_hands[0].value]['ties'] = winning_tally[winning_hands[0].value]['ties'] + 1
+  351:
+  352
+  353: 		for h in player_hands:
+  354: 			player_hand_tally[h.value]['tally'] = player_hand_tally[h.value]['tally'] + 1
+  355
+  356: 	f.close()
+  357
+  358: 	if debug:
+  359: 		print 'straight_flush : ' + unicode(winning_tally['straight_flush'])
+  360: 		print 'quads : ' + unicode(winning_tally['quads'])
+  361: 		print 'full_house : ' + unicode(winning_tally['full_house'])
+  362: 		print 'flush : ' + unicode(winning_tally['flush'])
+  363: 		print 'straight : ' + unicode(winning_tally['straight'])
+  364: 		print 'three_of_a_kind : ' + unicode(winning_tally['three_of_a_kind'])
+  365: 		print 'two_pair : ' + unicode(winning_tally['two_pair'])
+  366: 		print 'pair : ' + unicode(winning_tally['pair'])
+  367: 		print 'high_card : ' + unicode(winning_tally['high_card'])
+  368
+  369: 	return winning_tally, player_hand_tally
+  370
+  371  def find_winners(runs=1000, num_players=6, debug=False):
+  372: 	starting_hands = {}
+  373: 	for i in range(runs):
+  374: 		if runs > 500 and i % 500 == 0: print i
+  375
+  376  def main():
+  377: 	# test_plo(num_players=9, debug=True)
+  378: 	sim_dictionary = {}
+  379: 	player_dictionary = {}
+  380: 	runs = 5000
+  381: 	for i in range(9, 10):
+  382: 		sim_dictionary[i], player_dictionary[i] = run_simulation(runs, i, game='plo')
+  383: 	column_width = 17
+  384
+  385: 	print '--------------'
+  386: 	for sim in sim_dictionary:
+  387: 		print sim
+  388: 		print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally']/float(runs)), 2)) + '%'
+  389: 		if float(player_dictionary[sim]['straight_flush']['tally']) != 0:
+  390: 			print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally'])/float(player_dictionary[sim]['straight_flush']['tally']), 2)) + '%'
+  391: 		else:
+  392: 			print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : 0.0%'
+  393: 		print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(sim_dictionary[sim]['quads']['tally']) + ' : ' + unicode(sim_dictionary[sim]['quads']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally']/float(runs)), 2)) + '%'
+  394: 		if float(player_dictionary[sim]['quads']['tally']) != 0:
+  395: 			print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally'])/float(player_dictionary[sim]['quads']['tally']), 2)) + '%'
+  396: 		else:
+  397: 			print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : 0.0%'
+  398: 		print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(sim_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(sim_dictionary[sim]['full_house']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally']/float(runs)), 2)) + '%'
+  399: 		if float(player_dictionary[sim]['full_house']['tally']) != 0:
+  400: 			print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally'])/float(player_dictionary[sim]['full_house']['tally']), 2)) + '%'
+  401: 		else:
+  402: 			print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : 0.0%'
+  403: 		print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(sim_dictionary[sim]['flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['flush']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally']/float(runs)), 2)) + '%'
+  404: 		if float(player_dictionary[sim]['flush']['tally']) != 0:
+  405: 			print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally'])/float(player_dictionary[sim]['flush']['tally']), 2)) + '%'
+  406: 		else:
+  407: 			print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : 0.0%'
+  408: 		print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(sim_dictionary[sim]['straight']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally']/float(runs)), 2)) + '%'
+  409: 		if float(player_dictionary[sim]['straight']['tally']) != 0:
+  410: 			print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally'])/float(player_dictionary[sim]['straight']['tally']), 2)) + '%'
+  411: 		else:
+  412: 			print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : 0.0%'
+  413: 		print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally']/float(runs)), 2)) + '%'
+  414: 		if float(player_dictionary[sim]['three_of_a_kind']['tally']) != 0:
+  415: 			print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally'])/float(player_dictionary[sim]['three_of_a_kind']['tally']), 2)) + '%'
+  416: 		else:
+  417: 			print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : 0.0%'
+  418: 		print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally']/float(runs)), 2)) + '%'
+  419: 		if float(player_dictionary[sim]['two_pair']['tally']) != 0:
+  420: 			print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally'])/float(player_dictionary[sim]['two_pair']['tally']), 2)) + '%'
+  421: 		else:
+  422: 			print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : 0.0%'
+  423: 		print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(sim_dictionary[sim]['pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['pair']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally']/float(runs)), 2)) + '%'
+  424: 		if float(player_dictionary[sim]['pair']['tally']) != 0:
+  425: 			print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally'])/float(player_dictionary[sim]['pair']['tally']), 2)) + '%'
+  426: 		else:
+  427: 			print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : 0.0%'
+  428: 		print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(sim_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(sim_dictionary[sim]['high_card']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally']/float(runs)), 2)) + '%'
+  429: 		if float(player_dictionary[sim]['high_card']['tally']) != 0:
+  430: 			print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally'])/float(player_dictionary[sim]['high_card']['tally']), 2)) + '%'
+  431: 		else:
+  432: 			print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : 0.0%'
+  433
+  434  if __name__ == '__main__':
+  435: 	main()
+  436
+
+/Users/Carl/dev/poker/Game.py:
+    1
+    2  class Game():
+    3: 	def __init__(self, name, numHoleCards):
+    4: 		self.name = name
+    5: 		self.numHoleCards = numHoleCards
+    6
+    7  games = {
+    8: 	'plo' : Game('plo', 4),
+    9: 	'nlh' : Game('nlh', 2)
+   10  }
+   11
+
+/Users/Carl/dev/poker/HandSimulator.py:
+    8
+    9  class PLOHandSimulator():
+   10: 	def __init__(self, handList, numPlayers, flop=None, turn=None, debug=True):
+   11: 		self.handList = handList
+   12: 		self.numPlayers = numPlayers
+   13: 		self.debug = debug
+   14
+   15: 	def simulate(self, runs):
+   16: 		cardList = []
+   17: 		cardDict = OrderedDict()
+   18: 		for card in cards:
+   19: 			c = Card(card)
+   20: 			cardDict[card] = c
+   21
+   22: 		for hand in self.handList:
+   23: 			print hand
+   24: 			for card in hand.cardList:
+   25: 				print card
+   26: 			for card in hand.cardList:
+   27: 				del cardDict[unicode(card)]
+   28
+   29: 		for card in cardDict:
+   30: 			cardList.append(cardDict[card])
+   31
+   32: 		handStats = {}
+   33: 		for hand in self.handList:
+   34: 			handStats[hand] = {
+   35: 				'wins': 0,
+   36: 				'handsPlayed': 0,
+   37: 			}
+   38: 		handHistory = {}
+   39
+   40: 		for r in range(runs):
+   41: 			handHistory[r] = {}
+   42: 			if self.debug:
+   43: 				print 'run ' + unicode(r)
+   44: 			idx = 0
+   45: 			random.shuffle(cardList)
+   46: 			handDict = {}
+   47: 			# deal cards
+   48: 			for i in range(len(self.handList)):
+   49: 				if i not in handDict:
+   50: 					handDict[i] = {}
+   51: 				handDict[i]['hand'] = self.handList[i]
+   52: 			for i in range(len(self.handList), self.numPlayers):
+   53: 				if i not in handDict:
+   54: 					handDict[i] = {}
+   55: 				cardArgs = []
+   56: 				for j in range(4):
+   57
+   58: 					cardArgs.append(unicode(cardList[idx]))
+   59: 					idx += 1
+   60
+   61: 				handDict[i]['hand'] = PLOStartHand(
+   62: 					cardArgs[0],
+   63: 					cardArgs[1],
+   64: 					cardArgs[2],
+   65: 					cardArgs[3]
+   66: 				)
+   67
+   68: 			if self.debug:
+   69: 				for h in handDict:
+   70: 					hand = ''
+   71: 					for c in handDict[h]['hand'].cardList:
+   72: 						hand += unicode(c) + ' '
+   73: 					print h, hand
+   74: 			# deal board
+   75: 			sharedCards = []
+   76: 			for k in range(5):
+   77: 				sharedCards.append(cardList[idx])
+   78: 				idx += 1
+   79: 			if self.debug:
+   80: 				hand = ''
+   81: 				for c in sharedCards:
+   82: 					hand += unicode(c) + ' '
+   83: 				print 'board ' + unicode(hand)
+   84: 			madeHandDict = {}
+   85: 			player_hands = []
+   86: 			for player in handDict:
+   87: 				best_hand = find_best_plo_hand(handDict[player]['hand'].cardList, sharedCards)
+   88: 				print r, player
+   89: 				handHistory[r][player] = {
+   90: 					'hand': best_hand
+   91: 				}
+   92: 				player_hands.append(best_hand)
+   93: 				madeHandDict[player] = best_hand
+   94
+   95: 			if self.debug:
+   96: 				print 'winner'
+   97: 				for w in find_winner_seat(madeHandDict):
+   98: 					print '\t' + unicode(w[0]) + ' : ' + unicode(w[1])
+   99: 					handHistory[r]['winner'] = w[0]
+  100: 					handHistory[r]['winningHand'] = w[1]
+  101
+  102: 		for h in handHistory:
+  103: 			print h, handHistory[h]
+  104
+  105  def main():
+  106: 	hand1 = PLOStartHand('AS', 'KD', 'KC', 'AC')
+  107: 	# hand2 = PLOStartHand('AD', 'KS', 'KH', 'AH')
+  108
+  109: 	# s = PLOHandSimulator([hand1, hand2], 9, debug=True)
+  110: 	s = PLOHandSimulator([hand1], 9, debug=True)
+  111: 	s.simulate(2)
+  112
+  113  if __name__ == '__main__':
+  114: 	main()
+  115
+
+/Users/Carl/dev/poker/HandStrength.py:
+    4
+    5  def compare_strength(hand1, hand2, shared_cards=None):
+    6: 	pass
+    7:
+
+/Users/Carl/dev/poker/KellyBet.py:
+    2  # odds = b where bet pays out (b to 1)
+    3  def kellyFraction(winProbability, odds):
+    4: 	return ((winProbability * (odds + 1)) - 1) / odds
+    5
+    6  def kellyCall(betAmount, potSize, winProbability, bankroll):
+    7:
+    8: 	f = float(betAmount) / float(bankroll)
+    9: 	odds = (potSize + betAmount) / betAmount
+   10: 	payout = ((winProbability * (odds + 1)) - 1) / odds
+   11
+   12: 	return payout / f > 1
+   13
+   14  def kellyRaisePot(betAmount, potSize, winProbability, bankroll):
+   15
+   16: 	totalBet = (potSize + (betAmount * 2)) * 2
+   17: 	# print 'totalBet'
+   18: 	# print totalBet
+   19: 	f = float(totalBet) / float(bankroll)
+   20: 	# print 'f'
+   21: 	# print f
+   22: 	odds = 2
+   23: 	payout = ((winProbability * (odds + 1)) - 1) / odds
+   24: 	# print 'payout'
+   25: 	# print payout
+   26: 	return (payout / f) > 1
+   27
+   28  def kellyAction(betAmount, potSize, winProbability, bankroll):
+   29: 	if kellyRaisePot(betAmount, potSize, winProbability, bankroll):
+   30: 		return 'RAISE'
+   31: 	elif kellyCall(betAmount, potSize, winProbability, bankroll):
+   32: 		return 'CALL'
+   33: 	else:
+   34: 		return 'FOLD'
+   35
+   36  def main():
+   37
+   38: 	# print '---------'
+   39: 	# print kellyCall(100.0, 100.0, .65, 700.0)
+   40: 	# print unicode(700.0) + ' : ' + unicode(kellyRaisePot(100.0, 100.0, .65, 700.0))
+   41: 	# print '---------'
+   42
+   43: 	actions = {
+   44: 		'RAISE' : '^^^^',
+   45: 		'CALL' : 'OOOO',
+   46: 		'FOLD' : '____'
+   47: 	}
+   48
+   49: 	bankroll = 1500
+   50: 	topRow = '\t'
+   51: 	for i in range(20):
+   52: 		topRow += unicode(((i + 1) * .05) * 100) + '%\t'
+   53: 	print topRow
+   54: 	for b in range(2, 20, 2):
+   55: 		row = ''
+   56: 		row += unicode((b)) + '\t'
+   57: 		for i in range(1, 20):
+   58: 			bet = ((b))
+   59: 			# print 'bet'
+   60: 			# print bet
+   61: 			winProbability = ((i) * .05)
+   62: 			# print 'winProbability'
+   63: 			# print winProbability
+   64: 			row += unicode(actions[kellyAction(
+   65: 							betAmount=bet,
+   66: 							potSize=bet,
+   67: 							winProbability=winProbability,
+   68: 							bankroll=bankroll)]) + '\t'
+   69: 		print row
+   70: 	for b in range(2, 25):
+   71: 		row = ''
+   72: 		row += unicode((b) * 10) + '\t'
+   73: 		for i in range(1, 20):
+   74: 			bet = ((b) * 10)
+   75: 			# print 'bet'
+   76: 			# print bet
+   77: 			winProbability = ((i) * .05)
+   78: 			# print 'winProbability'
+   79: 			# print winProbability
+   80: 			row += unicode(actions[kellyAction(
+   81: 							betAmount=bet,
+   82: 							potSize=bet,
+   83: 							winProbability=winProbability,
+   84: 							bankroll=bankroll)]) + '\t'
+   85: 		print row
+   86
+   87
+   88  if __name__ == '__main__':
+   89: 	main()
+   90
+
+/Users/Carl/dev/poker/OutsUtils.py:
+    6
+    7  class Path():
+    8: 	def __init__(self, outsLists):
+    9: 		self.outsLists = outsLists
+   10
+   11: 	def calculateOdds(self, cardsToCome, numUnknowns, outsLists):
+   12: 		currentOutsLists = []
+   13: 		totalCardsNeeded = 0
+   14: 		for outsList in outsLists:
+   15: 			totalCardsNeeded += outsList.numNeeded
+   16: 			if outsList.numNeeded > 0:
+   17: 				currentOutsLists.append(outsList)
+   18
+   19: 		if totalCardsNeeded > cardsToCome:
+   20: 			return 0.0
+   21:
+   22: 		if cardsToCome == 1:
+   23: 			return Decimal(currentOutsLists[0].numCards)/Decimal(numUnknowns)
+   24: 		else:
+   25: 			oddsSum = Decimal(0)
+   26: 			for i in range(len(currentOutsLists)):
+   27: 				newOutsLists = copy.deepcopy(currentOutsLists)
+   28: 				newOutsLists[i].numNeeded -= 1
+   29: 				newOutsLists[i].numCards -= 1
+   30: 				oddsSoFar = Decimal(currentOutsLists[i].numCards)/Decimal(numUnknowns)
+   31: 				oddsSum += oddsSoFar * (self.calculateOdds(cardsToCome - 1, numUnknowns - 1, newOutsLists))
+   32: 			return oddsSum
+   33
+   34  class OutsList():
+   35: 	def __init__(self, numCards, numNeeded):
+   36: 		self.numCards = numCards
+   37: 		self.numNeeded = numNeeded
+   38
+   39  def main():
+   40: 	outsList = OutsList(6, 1)
+   41: 	missesList = OutsList(44, 2)
+   42: 	path = Path([outsList, missesList])
+   43: 	outsLists = path.outsLists
+   44: 	print 'flop one pair NLH: ' + unicode(path.calculateOdds(3, 50, outsLists))
+   45
+   46: 	firstPair = OutsList(3, 1)
+   47: 	secondPair = OutsList(3, 1)
+   48: 	missesList = OutsList(44, 1)
+   49: 	path = Path([firstPair, secondPair, missesList])
+   50: 	outsLists = path.outsLists
+   51: 	print 'flop two pair NLH: ' + unicode(path.calculateOdds(3, 50, outsLists))
+   52
+   53: 	outsList = OutsList(6, 1)
+   54: 	missesList = OutsList(44, 4)
+   55: 	path = Path([outsList, missesList])
+   56: 	outsLists = path.outsLists
+   57: 	print 'one pair by the river NLH: ' + unicode(path.calculateOdds(5, 50, outsLists))
+   58
+   59: 	firstPair = OutsList(3, 2)
+   60: 	secondPair = OutsList(3, 1)
+   61: 	# missesList = OutsList(44, 0)
+   62: 	path = Path([firstPair, secondPair])
+   63: 	outsLists = path.outsLists
+   64: 	print 'flop two pair NLH: ' + unicode(path.calculateOdds(3, 50, outsLists) * 2)
+   65
+   66  if __name__ == '__main__':
+   67: 	main()
+   68
+
+/Users/Carl/dev/poker/PLOBoard.py:
+    5  class PLOBoard():
+    6
+    7: 	def __init__(self, flop=None, turn=None, river=None):
+    8: 		self.flop = flop
+    9: 		self.turn = turn
+   10: 		self.river = river
+   11
+   12: 	def currentNuts(self):
+   13: 		cardList = []
+   14: 		if self.flop != None:
+   15: 			cardList.extend(self.flop)
+   16: 		if self.turn != None:
+   17: 			cardList.append(self.turn)
+   18: 		if self.river != None:
+   19: 			cardList.append(self.river)
+   20
+   21: 		# is board paired?
+   22: 		pairedBoard = False
+   23: 		setOnBoard = False
+   24: 		quadsOnBoard = False
+   25
+   26: 		valueDict = {}
+   27: 		for card in cardList:
+   28: 			if card not in valueDict:
+   29: 				valueDict[card.value] = []
+   30: 			valueDict[card.value].append(card)
+   31: 		for k in valueDict:
+   32: 			if len(valueDict[k]) == 2:
+   33: 				pairedBoard = True
+   34: 			elif len(valueDict[k]) == 3:
+   35: 				setOnBoard = True
+   36: 			elif len(valueDict[k]) == 4:
+   37: 				quadsOnBoard = True
+   38
+   39: 		# is there flush possibility?
+   40: 		possibleFlush = False
+   41: 		flushDict = {}
+   42: 		for card in cardList:
+   43: 			if card not in flushDict:
+   44: 				flushDict[card.suit] = []
+   45: 			flushDict[card.suit].append(card)
+   46: 		for k in flushDict:
+   47: 			if len(flushDict[k]) > 2:
+   48: 				possibleFlush = True
+   49
+   50: 		# is there straight possibility?
+   51: 		straightDict = {}
+   52: 		for i in range(5, 15):
+   53: 			straightDict[i] = []
+   54: 		print straightDict
+   55: 		for card in cardList:
+   56: 			if card.numeric_value == 14:
+   57: 				straightDict[5].append(card)
+   58: 				straightDict[14].append(card)
+   59: 			else:
+   60: 				j = card.numeric_value
+   61: 				index = 0
+   62: 				while j < 15 and index < 5:
+   63: 					straightDict[j].append(card)
+   64: 					j += 1
+   65: 					index += 1
+   66: 		possibleStraight = False
+   67: 		for k in straightDict:
+   68: 			if len(straightDict[k]) > 2:
+   69: 				possibleStraight = True
+   70
+   71: 		# for k in straightDict:
+   72: 		# 	out = ''
+   73: 		# 	for c in straightDict[k]:
+   74: 		# 		out += unicode(c) + ' '
+   75: 		# 	print k, out
+   76
+   77: 		# is there straight flush possibility?
+   78
+   79: 		# nuts is top set
+   80
+   81: 	def straightDraws(self):
+   82: 		pass
+   83
+   84: 	def flushDraws(self):
+   85: 		pass
+   86
+   87  def main():
+   88: 	flop = [Card('AS'), Card('KS'), Card('QS')]
+   89: 	board = PLOBoard(flop=flop)
+   90: 	board.currentNuts()
+   91
+   92  if __name__ == '__main__':
+   93: 	main()
+   94
+
+/Users/Carl/dev/poker/PLOStartHand.py:
+    4
+    5  class PLOStartHand():
+    6: 	def __init__(self, *args):
+    7: 		self.cardList = []
+    8: 		for arg in args:
+    9: 			self.cardList.append(Card(arg))
+   10: 		# else:
+   11: 		# 	self.cardList = cardList
+   12
+   13: 	def appendCard(self, card):
+   14: 		self.cardList.append(card)
+   15
+   16  def main():
+   17: 	hand = PLOStartHand('AS', 'KD', '5D', 'AC')
+   18: 	for card in hand.cardList:
+   19: 		print unicode(card), unicode(card.value), unicode(card.suit)
+   20
+   21  if __name__ == '__main__':
+   22: 	main()
+   23
+
+/Users/Carl/dev/poker/StartHandResearch.py:
+    5  class NLStartHand():
+    6
+    7: 	def sort_cards(self, card_list):
+    8: 		# suit order: spades, clubs, hearts, diamonds
+    9: 		# descending numerical order
+   10: 		return sorted(card_list, key=lambda card: card.numeric_value, reverse=True)
+   11
+   12: 	def hand_key(self):
+   13: 		suited = self.card1.suit == self.card2.suit
+   14: 		suit = ''
+   15: 		if suited:
+   16: 			suit = 's'
+   17: 		else:
+   18: 			suit = 'o'
+   19: 		return unicode(self.card1.value) + unicode(self.card2.value) + unicode(suit)
+   20
+   21: 	def __init__(self, card_list):
+   22: 		sorted_cards = self.sort_cards(card_list)
+   23: 		self.card1 = sorted_cards[0]
+   24: 		self.card2 = sorted_cards[1]
+   25
+   26  def test_starting_hand(starting_hand, num_opponents, runs=1000, debug=False):
+   27: 	cardlist = []
+   28: 	for card in cards:
+   29: 		c = Card(card)
+   30: 		if c.equals_card(starting_hand.card1):
+   31: 			continue
+   32: 		if c.equals_card(starting_hand.card2):
+   33: 			continue
+   34: 		cardlist.append(Card(card))
+   35
+   36: 	for i in range(runs):
+   37
+   38: 		temp_cardlist = list(cardlist)
+   39: 		random.shuffle(temp_cardlist)
+   40
+   41: 		playerlist = []
+   42: 		playerlist.append({'cards':[]})
+   43:
+   44: 		for p in range(num_opponents):
+   45: 			playerlist.append({'cards':[]})
+   46
+   47: 		for player in playerlist:
+   48: 			player['cards'].append(temp_cardlist.pop())
+   49: 			player['cards'].append(temp_cardlist.pop())
+   50
+   51: 		shared_cards = []
+   52: 		shared_cards.append(temp_cardlist.pop())
+   53: 		shared_cards.append(temp_cardlist.pop())
+   54: 		shared_cards.append(temp_cardlist.pop())
+   55: 		shared_cards.append(temp_cardlist.pop())
+   56: 		shared_cards.append(temp_cardlist.pop())
+   57
+   58: 		for index, player in enumerate(playerlist):
+   59: 			card_string = ''
+   60: 			for card in player['cards']:
+   61: 				card_string += unicode(card) + ' '
+   62: 			if debug:
+   63: 				print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+   64: 			index += 1
+   65: 		card_string = ''
+   66: 		for card in shared_cards:
+   67: 			card_string += unicode(card) + ' '
+   68: 		if debug:
+   69: 			print 'Shared cards: ' + card_string
+   70
+   71: 		player_hands = []
+   72: 		for index, player in enumerate(playerlist):
+   73: 			card_set = []
+   74: 			card_set.extend(player['cards'])
+   75: 			card_set.extend(shared_cards)
+   76:
+   77: 			card_string = ''
+   78: 			for card in card_set:
+   79: 				card_string += unicode(card) + ' '
+   80: 			if debug:
+   81: 				print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+   82: 			best_hand = find_best_hand(card_set)
+   83: 			player_hands.append(best_hand)
+   84: 			if debug:
+   85: 				print unicode(best_hand)
+   86
+   87: 			combos = itertools.combinations(card_set, 5)
+   88: 			for combo in combos:
+   89: 				card_string = ''
+   90: 				for c in combo:
+   91: 					card_string += unicode(c) + ' '
+   92: 		return find_winner(player_hands), player_hands
+   93
+   94
+   95
+   96  def main():
+   97: 	cardlist = []
+   98: 	for card in cards:
+   99: 		cardlist.append(Card(card))
+  100: 	random.shuffle(cardlist)
+  101
+  102: 	hand = NLStartHand([cardlist.pop(), cardlist.pop()])
+  103: 	print hand.hand_key()
+  104: 	print len(test_starting_hand(hand, 5))
+  105: 	shuffled_cards = test_starting_hand(hand, 5)
+  106: 	# for c in shuffled_cards:
+  107: 		# print unicode(c)
+  108
+  109
+  110  if __name__ == '__main__':
+  111: 	main()
+  112
+
+/Users/Carl/dev/poker/Table.py:
+    2
+    3  class Table():
+    4: 	def __init__(self, player_list, game=games['nlh']):
+    5: 		self.player_list = player_list
+    6: 		self.game = game
+    7
+    8  class Player():
+    9: 	def __init__(self, name, seat=None):
+   10: 		self.name = name
+   11: 		self.seat = seat
+   12
+   13:
+
+/Users/Carl/dev/poker/test.py:
+    4
+    5  def select_combinations(combo_list):
+    6: 	combos = []
+    7: 	for combo in combo_list:
+    8: 		combos.append(itertools.combinations(combo[0], combo[1]))
+    9
+   10: 	combined_results = itertools.product(*combos)
+   11: 	result_list = []
+   12: 	for r in combined_results:
+   13: 		result_list.append([i for sub in r for i in sub])
+   14
+   15: 	return result_list
+   16
+   17  def find_best_hand(cardlist):
+   18: 	combos = itertools.combinations(cardlist, 5)
+   19: 	best_hand = None
+   20: 	for c in combos:
+   21: 		if best_hand is None:
+   22: 			best_hand = Hand(c)
+   23: 		else:
+   24: 			compare = best_hand.compare_to_hand(Hand(c))
+   25: 			if compare == 1:
+   26: 				continue
+   27: 			elif compare == -1:
+   28: 				best_hand = Hand(c)
+   29: 			elif compare == 0:
+   30: 				continue
+   31: 	return best_hand
+   32
+   33  def find_winner(handlist):
+   34: 	winner_list = [handlist[0]]
+   35: 	for i in range(1, len(handlist)):
+   36: 		if winner_list[0].compare_to_hand(handlist[i]) > 0:
+   37: 			continue
+   38: 		elif winner_list[0].compare_to_hand(handlist[i]) < 0:
+   39: 			winner_list = [handlist[i]]
+   40: 		elif winner_list[0].compare_to_hand(handlist[i]) == 0:
+   41: 			winner_list.append(handlist[i])
+   42: 	return winner_list
+   43
+   44  # I think this should work for Big O also
+   45  def find_best_plo_hand(player_cards, shared_cards):
+   46: 	combos = select_combinations([
+   47: 		(player_cards, 2),
+   48: 		(shared_cards, 3),
+   49: 	])
+   50: 	best_hand = None
+   51: 	for c in combos:
+   52: 		if best_hand is None:
+   53: 			best_hand = Hand(list(c))
+   54: 		else:
+   55: 			compare = best_hand.compare_to_hand(Hand(list(c)))
+   56: 			if compare == 1:
+   57: 				continue
+   58: 			elif compare == -1:
+   59: 				best_hand = Hand(list(c))
+   60: 			elif compare == 0:
+   61: 				continue
+   62: 	return best_hand
+   63
+   64  def test_nlh(num_players=4, debug=False, file=None):
+   65: 	# f = open('db.txt', 'wb+')
+   66: 	hand_record = {}
+   67: 	cardlist = []
+   68: 	for card in cards:
+   69: 		cardlist.append(Card(card))
+   70: 	random.shuffle(cardlist)
+   71:
+   72: 	playerlist = []
+   73: 	for p in range(num_players):
+   74: 		playerlist.append({'cards':[]})
+   75
+   76: 	hand_record['starting_hands'] = {}
+   77: 	for index, player in enumerate(playerlist):
+   78: 		player['cards'].append(cardlist.pop())
+   79: 		player['cards'].append(cardlist.pop())
+   80: 		hand_record['starting_hands'][index + 1] = []
+   81: 		for c in player['cards']:
+   82: 			hand_record['starting_hands'][index + 1].append(unicode(c))
+   83: 		if file != None:
+   84: 			file.write('player' + unicode(index + 1) + ': ')
+   85: 			for c in player['cards']:
+   86: 				file.write(unicode(c) + ' ')
+   87: 			file.write('\n')
+   88
+   89: 	shared_cards = []
+   90: 	shared_cards.append(cardlist.pop())
+   91: 	shared_cards.append(cardlist.pop())
+   92: 	shared_cards.append(cardlist.pop())
+   93: 	shared_cards.append(cardlist.pop())
+   94: 	shared_cards.append(cardlist.pop())
+   95: 	hand_record['shared_cards'] = []
+   96: 	for c in shared_cards:
+   97: 		hand_record['shared_cards'].append(unicode(c))
+   98: 	hand_record['flop'] = []
+   99: 	for c in shared_cards[0:3]:
+  100: 		hand_record['flop'].append(unicode(c))
+  101: 	hand_record['turn'] = unicode(shared_cards[3])
+  102: 	hand_record['river'] = unicode(shared_cards[4])
+  103
+  104: 	if file != None:
+  105: 		file.write('shared cards: ')
+  106: 		for c in shared_cards:
+  107: 			file.write(unicode(c) + ' ')
+  108: 		file.write('\n')
+  109
+  110: 	for index, player in enumerate(playerlist):
+  111: 		card_string = ''
+  112: 		for card in player['cards']:
+  113: 			card_string += unicode(card) + ' '
+  114: 		if debug:
+  115: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  116: 		index += 1
+  117: 	card_string = ''
+  118: 	for card in shared_cards:
+  119: 		card_string += unicode(card) + ' '
+  120: 	if debug:
+  121: 		print 'Shared cards: ' + card_string
+  122
+  123: 	player_hands = []
+  124: 	for index, player in enumerate(playerlist):
+  125: 		card_set = []
+  126: 		card_set.extend(player['cards'])
+  127: 		card_set.extend(shared_cards)
+  128:
+  129: 		card_string = ''
+  130: 		for card in card_set:
+  131: 			card_string += unicode(card) + ' '
+  132: 		if debug:
+  133: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  134: 		best_hand = find_best_hand(card_set)
+  135: 		player_hands.append(best_hand)
+  136: 		if debug:
+  137: 			print unicode(best_hand)
+  138
+  139: 		combos = itertools.combinations(card_set, 5)
+  140: 		for combo in combos:
+  141: 			card_string = ''
+  142: 			for c in combo:
+  143: 				card_string += unicode(c) + ' '
+  144: 	hand_record['player_hands'] = {}
+  145: 	for index, h in enumerate(player_hands):
+  146: 		hand_record['player_hands'][index + 1] = unicode(h)
+  147: 		file.write('player ' + unicode(index + 1) + ': ' + unicode(h) + ' \n')
+  148
+  149: 	winner = find_winner(player_hands)
+  150: 	hand_record['winner'] = {}
+  151: 	hand_record['winner']['hand'] = []
+  152: 	if len(winner) > 1:
+  153: 		file.write('SPLIT POT: ')
+  154: 		hand_record['winner']['status'] = 'SPLIT POT'
+  155: 		for w in winner:
+  156: 			file.write(unicode(w) + ' ')
+  157: 			hand_record['winner']['hand'].append(unicode(w))
+  158: 	else:
+  159: 		file.write('WINNER: ')
+  160: 		hand_record['winner']['status'] = 'WINNER'
+  161: 		hand_record['winner']['hand'].append(unicode(winner[0]))
+  162: 		file.write(unicode(winner[0]))
+  163: 	file.write('\n\n')
+  164: 	file.write(unicode(hand_record))
+  165: 	file.write('\n\n')
+  166
+  167: 	return find_winner(player_hands), player_hands
+  168
+  169  def test_plo(num_players=4, debug=False):
+  170: 	cardlist = []
+  171: 	for card in cards:
+  172: 		cardlist.append(Card(card))
+  173: 	random.shuffle(cardlist)
+  174:
+  175: 	playerlist = []
+  176: 	for p in range(num_players):
+  177: 		playerlist.append({'cards':[]})
+  178
+  179: 	for player in playerlist:
+  180: 		player['cards'].append(cardlist.pop())
+  181: 		player['cards'].append(cardlist.pop())
+  182: 		player['cards'].append(cardlist.pop())
+  183: 		player['cards'].append(cardlist.pop())
+  184
+  185: 	shared_cards = []
+  186: 	shared_cards.append(cardlist.pop())
+  187: 	shared_cards.append(cardlist.pop())
+  188: 	shared_cards.append(cardlist.pop())
+  189: 	shared_cards.append(cardlist.pop())
+  190: 	shared_cards.append(cardlist.pop())
+  191
+  192: 	for index, player in enumerate(playerlist):
+  193: 		card_string = ''
+  194: 		for card in player['cards']:
+  195: 			card_string += unicode(card) + ' '
+  196: 		if debug:
+  197: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  198: 		index += 1
+  199: 	card_string = ''
+  200: 	for card in shared_cards:
+  201: 		card_string += unicode(card) + ' '
+  202: 	if debug:
+  203: 		print 'Shared cards: ' + card_string
+  204
+  205: 	player_hands = []
+  206: 	for index, player in enumerate(playerlist):
+  207: 		card_set = []
+  208: 		card_set.extend(player['cards'])
+  209: 		card_set.extend(shared_cards)
+  210:
+  211: 		card_string = ''
+  212: 		for card in card_set:
+  213: 			card_string += unicode(card) + ' '
+  214: 		if debug:
+  215: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  216: 		best_hand = find_best_plo_hand(player['cards'], shared_cards)
+  217: 		player_hands.append(best_hand)
+  218: 		if debug:
+  219: 			print unicode(best_hand)
+  220
+  221: 		combos = itertools.combinations(card_set, 5)
+  222: 		for combo in combos:
+  223: 			card_string = ''
+  224: 			for c in combo:
+  225: 				card_string += unicode(c) + ' '
+  226
+  227: 	if debug:
+  228: 		print 'find_winner(player_hands)'
+  229: 	# print unicode(find_winner(player_hands))
+  230: 	for h in find_winner(player_hands):
+  231: 		if debug:
+  232: 			print unicode(h)
+  233: 	return find_winner(player_hands), player_hands
+  234
+  235  def test_big_o(num_players=4, debug=False):
+  236: 	cardlist = []
+  237: 	for card in cards:
+  238: 		cardlist.append(Card(card))
+  239: 	random.shuffle(cardlist)
+  240:
+  241: 	playerlist = []
+  242: 	for p in range(num_players):
+  243: 		playerlist.append({'cards':[]})
+  244
+  245: 	for player in playerlist:
+  246: 		player['cards'].append(cardlist.pop())
+  247: 		player['cards'].append(cardlist.pop())
+  248: 		player['cards'].append(cardlist.pop())
+  249: 		player['cards'].append(cardlist.pop())
+  250: 		player['cards'].append(cardlist.pop())
+  251
+  252: 	shared_cards = []
+  253: 	shared_cards.append(cardlist.pop())
+  254: 	shared_cards.append(cardlist.pop())
+  255: 	shared_cards.append(cardlist.pop())
+  256: 	shared_cards.append(cardlist.pop())
+  257: 	shared_cards.append(cardlist.pop())
+  258
+  259: 	for index, player in enumerate(playerlist):
+  260: 		card_string = ''
+  261: 		for card in player['cards']:
+  262: 			card_string += unicode(card) + ' '
+  263: 		if debug:
+  264: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  265: 		index += 1
+  266: 	card_string = ''
+  267: 	for card in shared_cards:
+  268: 		card_string += unicode(card) + ' '
+  269: 	if debug:
+  270: 		print 'Shared cards: ' + card_string
+  271
+  272: 	player_hands = []
+  273: 	for index, player in enumerate(playerlist):
+  274: 		card_set = []
+  275: 		card_set.extend(player['cards'])
+  276: 		card_set.extend(shared_cards)
+  277:
+  278: 		card_string = ''
+  279: 		for card in card_set:
+  280: 			card_string += unicode(card) + ' '
+  281: 		if debug:
+  282: 			print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+  283: 		best_hand = find_best_plo_hand(player['cards'], shared_cards)
+  284: 		player_hands.append(best_hand)
+  285: 		if debug:
+  286: 			print unicode(best_hand)
+  287
+  288: 		combos = itertools.combinations(card_set, 5)
+  289: 		for combo in combos:
+  290: 			card_string = ''
+  291: 			for c in combo:
+  292: 				card_string += unicode(c) + ' '
+  293
+  294: 	if debug:
+  295: 		print 'find_winner(player_hands)'
+  296: 	# print unicode(find_winner(player_hands))
+  297: 	for h in find_winner(player_hands):
+  298: 		if debug:
+  299: 			print unicode(h)
+  300: 	return find_winner(player_hands), player_hands
+  301
+  302
+  303  def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
+  304: 	winning_tally = {}
+  305: 	winning_tally['straight_flush'] = {'tally': 0, 'ties': 0}
+  306: 	winning_tally['quads'] = {'tally': 0, 'ties': 0}
+  307: 	winning_tally['full_house'] = {'tally': 0, 'ties': 0}
+  308: 	winning_tally['flush'] = {'tally': 0, 'ties': 0}
+  309: 	winning_tally['straight'] = {'tally': 0, 'ties': 0}
+  310: 	winning_tally['three_of_a_kind'] = {'tally': 0, 'ties': 0}
+  311: 	winning_tally['two_pair'] = {'tally': 0, 'ties': 0}
+  312: 	winning_tally['pair'] = {'tally': 0, 'ties': 0}
+  313: 	winning_tally['high_card'] = {'tally': 0, 'ties': 0}
+  314
+  315: 	player_hand_tally = {}
+  316: 	player_hand_tally['straight_flush'] = {'tally': 0}
+  317: 	player_hand_tally['quads'] = {'tally': 0}
+  318: 	player_hand_tally['full_house'] = {'tally': 0}
+  319: 	player_hand_tally['flush'] = {'tally': 0}
+  320: 	player_hand_tally['straight'] = {'tally': 0}
+  321: 	player_hand_tally['three_of_a_kind'] = {'tally': 0}
+  322: 	player_hand_tally['two_pair'] = {'tally': 0}
+  323: 	player_hand_tally['pair'] = {'tally': 0}
+  324: 	player_hand_tally['high_card'] = {'tally': 0}
+  325
+  326: 	f = open('data/db' + unicode(num_players) + '.txt', 'wb+')
+  327: 	for i in range(runs):
+  328: 		if runs > 500 and i % 500 == 0: print i
+  329:
+  330: 		if game == 'nlh':
+  331: 			winning_hands, player_hands = test_nlh(num_players=num_players, file=f)
+  332: 		elif game == 'plo':
+  333: 			winning_hands, player_hands = test_plo(num_players=num_players)
+  334: 		winning_tally[winning_hands[0].value]['tally'] = winning_tally[winning_hands[0].value]['tally'] + 1
+  335: 		if len(winning_hands) > 1:
+  336: 			winning_tally[winning_hands[0].value]['ties'] = winning_tally[winning_hands[0].value]['ties'] + 1
+  337:
+  338
+  339: 		for h in player_hands:
+  340: 			player_hand_tally[h.value]['tally'] = player_hand_tally[h.value]['tally'] + 1
+  341
+  342: 	f.close()
+  343
+  344: 	if debug:
+  345: 		print 'straight_flush : ' + unicode(winning_tally['straight_flush'])
+  346: 		print 'quads : ' + unicode(winning_tally['quads'])
+  347: 		print 'full_house : ' + unicode(winning_tally['full_house'])
+  348: 		print 'flush : ' + unicode(winning_tally['flush'])
+  349: 		print 'straight : ' + unicode(winning_tally['straight'])
+  350: 		print 'three_of_a_kind : ' + unicode(winning_tally['three_of_a_kind'])
+  351: 		print 'two_pair : ' + unicode(winning_tally['two_pair'])
+  352: 		print 'pair : ' + unicode(winning_tally['pair'])
+  353: 		print 'high_card : ' + unicode(winning_tally['high_card'])
+  354
+  355: 	return winning_tally, player_hand_tally
+  356
+  357  def find_winners(runs=1000, num_players=6, debug=False):
+  358: 	starting_hands = {}
+  359: 	for i in range(runs):
+  360: 		if runs > 500 and i % 500 == 0: print i
+  361
+  362
+  363
+  364  def main():
+  365: 	# test_plo(num_players=9, debug=True)
+  366: 	sim_dictionary = {}
+  367: 	player_dictionary = {}
+  368: 	runs = 5000
+  369: 	for i in range(9, 10):
+  370: 		sim_dictionary[i], player_dictionary[i] = run_simulation(runs, i, game='plo')
+  371: 	column_width = 17
+  372
+  373: 	print '--------------'
+  374: 	for sim in sim_dictionary:
+  375: 		print sim
+  376: 		print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally']/float(runs)), 2)) + '%'
+  377: 		if float(player_dictionary[sim]['straight_flush']['tally']) != 0:
+  378: 			print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally'])/float(player_dictionary[sim]['straight_flush']['tally']), 2)) + '%'
+  379: 		else:
+  380: 			print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : 0.0%'
+  381: 		print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(sim_dictionary[sim]['quads']['tally']) + ' : ' + unicode(sim_dictionary[sim]['quads']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally']/float(runs)), 2)) + '%'
+  382: 		if float(player_dictionary[sim]['quads']['tally']) != 0:
+  383: 			print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally'])/float(player_dictionary[sim]['quads']['tally']), 2)) + '%'
+  384: 		else:
+  385: 			print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : 0.0%'
+  386: 		print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(sim_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(sim_dictionary[sim]['full_house']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally']/float(runs)), 2)) + '%'
+  387: 		if float(player_dictionary[sim]['full_house']['tally']) != 0:
+  388: 			print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally'])/float(player_dictionary[sim]['full_house']['tally']), 2)) + '%'
+  389: 		else:
+  390: 			print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : 0.0%'
+  391: 		print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(sim_dictionary[sim]['flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['flush']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally']/float(runs)), 2)) + '%'
+  392: 		if float(player_dictionary[sim]['flush']['tally']) != 0:
+  393: 			print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally'])/float(player_dictionary[sim]['flush']['tally']), 2)) + '%'
+  394: 		else:
+  395: 			print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : 0.0%'
+  396: 		print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(sim_dictionary[sim]['straight']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally']/float(runs)), 2)) + '%'
+  397: 		if float(player_dictionary[sim]['straight']['tally']) != 0:
+  398: 			print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally'])/float(player_dictionary[sim]['straight']['tally']), 2)) + '%'
+  399: 		else:
+  400: 			print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : 0.0%'
+  401: 		print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally']/float(runs)), 2)) + '%'
+  402: 		if float(player_dictionary[sim]['three_of_a_kind']['tally']) != 0:
+  403: 			print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally'])/float(player_dictionary[sim]['three_of_a_kind']['tally']), 2)) + '%'
+  404: 		else:
+  405: 			print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : 0.0%'
+  406: 		print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally']/float(runs)), 2)) + '%'
+  407: 		if float(player_dictionary[sim]['two_pair']['tally']) != 0:
+  408: 			print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally'])/float(player_dictionary[sim]['two_pair']['tally']), 2)) + '%'
+  409: 		else:
+  410: 			print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : 0.0%'
+  411: 		print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(sim_dictionary[sim]['pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['pair']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally']/float(runs)), 2)) + '%'
+  412: 		if float(player_dictionary[sim]['pair']['tally']) != 0:
+  413: 			print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally'])/float(player_dictionary[sim]['pair']['tally']), 2)) + '%'
+  414: 		else:
+  415: 			print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : 0.0%'
+  416: 		print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(sim_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(sim_dictionary[sim]['high_card']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally']/float(runs)), 2)) + '%'
+  417: 		if float(player_dictionary[sim]['high_card']['tally']) != 0:
+  418: 			print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally'])/float(player_dictionary[sim]['high_card']['tally']), 2)) + '%'
+  419: 		else:
+  420: 			print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : 0.0%'
+  421
+  422  if __name__ == '__main__':
+  423: 	main()
+  424
+
+/Users/Carl/dev/poker/utils/deck_utils.py:
+    2
+    3  def shuffle_deck(deck):
+    4: 	pass
+
+/Users/Carl/dev/poker/webapp/templates/base.html:
+    8
+    9  <script type="text/javascript"
+   10: 		src="{{ url_for('static', filename='js/jquery-3.1.1.min.js') }}">
+   11  </script>
+   12
+   ..
+   14
+   15  <body>
+   16: 	{% block content %}
+   17: 	{% endblock %}
+   18  </body>
+   19  </html>
+
+2369 matches across 14 files
