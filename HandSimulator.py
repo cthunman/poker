@@ -85,7 +85,8 @@ class PLOHandSimulator():
             madeHandDict = {}
             player_hands = []
             for player in handDict:
-                best_hand = find_best_plo_hand(handDict[player]['hand'].cardList, sharedCards)
+                best_hand = find_best_plo_hand(
+                    handDict[player]['hand'].cardList, sharedCards)
                 print r, player
                 handHistory[r][player] = {
                     'hand': best_hand

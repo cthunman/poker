@@ -3,6 +3,7 @@ import random
 import itertools
 from cards import cards
 
+
 def select_combinations(combo_list):
     combos = []
     for combo in combo_list:
@@ -14,6 +15,7 @@ def select_combinations(combo_list):
         result_list.append([i for sub in r for i in sub])
 
     return result_list
+
 
 def find_best_hand(cardlist):
     combos = itertools.combinations(cardlist, 5)
@@ -31,6 +33,7 @@ def find_best_hand(cardlist):
                 continue
     return best_hand
 
+
 def find_winner(handlist):
     winner_list = [handlist[0]]
     for i in range(1, len(handlist)):
@@ -41,6 +44,7 @@ def find_winner(handlist):
         elif winner_list[0].compare_to_hand(handlist[i]) == 0:
             winner_list.append(handlist[i])
     return winner_list
+
 
 def find_winner_seat(handDict):
     winner_list = []
@@ -56,6 +60,7 @@ def find_winner_seat(handDict):
         elif current_best.compare_to_hand(handDict[h]) == 0:
             winner_list.append((h, handDict[h]))
     return winner_list
+
 
 # I think this should work for Big O also
 def find_best_plo_hand(player_cards, shared_cards):
@@ -77,6 +82,7 @@ def find_best_plo_hand(player_cards, shared_cards):
                 continue
     return best_hand
 
+
 def test_nlh(num_players=4, debug=False, file=None):
     # f = open('db.txt', 'wb+')
     hand_record = {}
@@ -87,7 +93,7 @@ def test_nlh(num_players=4, debug=False, file=None):
 
     playerlist = []
     for p in range(num_players):
-        playerlist.append({'cards':[]})
+        playerlist.append({'cards': []})
 
     hand_record['starting_hands'] = {}
     for index, player in enumerate(playerlist):
@@ -96,7 +102,7 @@ def test_nlh(num_players=4, debug=False, file=None):
         hand_record['starting_hands'][index + 1] = []
         for c in player['cards']:
             hand_record['starting_hands'][index + 1].append(unicode(c))
-        if file != None:
+        if file is not None:
             file.write('player' + unicode(index + 1) + ': ')
             for c in player['cards']:
                 file.write(unicode(c) + ' ')
@@ -117,7 +123,7 @@ def test_nlh(num_players=4, debug=False, file=None):
     hand_record['turn'] = unicode(shared_cards[3])
     hand_record['river'] = unicode(shared_cards[4])
 
-    if file != None:
+    if file is not None:
         file.write('shared cards: ')
         for c in shared_cards:
             file.write(unicode(c) + ' ')
@@ -182,6 +188,7 @@ def test_nlh(num_players=4, debug=False, file=None):
 
     return find_winner(player_hands), player_hands
 
+
 def test_plo(num_players=4, debug=False):
     cardlist = []
     for card in cards:
@@ -190,7 +197,7 @@ def test_plo(num_players=4, debug=False):
 
     playerlist = []
     for p in range(num_players):
-        playerlist.append({'cards':[]})
+        playerlist.append({'cards': []})
 
     for player in playerlist:
         player['cards'].append(cardlist.pop())
@@ -247,6 +254,7 @@ def test_plo(num_players=4, debug=False):
         if debug:
             print unicode(h)
     return find_winner(player_hands), player_hands
+
 
 def test_big_o(num_players=4, debug=False):
     cardlist = []
@@ -256,7 +264,7 @@ def test_big_o(num_players=4, debug=False):
 
     playerlist = []
     for p in range(num_players):
-        playerlist.append({'cards':[]})
+        playerlist.append({'cards': []})
 
     for player in playerlist:
         player['cards'].append(cardlist.pop())
@@ -314,6 +322,7 @@ def test_big_o(num_players=4, debug=False):
         if debug:
             print unicode(h)
     return find_winner(player_hands), player_hands
+
 
 def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
     winning_tally = {}
@@ -340,16 +349,18 @@ def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
 
     f = open('data/db' + unicode(num_players) + '.txt', 'wb+')
     for i in range(runs):
-        if runs > 500 and i % 500 == 0: print i
+        if runs > 500 and i % 500 == 0:
+            print i
 
         if game == 'nlh':
-            winning_hands, player_hands = test_nlh(num_players=num_players, file=f)
+            winning_hands, player_hands = test_nlh(
+                num_players=num_players, file=f)
         elif game == 'plo':
             winning_hands, player_hands = test_plo(num_players=num_players)
-        winning_tally[winning_hands[0].value]['tally'] = winning_tally[winning_hands[0].value]['tally'] + 1
+        winning_value = winning_hands[0].value
+        winning_tally[winning_value]['tally'] = winning_tally[winning_value]['tally'] + 1
         if len(winning_hands) > 1:
-            winning_tally[winning_hands[0].value]['ties'] = winning_tally[winning_hands[0].value]['ties'] + 1
-
+            winning_tally[winning_hands[0].value]['ties'] = winning_tally[winning_value]['ties'] + 1
 
         for h in player_hands:
             player_hand_tally[h.value]['tally'] = player_hand_tally[h.value]['tally'] + 1
@@ -369,10 +380,13 @@ def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
 
     return winning_tally, player_hand_tally
 
+
 def find_winners(runs=1000, num_players=6, debug=False):
     starting_hands = {}
     for i in range(runs):
-        if runs > 500 and i % 500 == 0: print i
+        if runs > 500 and i % 500 == 0:
+            print i
+
 
 def main():
     # test_plo(num_players=9, debug=True)
@@ -380,7 +394,8 @@ def main():
     player_dictionary = {}
     runs = 5000
     for i in range(9, 10):
-        sim_dictionary[i], player_dictionary[i] = run_simulation(runs, i, game='plo')
+        sim_dictionary[i], player_dictionary[i] = run_simulation(
+            runs, i, game='plo')
     column_width = 17
 
     print '--------------'

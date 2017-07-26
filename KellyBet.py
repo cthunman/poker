@@ -1,7 +1,9 @@
 
+
 # odds = b where bet pays out (b to 1)
 def kellyFraction(winProbability, odds):
     return ((winProbability * (odds + 1)) - 1) / odds
+
 
 def kellyCall(betAmount, potSize, winProbability, bankroll):
 
@@ -10,6 +12,7 @@ def kellyCall(betAmount, potSize, winProbability, bankroll):
     payout = ((winProbability * (odds + 1)) - 1) / odds
 
     return payout / f > 1
+
 
 def kellyRaisePot(betAmount, potSize, winProbability, bankroll):
 
@@ -25,6 +28,7 @@ def kellyRaisePot(betAmount, potSize, winProbability, bankroll):
     # print payout
     return (payout / f) > 1
 
+
 def kellyAction(betAmount, potSize, winProbability, bankroll):
     if kellyRaisePot(betAmount, potSize, winProbability, bankroll):
         return 'RAISE'
@@ -33,17 +37,13 @@ def kellyAction(betAmount, potSize, winProbability, bankroll):
     else:
         return 'FOLD'
 
+
 def main():
 
-    # print '---------'
-    # print kellyCall(100.0, 100.0, .65, 700.0)
-    # print unicode(700.0) + ' : ' + unicode(kellyRaisePot(100.0, 100.0, .65, 700.0))
-    # print '---------'
-
     actions = {
-        'RAISE' : '^^^^',
-        'CALL' : 'OOOO',
-        'FOLD' : '____'
+        'RAISE': '^^^^',
+        'CALL': 'OOOO',
+        'FOLD': '____'
     }
 
     bankroll = 1500
