@@ -20,7 +20,6 @@ class Hand():
         self.find_hand_type()
 
     def __str__(self):
-
         card_string = self.value
         for card in self.cards:
             card_string = card_string + ' ' + str(card)
@@ -516,7 +515,7 @@ class Card():
         self.suit = card_string[1]
         self.numeric_value = self.numeric_value_dict[self.value]
 
-    def equals_card(self, card):
+    def __eq__(self, card):
         if self.numeric_value == card.numeric_value and self.suit == card.suit:
             return True
         else:
@@ -524,9 +523,6 @@ class Card():
 
     def __str__(self):
         return str(self.value) + str(self.suit)
-
-    def __str__(self):
-        return str(self)
 
 
 def main():
