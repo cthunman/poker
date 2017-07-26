@@ -25,7 +25,7 @@ class PLOHandSimulator():
             for card in hand.cardList:
                 print card
             for card in hand.cardList:
-                del cardDict[unicode(card)]
+                del cardDict[str(card)]
 
         for card in cardDict:
             cardList.append(cardDict[card])
@@ -41,7 +41,7 @@ class PLOHandSimulator():
         for r in range(runs):
             handHistory[r] = {}
             if self.debug:
-                print 'run ' + unicode(r)
+                print 'run ' + str(r)
             idx = 0
             random.shuffle(cardList)
             handDict = {}
@@ -56,7 +56,7 @@ class PLOHandSimulator():
                 cardArgs = []
                 for j in range(4):
 
-                    cardArgs.append(unicode(cardList[idx]))
+                    cardArgs.append(str(cardList[idx]))
                     idx += 1
 
                 handDict[i]['hand'] = PLOStartHand(
@@ -70,7 +70,7 @@ class PLOHandSimulator():
                 for h in handDict:
                     hand = ''
                     for c in handDict[h]['hand'].cardList:
-                        hand += unicode(c) + ' '
+                        hand += str(c) + ' '
                     print h, hand
             # deal board
             sharedCards = []
@@ -80,8 +80,8 @@ class PLOHandSimulator():
             if self.debug:
                 hand = ''
                 for c in sharedCards:
-                    hand += unicode(c) + ' '
-                print 'board ' + unicode(hand)
+                    hand += str(c) + ' '
+                print 'board ' + str(hand)
             madeHandDict = {}
             player_hands = []
             for player in handDict:
@@ -97,7 +97,7 @@ class PLOHandSimulator():
             if self.debug:
                 print 'winner'
                 for w in find_winner_seat(madeHandDict):
-                    print '\t' + unicode(w[0]) + ' : ' + unicode(w[1])
+                    print '\t' + str(w[0]) + ' : ' + str(w[1])
                     handHistory[r]['winner'] = w[0]
                     handHistory[r]['winningHand'] = w[1]
 

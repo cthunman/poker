@@ -73,7 +73,7 @@ class PLOBoard():
         # for k in straightDict:
         #     out = ''
         #     for c in straightDict[k]:
-        #         out += unicode(c) + ' '
+        #         out += str(c) + ' '
         #     print k, out
 
         # is there straight flush possibility?

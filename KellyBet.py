@@ -17,15 +17,9 @@ def kellyCall(betAmount, potSize, winProbability, bankroll):
 def kellyRaisePot(betAmount, potSize, winProbability, bankroll):
 
     totalBet = (potSize + (betAmount * 2)) * 2
-    # print 'totalBet'
-    # print totalBet
     f = float(totalBet) / float(bankroll)
-    # print 'f'
-    # print f
     odds = 2
     payout = ((winProbability * (odds + 1)) - 1) / odds
-    # print 'payout'
-    # print payout
     return (payout / f) > 1
 
 
@@ -46,42 +40,35 @@ def main():
         'FOLD': '____'
     }
 
-    bankroll = 1500
+    bankroll = 10000
     topRow = '\t'
     for i in range(20):
-        topRow += unicode(((i + 1) * .05) * 100) + '%\t'
+        topRow += str(((i + 1) * .05) * 100) + '%\t'
     print topRow
     for b in range(2, 20, 2):
         row = ''
-        row += unicode((b)) + '\t'
-        for i in range(1, 20):
-            bet = ((b))
-            # print 'bet'
-            # print bet
+        row += str((b)) + '\t'
+        for i in range(1, 21):
+            bet = (b)
             winProbability = ((i) * .05)
-            # print 'winProbability'
-            # print winProbability
-            row += unicode(actions[kellyAction(
-                            betAmount=bet,
-                            potSize=bet,
-                            winProbability=winProbability,
-                            bankroll=bankroll)]) + '\t'
+            row += str(actions[kellyAction(
+                       betAmount=bet,
+                       potSize=bet,
+                       winProbability=winProbability,
+                       bankroll=bankroll)]) + '\t'
         print row
-    for b in range(2, 25):
+
+    for b in range(2, 35):
         row = ''
-        row += unicode((b) * 10) + '\t'
-        for i in range(1, 20):
+        row += str((b) * 20) + '\t'
+        for i in range(1, 21):
             bet = ((b) * 10)
-            # print 'bet'
-            # print bet
             winProbability = ((i) * .05)
-            # print 'winProbability'
-            # print winProbability
-            row += unicode(actions[kellyAction(
-                            betAmount=bet,
-                            potSize=bet,
-                            winProbability=winProbability,
-                            bankroll=bankroll)]) + '\t'
+            row += str(actions[kellyAction(
+                       betAmount=bet,
+                       potSize=bet,
+                       winProbability=winProbability,
+                       bankroll=bankroll)]) + '\t'
         print row
 
 

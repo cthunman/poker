@@ -101,11 +101,11 @@ def test_nlh(num_players=4, debug=False, file=None):
         player['cards'].append(cardlist.pop())
         hand_record['starting_hands'][index + 1] = []
         for c in player['cards']:
-            hand_record['starting_hands'][index + 1].append(unicode(c))
+            hand_record['starting_hands'][index + 1].append(str(c))
         if file is not None:
-            file.write('player' + unicode(index + 1) + ': ')
+            file.write('player' + str(index + 1) + ': ')
             for c in player['cards']:
-                file.write(unicode(c) + ' ')
+                file.write(str(c) + ' ')
             file.write('\n')
 
     shared_cards = []
@@ -116,29 +116,29 @@ def test_nlh(num_players=4, debug=False, file=None):
     shared_cards.append(cardlist.pop())
     hand_record['shared_cards'] = []
     for c in shared_cards:
-        hand_record['shared_cards'].append(unicode(c))
+        hand_record['shared_cards'].append(str(c))
     hand_record['flop'] = []
     for c in shared_cards[0:3]:
-        hand_record['flop'].append(unicode(c))
-    hand_record['turn'] = unicode(shared_cards[3])
-    hand_record['river'] = unicode(shared_cards[4])
+        hand_record['flop'].append(str(c))
+    hand_record['turn'] = str(shared_cards[3])
+    hand_record['river'] = str(shared_cards[4])
 
     if file is not None:
         file.write('shared cards: ')
         for c in shared_cards:
-            file.write(unicode(c) + ' ')
+            file.write(str(c) + ' ')
         file.write('\n')
 
     for index, player in enumerate(playerlist):
         card_string = ''
         for card in player['cards']:
-            card_string += unicode(card) + ' '
+            card_string += str(card) + ' '
         if debug:
-            print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+            print 'Player' + str(index + 1) + ': ' + str(card_string)
         index += 1
     card_string = ''
     for card in shared_cards:
-        card_string += unicode(card) + ' '
+        card_string += str(card) + ' '
     if debug:
         print 'Shared cards: ' + card_string
 
@@ -150,23 +150,23 @@ def test_nlh(num_players=4, debug=False, file=None):
 
         card_string = ''
         for card in card_set:
-            card_string += unicode(card) + ' '
+            card_string += str(card) + ' '
         if debug:
-            print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+            print 'Player' + str(index + 1) + ': ' + str(card_string)
         best_hand = find_best_hand(card_set)
         player_hands.append(best_hand)
         if debug:
-            print unicode(best_hand)
+            print str(best_hand)
 
         combos = itertools.combinations(card_set, 5)
         for combo in combos:
             card_string = ''
             for c in combo:
-                card_string += unicode(c) + ' '
+                card_string += str(c) + ' '
     hand_record['player_hands'] = {}
     for index, h in enumerate(player_hands):
-        hand_record['player_hands'][index + 1] = unicode(h)
-        file.write('player ' + unicode(index + 1) + ': ' + unicode(h) + ' \n')
+        hand_record['player_hands'][index + 1] = str(h)
+        file.write('player ' + str(index + 1) + ': ' + str(h) + ' \n')
 
     winner = find_winner(player_hands)
     hand_record['winner'] = {}
@@ -175,15 +175,15 @@ def test_nlh(num_players=4, debug=False, file=None):
         file.write('SPLIT POT: ')
         hand_record['winner']['status'] = 'SPLIT POT'
         for w in winner:
-            file.write(unicode(w) + ' ')
-            hand_record['winner']['hand'].append(unicode(w))
+            file.write(str(w) + ' ')
+            hand_record['winner']['hand'].append(str(w))
     else:
         file.write('WINNER: ')
         hand_record['winner']['status'] = 'WINNER'
-        hand_record['winner']['hand'].append(unicode(winner[0]))
-        file.write(unicode(winner[0]))
+        hand_record['winner']['hand'].append(str(winner[0]))
+        file.write(str(winner[0]))
     file.write('\n\n')
-    file.write(unicode(hand_record))
+    file.write(str(hand_record))
     file.write('\n\n')
 
     return find_winner(player_hands), player_hands
@@ -215,13 +215,13 @@ def test_plo(num_players=4, debug=False):
     for index, player in enumerate(playerlist):
         card_string = ''
         for card in player['cards']:
-            card_string += unicode(card) + ' '
+            card_string += str(card) + ' '
         if debug:
-            print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+            print 'Player' + str(index + 1) + ': ' + str(card_string)
         index += 1
     card_string = ''
     for card in shared_cards:
-        card_string += unicode(card) + ' '
+        card_string += str(card) + ' '
     if debug:
         print 'Shared cards: ' + card_string
 
@@ -233,26 +233,26 @@ def test_plo(num_players=4, debug=False):
 
         card_string = ''
         for card in card_set:
-            card_string += unicode(card) + ' '
+            card_string += str(card) + ' '
         if debug:
-            print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+            print 'Player' + str(index + 1) + ': ' + str(card_string)
         best_hand = find_best_plo_hand(player['cards'], shared_cards)
         player_hands.append(best_hand)
         if debug:
-            print unicode(best_hand)
+            print str(best_hand)
 
         combos = itertools.combinations(card_set, 5)
         for combo in combos:
             card_string = ''
             for c in combo:
-                card_string += unicode(c) + ' '
+                card_string += str(c) + ' '
 
     if debug:
         print 'find_winner(player_hands)'
-    # print unicode(find_winner(player_hands))
+    # print str(find_winner(player_hands))
     for h in find_winner(player_hands):
         if debug:
-            print unicode(h)
+            print str(h)
     return find_winner(player_hands), player_hands
 
 
@@ -283,13 +283,13 @@ def test_big_o(num_players=4, debug=False):
     for index, player in enumerate(playerlist):
         card_string = ''
         for card in player['cards']:
-            card_string += unicode(card) + ' '
+            card_string += str(card) + ' '
         if debug:
-            print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+            print 'Player' + str(index + 1) + ': ' + str(card_string)
         index += 1
     card_string = ''
     for card in shared_cards:
-        card_string += unicode(card) + ' '
+        card_string += str(card) + ' '
     if debug:
         print 'Shared cards: ' + card_string
 
@@ -301,26 +301,26 @@ def test_big_o(num_players=4, debug=False):
 
         card_string = ''
         for card in card_set:
-            card_string += unicode(card) + ' '
+            card_string += str(card) + ' '
         if debug:
-            print 'Player' + unicode(index + 1) + ': ' + unicode(card_string)
+            print 'Player' + str(index + 1) + ': ' + str(card_string)
         best_hand = find_best_plo_hand(player['cards'], shared_cards)
         player_hands.append(best_hand)
         if debug:
-            print unicode(best_hand)
+            print str(best_hand)
 
         combos = itertools.combinations(card_set, 5)
         for combo in combos:
             card_string = ''
             for c in combo:
-                card_string += unicode(c) + ' '
+                card_string += str(c) + ' '
 
     if debug:
         print 'find_winner(player_hands)'
-    # print unicode(find_winner(player_hands))
+    # print str(find_winner(player_hands))
     for h in find_winner(player_hands):
         if debug:
-            print unicode(h)
+            print str(h)
     return find_winner(player_hands), player_hands
 
 
@@ -347,7 +347,7 @@ def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
     player_hand_tally['pair'] = {'tally': 0}
     player_hand_tally['high_card'] = {'tally': 0}
 
-    f = open('data/db' + unicode(num_players) + '.txt', 'wb+')
+    f = open('data/db' + str(num_players) + '.txt', 'wb+')
     for i in range(runs):
         if runs > 500 and i % 500 == 0:
             print i
@@ -368,15 +368,15 @@ def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
     f.close()
 
     if debug:
-        print 'straight_flush : ' + unicode(winning_tally['straight_flush'])
-        print 'quads : ' + unicode(winning_tally['quads'])
-        print 'full_house : ' + unicode(winning_tally['full_house'])
-        print 'flush : ' + unicode(winning_tally['flush'])
-        print 'straight : ' + unicode(winning_tally['straight'])
-        print 'three_of_a_kind : ' + unicode(winning_tally['three_of_a_kind'])
-        print 'two_pair : ' + unicode(winning_tally['two_pair'])
-        print 'pair : ' + unicode(winning_tally['pair'])
-        print 'high_card : ' + unicode(winning_tally['high_card'])
+        print 'straight_flush : ' + str(winning_tally['straight_flush'])
+        print 'quads : ' + str(winning_tally['quads'])
+        print 'full_house : ' + str(winning_tally['full_house'])
+        print 'flush : ' + str(winning_tally['flush'])
+        print 'straight : ' + str(winning_tally['straight'])
+        print 'three_of_a_kind : ' + str(winning_tally['three_of_a_kind'])
+        print 'two_pair : ' + str(winning_tally['two_pair'])
+        print 'pair : ' + str(winning_tally['pair'])
+        print 'high_card : ' + str(winning_tally['high_card'])
 
     return winning_tally, player_hand_tally
 
@@ -401,51 +401,51 @@ def main():
     print '--------------'
     for sim in sim_dictionary:
         print sim
-        print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight_flush']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally']/float(runs)), 2)) + '%'
+        print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + str(sim_dictionary[sim]['straight_flush']['tally']) + ' : ' + str(sim_dictionary[sim]['straight_flush']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['straight_flush']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['straight_flush']['tally']) != 0:
-            print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight_flush']['tally'])/float(player_dictionary[sim]['straight_flush']['tally']), 2)) + '%'
+            print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + str(player_dictionary[sim]['straight_flush']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['straight_flush']['tally'])/float(player_dictionary[sim]['straight_flush']['tally']), 2)) + '%'
         else:
-            print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + unicode(player_dictionary[sim]['straight_flush']['tally']) + ' : 0.0%'
-        print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(sim_dictionary[sim]['quads']['tally']) + ' : ' + unicode(sim_dictionary[sim]['quads']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally']/float(runs)), 2)) + '%'
+            print 'straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + str(player_dictionary[sim]['straight_flush']['tally']) + ' : 0.0%'
+        print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + str(sim_dictionary[sim]['quads']['tally']) + ' : ' + str(sim_dictionary[sim]['quads']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['quads']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['quads']['tally']) != 0:
-            print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['quads']['tally'])/float(player_dictionary[sim]['quads']['tally']), 2)) + '%'
+            print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + str(player_dictionary[sim]['quads']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['quads']['tally'])/float(player_dictionary[sim]['quads']['tally']), 2)) + '%'
         else:
-            print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + unicode(player_dictionary[sim]['quads']['tally']) + ' : 0.0%'
-        print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(sim_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(sim_dictionary[sim]['full_house']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally']/float(runs)), 2)) + '%'
+            print 'quads' + ' ' * (column_width - len('quads')) + ' : ' + str(player_dictionary[sim]['quads']['tally']) + ' : 0.0%'
+        print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + str(sim_dictionary[sim]['full_house']['tally']) + ' : ' + str(sim_dictionary[sim]['full_house']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['full_house']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['full_house']['tally']) != 0:
-            print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['full_house']['tally'])/float(player_dictionary[sim]['full_house']['tally']), 2)) + '%'
+            print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + str(player_dictionary[sim]['full_house']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['full_house']['tally'])/float(player_dictionary[sim]['full_house']['tally']), 2)) + '%'
         else:
-            print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + unicode(player_dictionary[sim]['full_house']['tally']) + ' : 0.0%'
-        print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(sim_dictionary[sim]['flush']['tally']) + ' : ' + unicode(sim_dictionary[sim]['flush']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally']/float(runs)), 2)) + '%'
+            print 'full_house' + ' ' * (column_width - len('full_house')) + ' : ' + str(player_dictionary[sim]['full_house']['tally']) + ' : 0.0%'
+        print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + str(sim_dictionary[sim]['flush']['tally']) + ' : ' + str(sim_dictionary[sim]['flush']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['flush']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['flush']['tally']) != 0:
-            print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['flush']['tally'])/float(player_dictionary[sim]['flush']['tally']), 2)) + '%'
+            print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + str(player_dictionary[sim]['flush']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['flush']['tally'])/float(player_dictionary[sim]['flush']['tally']), 2)) + '%'
         else:
-            print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + unicode(player_dictionary[sim]['flush']['tally']) + ' : 0.0%'
-        print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(sim_dictionary[sim]['straight']['tally']) + ' : ' + unicode(sim_dictionary[sim]['straight']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally']/float(runs)), 2)) + '%'
+            print 'flush' + ' ' * (column_width - len('flush')) + ' : ' + str(player_dictionary[sim]['flush']['tally']) + ' : 0.0%'
+        print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + str(sim_dictionary[sim]['straight']['tally']) + ' : ' + str(sim_dictionary[sim]['straight']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['straight']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['straight']['tally']) != 0:
-            print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['straight']['tally'])/float(player_dictionary[sim]['straight']['tally']), 2)) + '%'
+            print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + str(player_dictionary[sim]['straight']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['straight']['tally'])/float(player_dictionary[sim]['straight']['tally']), 2)) + '%'
         else:
-            print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + unicode(player_dictionary[sim]['straight']['tally']) + ' : 0.0%'
-        print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(sim_dictionary[sim]['three_of_a_kind']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally']/float(runs)), 2)) + '%'
+            print 'straight' + ' ' * (column_width - len('straight')) + ' : ' + str(player_dictionary[sim]['straight']['tally']) + ' : 0.0%'
+        print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + str(sim_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + str(sim_dictionary[sim]['three_of_a_kind']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['three_of_a_kind']['tally']) != 0:
-            print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally'])/float(player_dictionary[sim]['three_of_a_kind']['tally']), 2)) + '%'
+            print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + str(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally'])/float(player_dictionary[sim]['three_of_a_kind']['tally']), 2)) + '%'
         else:
-            print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + unicode(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : 0.0%'
-        print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['two_pair']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally']/float(runs)), 2)) + '%'
+            print 'three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + str(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : 0.0%'
+        print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + str(sim_dictionary[sim]['two_pair']['tally']) + ' : ' + str(sim_dictionary[sim]['two_pair']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['two_pair']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['two_pair']['tally']) != 0:
-            print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['two_pair']['tally'])/float(player_dictionary[sim]['two_pair']['tally']), 2)) + '%'
+            print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + str(player_dictionary[sim]['two_pair']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['two_pair']['tally'])/float(player_dictionary[sim]['two_pair']['tally']), 2)) + '%'
         else:
-            print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + unicode(player_dictionary[sim]['two_pair']['tally']) + ' : 0.0%'
-        print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(sim_dictionary[sim]['pair']['tally']) + ' : ' + unicode(sim_dictionary[sim]['pair']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally']/float(runs)), 2)) + '%'
+            print 'two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + str(player_dictionary[sim]['two_pair']['tally']) + ' : 0.0%'
+        print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + str(sim_dictionary[sim]['pair']['tally']) + ' : ' + str(sim_dictionary[sim]['pair']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['pair']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['pair']['tally']) != 0:
-            print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['pair']['tally'])/float(player_dictionary[sim]['pair']['tally']), 2)) + '%'
+            print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + str(player_dictionary[sim]['pair']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['pair']['tally'])/float(player_dictionary[sim]['pair']['tally']), 2)) + '%'
         else:
-            print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + unicode(player_dictionary[sim]['pair']['tally']) + ' : 0.0%'
-        print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(sim_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(sim_dictionary[sim]['high_card']['ties']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally']/float(runs)), 2)) + '%'
+            print 'pair' + ' ' * (column_width - len('pair')) + ' : ' + str(player_dictionary[sim]['pair']['tally']) + ' : 0.0%'
+        print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + str(sim_dictionary[sim]['high_card']['tally']) + ' : ' + str(sim_dictionary[sim]['high_card']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['high_card']['tally']/float(runs)), 2)) + '%'
         if float(player_dictionary[sim]['high_card']['tally']) != 0:
-            print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : ' + unicode(round(100 * float(sim_dictionary[sim]['high_card']['tally'])/float(player_dictionary[sim]['high_card']['tally']), 2)) + '%'
+            print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + str(player_dictionary[sim]['high_card']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['high_card']['tally'])/float(player_dictionary[sim]['high_card']['tally']), 2)) + '%'
         else:
-            print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + unicode(player_dictionary[sim]['high_card']['tally']) + ' : 0.0%'
+            print 'high_card' + ' ' * (column_width - len('high_card')) + ' : ' + str(player_dictionary[sim]['high_card']['tally']) + ' : 0.0%'
 
 if __name__ == '__main__':
     main()

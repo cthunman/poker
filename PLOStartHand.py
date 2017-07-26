@@ -19,7 +19,7 @@ class PLOStartHand():
 def main():
     hand = PLOStartHand('AS', 'KD', '5D', 'AC')
     for card in hand.cardList:
-        print unicode(card), unicode(card.value), unicode(card.suit)
+        print str(card), str(card.value), str(card.suit)
 
 if __name__ == '__main__':
     main()

@@ -19,11 +19,11 @@ class Hand():
         self.cards = card_list
         self.find_hand_type()
 
-    def __unicode__(self):
+    def __str__(self):
 
         card_string = self.value
         for card in self.cards:
-            card_string = card_string + ' ' + unicode(card)
+            card_string = card_string + ' ' + str(card)
         return card_string
 
     def is_straight_flush(self):
@@ -523,11 +523,11 @@ class Card():
         else:
             return False
 
-    def __unicode__(self):
-        return unicode(self.value) + unicode(self.suit)
+    def __str__(self):
+        return str(self.value) + str(self.suit)
 
     def __str__(self):
-        return unicode(self)
+        return str(self)
 
 
 def main():
@@ -549,8 +549,8 @@ def main():
     hand = Hand(card_list)
     hand2 = Hand(card_list2)
 
-    print hand.value + ' ' + unicode(hand.compare_to_hand(hand2))
-    print hand2.value + ' ' + unicode(hand2.compare_to_hand(hand))
+    print hand.value + ' ' + str(hand.compare_to_hand(hand2))
+    print hand2.value + ' ' + str(hand2.compare_to_hand(hand))
 
 if __name__ == '__main__':
     main()
