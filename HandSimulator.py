@@ -21,9 +21,9 @@ class PLOHandSimulator():
             cardDict[card] = c
 
         for hand in self.handList:
-            print hand
+            print(hand)
             for card in hand.cardList:
-                print card
+                print(card)
             for card in hand.cardList:
                 del cardDict[str(card)]
 
@@ -41,7 +41,7 @@ class PLOHandSimulator():
         for r in range(runs):
             handHistory[r] = {}
             if self.debug:
-                print 'run ' + str(r)
+                print('run ' + str(r))
             idx = 0
             random.shuffle(cardList)
             handDict = {}
@@ -71,7 +71,7 @@ class PLOHandSimulator():
                     hand = ''
                     for c in handDict[h]['hand'].cardList:
                         hand += str(c) + ' '
-                    print h, hand
+                    print(h, hand)
             # deal board
             sharedCards = []
             for k in range(5):
@@ -81,13 +81,13 @@ class PLOHandSimulator():
                 hand = ''
                 for c in sharedCards:
                     hand += str(c) + ' '
-                print 'board ' + str(hand)
+                print('board ' + str(hand))
             madeHandDict = {}
             player_hands = []
             for player in handDict:
                 best_hand = find_best_plo_hand(
                     handDict[player]['hand'].cardList, sharedCards)
-                print r, player
+                print(r, player)
                 handHistory[r][player] = {
                     'hand': best_hand
                 }
@@ -95,14 +95,14 @@ class PLOHandSimulator():
                 madeHandDict[player] = best_hand
 
             if self.debug:
-                print 'winner'
+                print('winner')
                 for w in find_winner_seat(madeHandDict):
-                    print '\t' + str(w[0]) + ' : ' + str(w[1])
+                    print('\t' + str(w[0]) + ' : ' + str(w[1]))
                     handHistory[r]['winner'] = w[0]
                     handHistory[r]['winningHand'] = w[1]
 
         for h in handHistory:
-            print h, handHistory[h]
+            print(h, handHistory[h])
 
 
 def main():

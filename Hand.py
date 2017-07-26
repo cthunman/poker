@@ -491,8 +491,7 @@ class Hand():
                     return_val = -1
             return return_val
         else:
-            print 'WARNING: hands not valid'
-            return False
+            raise 'WARNING: hands not valid'
 
 
 class Card():
@@ -549,8 +548,8 @@ def main():
     hand = Hand(card_list)
     hand2 = Hand(card_list2)
 
-    print hand.value + ' ' + str(hand.compare_to_hand(hand2))
-    print hand2.value + ' ' + str(hand2.compare_to_hand(hand))
+    print(hand.value + ' ' + str(hand.compare_to_hand(hand2)))
+    print(hand2.value + ' ' + str(hand2.compare_to_hand(hand)))
 
 if __name__ == '__main__':
     main()
