@@ -534,6 +534,19 @@ class PLOStartingHand(object):
 
 
 class Result(object):
+    # winner
+    # players
+    # button
+    # hands
+    # flop
+    # turn
+    # river
+    # winning_hand
+    # blinds
+    # action_preflop
+    # action_flop
+    # action_turn
+    # action_river
     pass
 
 
