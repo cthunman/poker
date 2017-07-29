@@ -533,6 +533,10 @@ class PLOStartingHand(object):
     pass
 
 
+class Result(object):
+    pass
+
+
 def main():
 
     card1 = Card('AS')
