@@ -548,7 +548,11 @@ class Result(object):
     # action_flop
     # action_turn
     # action_river
-    pass
+    def __init__(self, **kwargs):
+        pass
+
+    def save(self):
+        pass
 
 
 def main():
