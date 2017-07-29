@@ -534,6 +534,7 @@ class PLOStartingHand(object):
 
 
 class Result(object):
+    # game
     # winner
     # players
     # button
