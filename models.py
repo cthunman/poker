@@ -1,4 +1,5 @@
 import itertools
+from settings import DB_SETTINGS
 
 
 class Hand(object):
@@ -530,29 +531,48 @@ class NLStartingHand(object):
 
 
 class PLOStartingHand(object):
-    pass
+    def __init__(self, cards):
+        self.cards = cards
 
+    def sorted_value(self):
+        return sorted(self.cards, key=lambda c: c.numeric_value, reverse=True)
 
-class Result(object):
-    # game
-    # winner
-    # players
-    # button
-    # hands
-    # flop
-    # turn
-    # river
-    # winning_hand
-    # blinds
-    # action_preflop
-    # action_flop
-    # action_turn
-    # action_river
-    def __init__(self, **kwargs):
-        pass
+    def suit_order(self):
+        temp_suit_dict = {}
+        suit_idx = 1
+        suit_order = []
+        for card in self.sorted_value():
+            if card.suit not in temp_suit_dict:
+                temp_suit_dict[card.suit] = suit_idx
+                suit_idx += 1
+            suit_order.append(temp_suit_dict[card.suit])
+        return suit_order
 
-    def save(self):
-        pass
+    def suit_id(self):
+        suit_id = ''
+        for s in self.suit_order():
+            suit_id += str(s)
+        return suit_id
+
+    def value_id(self):
+        vals = ''
+        for c in self.sorted_value():
+            vals += c.value
+        return vals
+
+    def generalize(self):
+        temp_suit_dict = {}
+        suit_idx = 1
+        general_hand = ''
+        for card in self.sorted_value():
+            if card.suit not in temp_suit_dict:
+                temp_suit_dict[card.suit] = suit_idx
+                suit_idx += 1
+            general_hand += card.value + str(temp_suit_dict[card.suit])
+        return general_hand
+
+    def __str__(self):
+        return self.generalize()
 
 
 def main():
@@ -576,6 +596,12 @@ def main():
 
     print(hand.value + ' ' + str(hand.compare_to_hand(hand2)))
     print(hand2.value + ' ' + str(hand2.compare_to_hand(hand)))
+
+    plo_hand_1 = PLOStartingHand([card1, card2, card3, card4])
+    print('plo_hand_1')
+    print(plo_hand_1)
+    print(plo_hand_1.value_id())
+    print(plo_hand_1.suit_id())
 
 if __name__ == '__main__':
     main()

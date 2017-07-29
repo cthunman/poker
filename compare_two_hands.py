@@ -8,6 +8,8 @@ import itertools
 import ComboUtils as cu
 from cards import cards
 
+from pymongo import MongoClient
+
 
 def main():
     if len(sys.argv) != 9:
@@ -51,7 +53,7 @@ def main():
 
     results = []
     winner_totals = {}
-    runs = 1000
+    runs = 10000
 
     for i in range(runs):
         random.shuffle(deck)
@@ -73,30 +75,37 @@ def main():
         result['player2_hand'] = str(player2_hand)
 
         result['winner'] = []
+        result['winning_players'] = []
         for hand in cu.find_winner([(1, player1_hand), (2, player2_hand)]):
             result['winner'].append(
                 (hand[0], str(hand[1]), str(hand[1].value)))
+            result['winning_players'].append(hand[0])
             if hand[0] not in winner_totals:
                 winner_totals[hand[0]] = 0
             winner_totals[hand[0]] += 1
 
         results.append(result)
 
-    filename = 'data/'
-    for card in player1_cards:
-        filename += str(card)
-    filename += 'vs'
-    for card in player2_cards:
-        filename += str(card)
-    filename += 'x'
-    filename += str(runs)
-    filename += '@'
-    filename += datetime.now().strftime('%y%m%d_%H:%M:%S')
-    filename += '.plo'
+    c = MongoClient()
+    db = c.plo
+    collection = db.test_collection
+    collection.insert_many(results)
 
-    with open(filename, 'w+') as f:
-        f.write(str(winner_totals))
-        f.write(str(results))
+    # filename = 'data/'
+    # for card in player1_cards:
+    #     filename += str(card)
+    # filename += 'vs'
+    # for card in player2_cards:
+    #     filename += str(card)
+    # filename += 'x'
+    # filename += str(runs)
+    # filename += '@'
+    # filename += datetime.now().strftime('%y%m%d_%H:%M:%S')
+    # filename += '.plo'
+
+    # with open(filename, 'w+') as f:
+    #     f.write(str(winner_totals))
+    #     f.write(str(results))
 
 if __name__ == '__main__':
     main()

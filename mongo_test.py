@@ -15,7 +15,7 @@ hands = [
     {'cards': ['9D', 'JD']}
 ]
 posts = db.posts
-post_id = posts.insert_many(hands)
+posts.insert_many(hands)
 pprint.pprint(post_id)
 
 # pprint.pprint(posts.find_one({'cards': ['AS', 'KD']}))
