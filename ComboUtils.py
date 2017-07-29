@@ -1,4 +1,4 @@
-from Hand import Hand, Card
+from models import Hand, Card
 import random
 import itertools
 from cards import cards
@@ -37,11 +37,11 @@ def find_best_hand(cardlist):
 def find_winner(handlist):
     winner_list = [handlist[0]]
     for i in range(1, len(handlist)):
-        if winner_list[0].compare_to_hand(handlist[i]) > 0:
+        if winner_list[0][1].compare_to_hand(handlist[i][1]) > 0:
             continue
-        elif winner_list[0].compare_to_hand(handlist[i]) < 0:
+        elif winner_list[0][1].compare_to_hand(handlist[i][1]) < 0:
             winner_list = [handlist[i]]
-        elif winner_list[0].compare_to_hand(handlist[i]) == 0:
+        elif winner_list[0][1].compare_to_hand(handlist[i][1]) == 0:
             winner_list.append(handlist[i])
     return winner_list
 
@@ -320,130 +320,3 @@ def test_big_o(num_players=4, debug=False):
         if debug:
             print(str(h))
     return find_winner(player_hands), player_hands
-
-
-def run_simulation(runs=1000, num_players=6, game='nlh', debug=False):
-    winning_tally = {}
-    winning_tally['straight_flush'] = {'tally': 0, 'ties': 0}
-    winning_tally['quads'] = {'tally': 0, 'ties': 0}
-    winning_tally['full_house'] = {'tally': 0, 'ties': 0}
-    winning_tally['flush'] = {'tally': 0, 'ties': 0}
-    winning_tally['straight'] = {'tally': 0, 'ties': 0}
-    winning_tally['three_of_a_kind'] = {'tally': 0, 'ties': 0}
-    winning_tally['two_pair'] = {'tally': 0, 'ties': 0}
-    winning_tally['pair'] = {'tally': 0, 'ties': 0}
-    winning_tally['high_card'] = {'tally': 0, 'ties': 0}
-
-    player_hand_tally = {}
-    player_hand_tally['straight_flush'] = {'tally': 0}
-    player_hand_tally['quads'] = {'tally': 0}
-    player_hand_tally['full_house'] = {'tally': 0}
-    player_hand_tally['flush'] = {'tally': 0}
-    player_hand_tally['straight'] = {'tally': 0}
-    player_hand_tally['three_of_a_kind'] = {'tally': 0}
-    player_hand_tally['two_pair'] = {'tally': 0}
-    player_hand_tally['pair'] = {'tally': 0}
-    player_hand_tally['high_card'] = {'tally': 0}
-
-    f = open('data/db' + str(num_players) + '.txt', 'wb+')
-    for i in range(runs):
-        if runs > 500 and i % 500 == 0:
-            print(i)
-
-        if game == 'nlh':
-            winning_hands, player_hands = test_nlh(
-                num_players=num_players, file=f)
-        elif game == 'plo':
-            winning_hands, player_hands = test_plo(num_players=num_players)
-        winning_value = winning_hands[0].value
-        winning_tally[winning_value]['tally'] = winning_tally[winning_value]['tally'] + 1
-        if len(winning_hands) > 1:
-            winning_tally[winning_hands[0].value]['ties'] = winning_tally[winning_value]['ties'] + 1
-
-        for h in player_hands:
-            player_hand_tally[h.value]['tally'] = player_hand_tally[h.value]['tally'] + 1
-
-    f.close()
-
-    if debug:
-        print('straight_flush : ' + str(winning_tally['straight_flush']))
-        print('quads : ' + str(winning_tally['quads']))
-        print('full_house : ' + str(winning_tally['full_house']))
-        print('flush : ' + str(winning_tally['flush']))
-        print('straight : ' + str(winning_tally['straight']))
-        print('three_of_a_kind : ' + str(winning_tally['three_of_a_kind']))
-        print('two_pair : ' + str(winning_tally['two_pair']))
-        print('pair : ' + str(winning_tally['pair']))
-        print('high_card : ' + str(winning_tally['high_card']))
-
-    return winning_tally, player_hand_tally
-
-
-def find_winners(runs=1000, num_players=6, debug=False):
-    starting_hands = {}
-    for i in range(runs):
-        if runs > 500 and i % 500 == 0:
-            print(i)
-
-
-def main():
-    # test_plo(num_players=9, debug=True)
-    sim_dictionary = {}
-    player_dictionary = {}
-    runs = 5000
-    for i in range(9, 10):
-        sim_dictionary[i], player_dictionary[i] = run_simulation(
-            runs, i, game='plo')
-    column_width = 17
-
-    print('--------------')
-    for sim in sim_dictionary:
-        print(sim)
-        print('straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + str(sim_dictionary[sim]['straight_flush']['tally']) + ' : ' + str(sim_dictionary[sim]['straight_flush']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['straight_flush']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['straight_flush']['tally']) != 0:
-            print('straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + str(player_dictionary[sim]['straight_flush']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['straight_flush']['tally'])/float(player_dictionary[sim]['straight_flush']['tally']), 2)) + '%')
-        else:
-            print('straight_flush' + ' ' * (column_width - len('straight_flush')) + ' : ' + str(player_dictionary[sim]['straight_flush']['tally']) + ' : 0.0%')
-        print('quads' + ' ' * (column_width - len('quads')) + ' : ' + str(sim_dictionary[sim]['quads']['tally']) + ' : ' + str(sim_dictionary[sim]['quads']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['quads']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['quads']['tally']) != 0:
-            print('quads' + ' ' * (column_width - len('quads')) + ' : ' + str(player_dictionary[sim]['quads']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['quads']['tally'])/float(player_dictionary[sim]['quads']['tally']), 2)) + '%')
-        else:
-            print('quads' + ' ' * (column_width - len('quads')) + ' : ' + str(player_dictionary[sim]['quads']['tally']) + ' : 0.0%')
-        print('full_house' + ' ' * (column_width - len('full_house')) + ' : ' + str(sim_dictionary[sim]['full_house']['tally']) + ' : ' + str(sim_dictionary[sim]['full_house']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['full_house']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['full_house']['tally']) != 0:
-            print('full_house' + ' ' * (column_width - len('full_house')) + ' : ' + str(player_dictionary[sim]['full_house']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['full_house']['tally'])/float(player_dictionary[sim]['full_house']['tally']), 2)) + '%')
-        else:
-            print('full_house' + ' ' * (column_width - len('full_house')) + ' : ' + str(player_dictionary[sim]['full_house']['tally']) + ' : 0.0%')
-        print('flush' + ' ' * (column_width - len('flush')) + ' : ' + str(sim_dictionary[sim]['flush']['tally']) + ' : ' + str(sim_dictionary[sim]['flush']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['flush']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['flush']['tally']) != 0:
-            print('flush' + ' ' * (column_width - len('flush')) + ' : ' + str(player_dictionary[sim]['flush']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['flush']['tally'])/float(player_dictionary[sim]['flush']['tally']), 2)) + '%')
-        else:
-            print('flush' + ' ' * (column_width - len('flush')) + ' : ' + str(player_dictionary[sim]['flush']['tally']) + ' : 0.0%')
-        print('straight' + ' ' * (column_width - len('straight')) + ' : ' + str(sim_dictionary[sim]['straight']['tally']) + ' : ' + str(sim_dictionary[sim]['straight']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['straight']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['straight']['tally']) != 0:
-            print('straight' + ' ' * (column_width - len('straight')) + ' : ' + str(player_dictionary[sim]['straight']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['straight']['tally'])/float(player_dictionary[sim]['straight']['tally']), 2)) + '%')
-        else:
-            print('straight' + ' ' * (column_width - len('straight')) + ' : ' + str(player_dictionary[sim]['straight']['tally']) + ' : 0.0%')
-        print('three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + str(sim_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + str(sim_dictionary[sim]['three_of_a_kind']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['three_of_a_kind']['tally']) != 0:
-            print('three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + str(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['three_of_a_kind']['tally'])/float(player_dictionary[sim]['three_of_a_kind']['tally']), 2)) + '%')
-        else:
-            print('three_of_a_kind' + ' ' * (column_width - len('three_of_a_kind')) + ' : ' + str(player_dictionary[sim]['three_of_a_kind']['tally']) + ' : 0.0%')
-        print('two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + str(sim_dictionary[sim]['two_pair']['tally']) + ' : ' + str(sim_dictionary[sim]['two_pair']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['two_pair']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['two_pair']['tally']) != 0:
-            print('two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + str(player_dictionary[sim]['two_pair']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['two_pair']['tally'])/float(player_dictionary[sim]['two_pair']['tally']), 2)) + '%')
-        else:
-            print('two_pair' + ' ' * (column_width - len('two_pair')) + ' : ' + str(player_dictionary[sim]['two_pair']['tally']) + ' : 0.0%')
-        print('pair' + ' ' * (column_width - len('pair')) + ' : ' + str(sim_dictionary[sim]['pair']['tally']) + ' : ' + str(sim_dictionary[sim]['pair']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['pair']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['pair']['tally']) != 0:
-            print('pair' + ' ' * (column_width - len('pair')) + ' : ' + str(player_dictionary[sim]['pair']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['pair']['tally'])/float(player_dictionary[sim]['pair']['tally']), 2)) + '%')
-        else:
-            print('pair' + ' ' * (column_width - len('pair')) + ' : ' + str(player_dictionary[sim]['pair']['tally']) + ' : 0.0%')
-        print('high_card' + ' ' * (column_width - len('high_card')) + ' : ' + str(sim_dictionary[sim]['high_card']['tally']) + ' : ' + str(sim_dictionary[sim]['high_card']['ties']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['high_card']['tally']/float(runs)), 2)) + '%')
-        if float(player_dictionary[sim]['high_card']['tally']) != 0:
-            print('high_card' + ' ' * (column_width - len('high_card')) + ' : ' + str(player_dictionary[sim]['high_card']['tally']) + ' : ' + str(round(100 * float(sim_dictionary[sim]['high_card']['tally'])/float(player_dictionary[sim]['high_card']['tally']), 2)) + '%')
-        else:
-            print('high_card' + ' ' * (column_width - len('high_card')) + ' : ' + str(player_dictionary[sim]['high_card']['tally']) + ' : 0.0%')
-
-if __name__ == '__main__':
-    main()

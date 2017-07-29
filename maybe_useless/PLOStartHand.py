@@ -9,11 +9,9 @@ class PLOStartHand():
         self.cardList = []
         for arg in args:
             self.cardList.append(Card(arg))
-        # else:
-        #     self.cardList = cardList
 
-    def appendCard(self, card):
-        self.cardList.append(card)
+    def hand_decription(self):
+        pass
 
 
 def main():
