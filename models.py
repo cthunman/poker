@@ -1,7 +1,7 @@
 import itertools
 
 
-class Hand():
+class Hand(object):
 
     hierarchy = {
         'straight_flush': 9,
@@ -493,7 +493,7 @@ class Hand():
             raise 'WARNING: hands not valid'
 
 
-class Card():
+class Card(object):
 
     def __init__(self, card_string):
         self.numeric_value_dict = {
@@ -523,6 +523,14 @@ class Card():
 
     def __str__(self):
         return str(self.value) + str(self.suit)
+
+
+class NLStartingHand(object):
+    pass
+
+
+class PLOStartingHand(object):
+    pass
 
 
 def main():
