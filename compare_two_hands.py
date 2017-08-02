@@ -1,7 +1,7 @@
 import sys
 import json
 from datetime import datetime
-from models import Hand, Card
+from models import Hand, Card, PLOStartingHand
 import random
 import copy
 import itertools
@@ -48,17 +48,22 @@ def main():
     card8 = deck.pop(card_list.index(c8))
     card_list.remove(c8)
 
-    player1_cards = [card1, card2, card3, card4]
-    player2_cards = [card5, card6, card7, card8]
+    player_1_cards = [card1, card2, card3, card4]
+    player_2_cards = [card5, card6, card7, card8]
+    player_1_plo_hand = PLOStartingHand(player_1_cards)
+    player_2_plo_hand = PLOStartingHand(player_2_cards)
 
     results = []
     winner_totals = {}
-    runs = 10000
+    runs = 1000
 
     for i in range(runs):
         random.shuffle(deck)
         board_cards = [deck[0], deck[1], deck[2], deck[3], deck[4]]
         result = {}
+        result['hero_suit_id'] = player_1_plo_hand.suit_id()
+        result['opponent_hand'] = player_2_plo_hand.value_id()
+        result['opponent_suit_id'] = player_2_plo_hand.suit_id()
 
         flop = [deck[0], deck[1], deck[2]]
         turn = deck[3]
@@ -68,15 +73,15 @@ def main():
         result['river'] = str(river)
 
         flop_str = str(flop[0]) + ', ' + str(flop[1]) + ', ' + str(flop[2])
-        player1_hand = cu.find_best_plo_hand(player1_cards, board_cards)
-        result['player1_hand'] = str(player1_hand)
+        player_1_hand = cu.find_best_plo_hand(player_1_cards, board_cards)
+        result['player_1_hand'] = str(player_1_hand)
 
-        player2_hand = cu.find_best_plo_hand(player2_cards, board_cards)
-        result['player2_hand'] = str(player2_hand)
+        player_2_hand = cu.find_best_plo_hand(player_2_cards, board_cards)
+        result['player_2_hand'] = str(player_2_hand)
 
         result['winner'] = []
         result['winning_players'] = []
-        for hand in cu.find_winner([(1, player1_hand), (2, player2_hand)]):
+        for hand in cu.find_winner([(1, player_1_hand), (2, player_2_hand)]):
             result['winner'].append(
                 (hand[0], str(hand[1]), str(hand[1].value)))
             result['winning_players'].append(hand[0])
@@ -88,14 +93,14 @@ def main():
 
     c = MongoClient()
     db = c.plo
-    collection = db.test_collection
+    collection = db[player_1_plo_hand.value_id()]
     collection.insert_many(results)
 
     # filename = 'data/'
-    # for card in player1_cards:
+    # for card in player_1_cards:
     #     filename += str(card)
     # filename += 'vs'
-    # for card in player2_cards:
+    # for card in player_2_cards:
     #     filename += str(card)
     # filename += 'x'
     # filename += str(runs)
