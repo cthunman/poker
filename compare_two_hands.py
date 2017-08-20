@@ -55,7 +55,7 @@ def main():
 
     results = []
     winner_totals = {}
-    runs = 1000
+    runs = 10000
 
     for i in range(runs):
         random.shuffle(deck)
@@ -95,22 +95,6 @@ def main():
     db = c.plo
     collection = db[player_1_plo_hand.value_id()]
     collection.insert_many(results)
-
-    # filename = 'data/'
-    # for card in player_1_cards:
-    #     filename += str(card)
-    # filename += 'vs'
-    # for card in player_2_cards:
-    #     filename += str(card)
-    # filename += 'x'
-    # filename += str(runs)
-    # filename += '@'
-    # filename += datetime.now().strftime('%y%m%d_%H:%M:%S')
-    # filename += '.plo'
-
-    # with open(filename, 'w+') as f:
-    #     f.write(str(winner_totals))
-    #     f.write(str(results))
 
 if __name__ == '__main__':
     main()

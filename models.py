@@ -575,6 +575,14 @@ class PLOStartingHand(object):
         return self.generalize()
 
 
+class Result(object):
+    def __init__(self):
+        pass
+
+    def save():
+        pass
+
+
 def main():
 
     card1 = Card('AS')
