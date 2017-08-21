@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul>
+{% for hand in opponent_hands %}
+    <li>{{ hand }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
