@@ -22,5 +22,5 @@ def collection(starting_hand):
     opponent_hands = db[starting_hand].distinct('opponent_hand')
     print(opponent_hands)
     template = env.get_template('collection.html')
-	return template.render(opponent_hands=opponent_hands)
+    return template.render(opponent_hands=opponent_hands)
 
