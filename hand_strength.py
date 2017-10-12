@@ -12,8 +12,9 @@ from pymongo import MongoClient
 
 
 def main():
-    if len(sys.argv) != 9:
+    if len(sys.argv) != 6:
         print('Enter your cards, bruh.')
+
 
     card_list = copy.copy(cards)
 
@@ -25,10 +26,7 @@ def main():
     c2 = sys.argv[2]
     c3 = sys.argv[3]
     c4 = sys.argv[4]
-    c5 = sys.argv[5]
-    c6 = sys.argv[6]
-    c7 = sys.argv[7]
-    c8 = sys.argv[8]
+    num_opponents = sys.argv[5]
 
     card1 = deck.pop(card_list.index(c1))
     card_list.remove(c1)
@@ -39,21 +37,10 @@ def main():
     card4 = deck.pop(card_list.index(c4))
     card_list.remove(c4)
 
-    card5 = deck.pop(card_list.index(c5))
-    card_list.remove(c5)
-    card6 = deck.pop(card_list.index(c6))
-    card_list.remove(c6)
-    card7 = deck.pop(card_list.index(c7))
-    card_list.remove(c7)
-    card8 = deck.pop(card_list.index(c8))
-    card_list.remove(c8)
-
-    player_1_cards = [card1, card2, card3, card4]
-    player_2_cards = [card5, card6, card7, card8]
-    player_1_plo_hand = PLOStartingHand(player_1_cards)
-    player_2_plo_hand = PLOStartingHand(player_2_cards)
-
+    hero_cards = [card1, card2, card3, card4]
+    hero_plo_hand = PLOStartingHand(hero_cards)
     results = []
+
     winner_totals = {}
     runs = 10000
 
@@ -61,9 +48,18 @@ def main():
         random.shuffle(deck)
         board_cards = [deck[0], deck[1], deck[2], deck[3], deck[4]]
         result = {}
-        result['hero_suit_id'] = player_1_plo_hand.suit_id()
-        result['opponent_hand'] = player_2_plo_hand.value_id()
-        result['opponent_suit_id'] = player_2_plo_hand.suit_id()
+        result['hero_suit_id'] = hero_plo_hand.suit_id()
+
+        d_idx = 0
+        for j in range(num_opponents):
+            for k in range(4):
+                opponent_cards = [deck[d_idx],
+                    deck[d_idx + 1], deck[d_idx + 2], deck[d_idx + 3]]
+
+# TODO
+
+            result['opponent_hand'] = player_2_plo_hand.value_id()
+            result['opponent_suit_id'] = player_2_plo_hand.suit_id()
 
         flop = [deck[0], deck[1], deck[2]]
         turn = deck[3]
@@ -73,15 +69,15 @@ def main():
         result['river'] = str(river)
 
         flop_str = str(flop[0]) + ', ' + str(flop[1]) + ', ' + str(flop[2])
-        player_1_hand = cu.find_best_plo_hand(player_1_cards, board_cards)
-        result['player_1_hand'] = str(player_1_hand)
+        hero_hand = cu.find_best_plo_hand(hero_cards, board_cards)
+        result['hero_hand'] = str(hero_hand)
 
         player_2_hand = cu.find_best_plo_hand(player_2_cards, board_cards)
         result['player_2_hand'] = str(player_2_hand)
 
         result['winner'] = []
         result['winning_players'] = []
-        for hand in cu.find_winner([(1, player_1_hand), (2, player_2_hand)]):
+        for hand in cu.find_winner([(1, hero_hand), (2, player_2_hand)]):
             result['winner'].append(
                 (hand[0], str(hand[1]), str(hand[1].value)))
             result['winning_players'].append(hand[0])
@@ -93,7 +89,7 @@ def main():
 
     c = MongoClient()
     db = c.plo
-    collection = db[player_1_plo_hand.value_id()]
+    collection = db[hero_plo_hand.value_id()]
     collection.insert_many(results)
 
 if __name__ == '__main__':
