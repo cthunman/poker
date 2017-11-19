@@ -15,7 +15,6 @@ def main():
     if len(sys.argv) != 6:
         print('Enter your cards, bruh.')
 
-
     card_list = copy.copy(cards)
 
     deck = []
@@ -53,8 +52,8 @@ def main():
         d_idx = 0
         for j in range(num_opponents):
             for k in range(4):
-                opponent_cards = [deck[d_idx],
-                    deck[d_idx + 1], deck[d_idx + 2], deck[d_idx + 3]]
+                opponent_cards = [deck[d_idx], deck[d_idx + 1],
+                                  deck[d_idx + 2], deck[d_idx + 3]]
 
 # TODO
 
@@ -94,4 +93,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

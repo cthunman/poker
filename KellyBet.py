@@ -48,7 +48,7 @@ def main():
         'FOLD': '____'
     }
 
-    bankroll = Decimal(500)
+    bankroll = Decimal(950)
     topRow = '\t'
     increment = Decimal('.05')
     for i in range(20):
