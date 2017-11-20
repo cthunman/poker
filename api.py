@@ -222,5 +222,11 @@ def main():
     print(format_outs(outs))
     print('\n\n')
 
+    card1 = Card('5S')
+    card2 = Card('6S')
+    card3 = Card('7C')
+
+    print(find_straights_plo([card1, card2, card3]))
+
 if __name__ == '__main__':
     main()
