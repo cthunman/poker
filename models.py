@@ -2,6 +2,14 @@ import itertools
 from settings import DB_SETTINGS
 
 
+class Game(object):
+    def __init__(self, name, hole_cards, player_cards, board_cards):
+        self.name = name
+        self.cards_dealt = cards_dealt
+        self.player_cards = player_cards
+        self.board_cards = board_cards
+
+
 class Hand(object):
 
     hierarchy = {
