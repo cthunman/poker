@@ -1,5 +1,4 @@
-from Hand import Hand, Card
-from PLOStartHand import PLOStartHand
+from models import Hand, Card, PLOStartingHand
 import random
 import itertools
 from cards import cards
@@ -59,11 +58,8 @@ class PLOHandSimulator():
                     cardArgs.append(str(cardList[idx]))
                     idx += 1
 
-                handDict[i]['hand'] = PLOStartHand(
-                    cardArgs[0],
-                    cardArgs[1],
-                    cardArgs[2],
-                    cardArgs[3]
+                handDict[i]['hand'] = PLOStartingHand(
+                    [cardArgs[0], cardArgs[1], cardArgs[2], cardArgs[3]]
                 )
 
             if self.debug:
@@ -106,8 +102,8 @@ class PLOHandSimulator():
 
 
 def main():
-    hand1 = PLOStartHand('AS', 'KD', 'KC', 'AC')
-    # hand2 = PLOStartHand('AD', 'KS', 'KH', 'AH')
+    hand1 = PLOStartingHand(['AS', 'KD', 'KC', 'AC'])
+    # hand2 = PLOStartingHand('AD', 'KS', 'KH', 'AH')
 
     # s = PLOHandSimulator([hand1, hand2], 9, debug=True)
     s = PLOHandSimulator([hand1], 9, debug=True)

@@ -2,9 +2,15 @@
 
 {% block content %}
 
+<h2>{{ context.starting_hand }}</h2>
 <ul>
-{% for hand in opponent_hands %}
-    <li>{{ hand }}</li>
+{% for hand in context.hand_stats %}
+    <li>
+        {{ hand['hand'] }} |
+        {{ hand['win%'] }} |
+        {{ hand['tie%'] }} |
+        {{ hand['loss%'] }}
+    </li>
 {% endfor %}
 </ul>
 

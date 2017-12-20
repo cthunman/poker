@@ -150,60 +150,6 @@ def format_outs(outs):
 
 
 def main():
-    card1 = Card('AS')
-    card2 = Card('2S')
-    card3 = Card('3C')
-
-    card4 = Card('AD')
-    card5 = Card('2D')
-    card6 = Card('5C')
-    card7 = Card('JC')
-
-    outs = find_straight_outs_plo(
-               [card1, card2, card3],
-               [card4, card5, card6, card7]
-           )
-    print(str(card1), str(card2), str(card3))
-    print(str(card4), str(card5), str(card6), str(card7))
-    print(format_outs(outs))
-    print('\n\n')
-
-    card1 = Card('3S')
-    card2 = Card('TS')
-    card3 = Card('JC')
-
-    card4 = Card('9D')
-    card5 = Card('8D')
-    card6 = Card('QC')
-    card7 = Card('KC')
-
-    outs = find_straight_outs_plo(
-               [card1, card2, card3],
-               [card4, card5, card6, card7]
-           )
-    print(str(card1), str(card2), str(card3))
-    print(str(card4), str(card5), str(card6), str(card7))
-    print(format_outs(outs))
-    print('\n\n')
-
-    card1 = Card('3S')
-    card2 = Card('TS')
-    card3 = Card('JC')
-
-    card4 = Card('9D')
-    card5 = Card('8D')
-    card6 = Card('TC')
-    card7 = Card('JC')
-
-    outs = find_straight_outs_plo(
-               [card1, card2, card3],
-               [card4, card5, card6, card7]
-           )
-    print(str(card1), str(card2), str(card3))
-    print(str(card4), str(card5), str(card6), str(card7))
-    print(format_outs(outs))
-    print('\n\n')
-
     card1 = Card('3S')
     card2 = Card('6S')
     card3 = Card('7C')
@@ -221,12 +167,6 @@ def main():
     print(str(card4), str(card5), str(card6), str(card7))
     print(format_outs(outs))
     print('\n\n')
-
-    card1 = Card('5S')
-    card2 = Card('6S')
-    card3 = Card('7C')
-
-    print(find_straights_plo([card1, card2, card3]))
 
 if __name__ == '__main__':
     main()

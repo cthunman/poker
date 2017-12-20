@@ -591,6 +591,11 @@ class Result(object):
         pass
 
 
+class GameSimulation(object):
+    def __init__(self, players, button, blinds):
+        pass
+
+
 def main():
 
     card1 = Card('AS')
