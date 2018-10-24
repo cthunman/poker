@@ -540,7 +540,12 @@ class NLStartingHand(object):
 
 class PLOStartingHand(object):
     def __init__(self, cards):
-        self.cards = cards
+        self.cards = []
+        for card in cards:
+            if type(card) == str:
+                self.cards.append(Card(card))
+            else:
+                self.cards.append(card)
 
     def sorted_value(self):
         return sorted(self.cards, key=lambda c: c.numeric_value, reverse=True)

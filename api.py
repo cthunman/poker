@@ -1,6 +1,9 @@
 from models import Card
 from copy import copy
 import itertools
+from collections import defaultdict
+from cards import cards
+import random
 
 
 # def calculate_nuts_plo(board_cards):
@@ -149,24 +152,56 @@ def format_outs(outs):
     return output
 
 
-def main():
-    card1 = Card('3S')
-    card2 = Card('6S')
-    card3 = Card('7C')
-
-    card4 = Card('9D')
-    card5 = Card('8D')
-    card6 = Card('TC')
-    card7 = Card('9C')
-
-    outs = find_straight_outs_plo(
-               [card1, card2, card3],
-               [card4, card5, card6, card7]
-           )
-    print(str(card1), str(card2), str(card3))
-    print(str(card4), str(card5), str(card6), str(card7))
+def print_outs(board_cards, player_cards, out_finder):
+    outs = out_finder(board_cards, player_cards)
+    print(str(board_cards[0]), str(board_cards[1]), str(board_cards[2]))
+    print(str(player_cards[0]), str(player_cards[1]),
+          str(player_cards[2]), str(player_cards[3]))
     print(format_outs(outs))
     print('\n\n')
+
+
+def main():
+    # card1 = Card('3S')
+    # card2 = Card('6S')
+    # card3 = Card('7C')
+
+    card4 = Card('QD')
+    card5 = Card('9D')
+    card6 = Card('AC')
+    card7 = Card('KC')
+
+    # print_outs([card1, card2, card3], [card4, card5, card6, card7],
+    #            find_straight_outs_plo)
+
+    player_hand = [card4, card5, card6, card7]
+    card_list = copy(cards)
+
+    deck = []
+    for c in card_list:
+        deck.append(Card(c))
+
+    deck.remove(card4)
+    deck.remove(card5)
+    deck.remove(card6)
+    deck.remove(card7)
+
+    nut_results = defaultdict(int)
+    non_nut_results = {}
+    runs = 10000
+    for _ in range(runs):
+        random.shuffle(deck)
+        # print_outs([deck[0], deck[1], deck[2]], player_hand,
+        #            find_straight_outs_plo)
+        data = format_outs(
+            find_straight_outs_plo([deck[0], deck[1], deck[2]], player_hand))
+        # print(data)
+        # if data['nut_outs'] not in non_nut_results:
+        #     non_nut_results[data['nut_outs']] = defaultdict(int)
+        nut_results[data['nut_outs']['count']] += 1
+
+    for k, v in sorted(nut_results.items()):
+        print("{}\t:\t{}\t:\t{}".format(k, v, str(100 * (v*1.0)/runs) + '%'))
 
 if __name__ == '__main__':
     main()
